@@ -27,7 +27,12 @@ export const APP_SECTIONS: AppSection[] = [
   'settings-developer',
   'admin-users',
   'admin-backup',
-  'admin-data-cleanup'
+  'admin-data-cleanup',
+  'sean-spend-insights',
+  'sean-reports',
+  'sean-monthly-comparison',
+  'sean-asset-trends',
+  'sean-actual-spend',
 ]
 
 export const DEFAULT_APP_SECTION: AppSection = 'transactions'
@@ -89,6 +94,16 @@ function parseRootSection(parts: string[]): AppSection {
       return 'ledgers'
     case 'overview':
       return 'overview'
+    case 'spend-insights':
+      return 'sean-spend-insights'
+    case 'sean-reports':
+      return 'sean-reports'
+    case 'sean-monthly-comparison':
+      return 'sean-monthly-comparison'
+    case 'sean-asset-trends':
+      return 'sean-asset-trends'
+    case 'sean-actual-spend':
+      return 'sean-actual-spend'
     case 'admin/users':
       return 'admin-users'
     case 'settings/profile':
@@ -177,7 +192,12 @@ export function parseRoute(pathname: string): AppRoute {
     parts[1] === 'categories' ||
     parts[1] === 'tags' ||
     parts[1] === 'budgets' ||
-    parts[1] === 'overview'
+    parts[1] === 'overview' ||
+    parts[1] === 'spend-insights' ||
+    parts[1] === 'sean-reports' ||
+    parts[1] === 'sean-monthly-comparison' ||
+    parts[1] === 'sean-asset-trends'
+    || parts[1] === 'sean-actual-spend'
   ) {
     return { kind: 'app', ledgerId: '', section: parseRootSection(parts.slice(1)) }
   }
@@ -214,6 +234,16 @@ export function routePath(route: AppRoute): string {
       return '/app/ledgers'
     case 'overview':
       return '/app/overview'
+    case 'sean-spend-insights':
+      return '/app/spend-insights'
+    case 'sean-reports':
+      return '/app/sean-reports'
+    case 'sean-monthly-comparison':
+      return '/app/sean-monthly-comparison'
+    case 'sean-asset-trends':
+      return '/app/sean-asset-trends'
+    case 'sean-actual-spend':
+      return '/app/sean-actual-spend'
     case 'settings-profile':
       return '/app/settings/profile'
     case 'settings-appearance':

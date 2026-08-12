@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
@@ -83,6 +83,18 @@ export function GlobalEntityDialogs() {
 
   // 共享 tags 字典 — 4 个详情弹窗里 TransactionList 渲染 tag chip 都要
   const [tagsDict, setTagsDict] = useState<WorkspaceTag[]>([])
+  const tagStatsById = useMemo(() => {
+    const stats: Record<string, { count: number; income: number; expense: number }> = {}
+    for (const item of tagsDict) {
+      if (!item.id) continue
+      stats[item.id] = {
+        count: item.tx_count ?? 0,
+        income: item.income_total ?? 0,
+        expense: item.expense_total ?? 0,
+      }
+    }
+    return stats
+  }, [tagsDict])
 
   // 监听 tx detail
   useEffect(() => {
@@ -361,7 +373,7 @@ export function GlobalEntityDialogs() {
         offset={tagOffset}
         loading={tagLoading}
         tags={tagsDict}
-        tagStatsById={{}}
+        tagStatsById={tagStatsById}
         onClose={() => setTag(null)}
         onLoadMore={(syncId, off) => void loadTagTxs(syncId, tagScope, off)}
       />

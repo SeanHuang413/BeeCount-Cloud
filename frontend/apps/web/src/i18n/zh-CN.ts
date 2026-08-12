@@ -563,6 +563,12 @@ const zhCN = {
   'nav.budgets': '预算',
   'nav.ledgers': '账本',
   'nav.annualReport': '年度报告',
+  'nav.group.seanCustom': '自定义功能',
+  'nav.seanSpendInsights': '省钱洞察',
+  'nav.seanReports': '我的报表',
+  'nav.seanMonthlyComparison': '月度对比',
+  'nav.seanAssetTrends': '资产趋势',
+  'nav.seanActualSpend': '实际支出',
   'nav.integrity': '数据完整性',
 
 
@@ -1162,6 +1168,8 @@ const zhCN = {
   'detail.stats.accumExpense': '累计支出',
   'detail.stats.accumIncome': '累计收入',
   'detail.stats.currentBalance': '当前余额',
+  'sean.tagSettlement.balance': '结余',
+  'sean.tagSettlement.accumulatedBalance': '累计结余',
   'detail.account.bankUnknown': '未知银行',
   'detail.account.creditLimit': '信用额度',
   'detail.account.remaining': '剩余 {value}',
@@ -1509,6 +1517,25 @@ const zhCN = {
   'error.ADMIN_USER_DELETE_LAST_ADMIN_FORBIDDEN': '不能删除最后一个启用的管理员。',
 
   'notice.userCreated': '用户已创建。',
+
+  // ===== Sean custom: spend insights =====
+  'sean.spendInsights.title': '省钱洞察',
+  'sean.spendInsights.subtitle': '从近 180 天的已记账支出中，找出值得你亲自复核的消费模式。',
+  'sean.spendInsights.refresh': '刷新数据',
+  'sean.spendInsights.summary.title': '近 90 天支出概览',
+  'sean.spendInsights.summary.description': '与此前 90 天对比；已标记“不计入统计”的交易会自动排除。',
+  'sean.spendInsights.summary.current': '近 90 天支出',
+  'sean.spendInsights.summary.change': '较此前 90 天',
+  'sean.spendInsights.summary.records': '参与分析的支出笔数',
+  'sean.spendInsights.kind.frequent': '高频消费，适合检查是否有可替代方案',
+  'sean.spendInsights.kind.rising': '支出增长明显，值得回看原因',
+  'sean.spendInsights.kind.subscription': '疑似周期扣费，请确认是否仍在使用',
+  'sean.spendInsights.transactions': '近 90 天 {count} 笔交易',
+  'sean.spendInsights.openTransactions': '查看相关交易',
+  'sean.spendInsights.empty.title': '暂未发现明显的可复核模式',
+  'sean.spendInsights.empty.description': '继续记账一段时间后再来看；本页只提示模式，不会自动判断某笔消费是否应该砍掉。',
+  'sean.spendInsights.error': '读取交易数据失败，请稍后重试。',
+  'sean.spendInsights.disclaimer': '提示基于金额、频次和时间间隔的规则生成，不代表这些消费一定不必要。请结合你的真实需求再决定是否削减。',
 
   // ===== Annual Report =====
   'annualReport.title': '我的年度记账报告',

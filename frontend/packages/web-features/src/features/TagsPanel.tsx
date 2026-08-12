@@ -16,6 +16,7 @@ import {
 import type { ReadTag } from '@beecount/api-client'
 
 import type { TagForm } from '../forms'
+import { SeanTagSettlementInline } from './sean_tag-settlement'
 import {
   TAG_COLOR_PALETTE,
   tagTextColorOn
@@ -218,7 +219,7 @@ export function TagsPanel({
                         <span className="text-[11px] text-muted-foreground">{t('tags.count.unit')}</span>
                       </div>
                       {/* 次要统计：支出/收入左右排 */}
-                      <div className="flex items-center justify-between gap-3 rounded-lg border border-border/40 bg-background/40 px-3 py-2 text-xs">
+                      <div className="flex items-center justify-between gap-2 rounded-lg border border-border/40 bg-background/40 px-3 py-2 text-xs">
                         <div className="flex items-center gap-1.5 text-expense">
                           <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
                           <span className="font-mono font-semibold">
@@ -231,6 +232,7 @@ export function TagsPanel({
                             {stats ? fmt(stats.income) : '0.00'}
                           </span>
                         </div>
+                        {stats ? <SeanTagSettlementInline income={stats.income} expense={stats.expense} /> : null}
                       </div>
                     </div>
                   ) : null}

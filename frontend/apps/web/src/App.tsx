@@ -68,6 +68,21 @@ const ImportPage = lazy(() =>
 const ShareIncomingPage = lazy(() =>
   import('./pages/sections/ShareIncomingPage').then((m) => ({ default: m.ShareIncomingPage })),
 )
+const SeanSpendInsightsPage = lazy(() =>
+  import('./pages/sections/sean_SpendInsightsPage').then((m) => ({ default: m.SeanSpendInsightsPage })),
+)
+const SeanReportsPage = lazy(() =>
+  import('./pages/sections/sean_ReportsPage').then((m) => ({ default: m.SeanReportsPage })),
+)
+const SeanMonthlyComparisonPage = lazy(() =>
+  import('./pages/sections/sean_MonthlyComparisonPage').then((m) => ({ default: m.SeanMonthlyComparisonPage })),
+)
+const SeanAssetTrendsPage = lazy(() =>
+  import('./pages/sections/sean_AssetTrendsPage').then((m) => ({ default: m.SeanAssetTrendsPage })),
+)
+const SeanActualSpendPage = lazy(() =>
+  import('./pages/sections/sean_ActualSpendPage').then((m) => ({ default: m.SeanActualSpendPage })),
+)
 
 /** 路由切换时的 Suspense fallback。section 切换通常 < 200ms,加个轻量
  *  loading shell 避免白屏闪烁。 */
@@ -211,6 +226,30 @@ function AppRoutes() {
               <CalendarPage />
             </Suspense>
           }
+        />
+        <Route
+          path="spend-insights"
+          element={
+            <Suspense fallback={<RouteFallback />}>
+              <SeanSpendInsightsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="sean-reports"
+          element={<Suspense fallback={<RouteFallback />}><SeanReportsPage /></Suspense>}
+        />
+        <Route
+          path="sean-monthly-comparison"
+          element={<Suspense fallback={<RouteFallback />}><SeanMonthlyComparisonPage /></Suspense>}
+        />
+        <Route
+          path="sean-asset-trends"
+          element={<Suspense fallback={<RouteFallback />}><SeanAssetTrendsPage /></Suspense>}
+        />
+        <Route
+          path="sean-actual-spend"
+          element={<Suspense fallback={<RouteFallback />}><SeanActualSpendPage /></Suspense>}
         />
         <Route
           path="ledgers"

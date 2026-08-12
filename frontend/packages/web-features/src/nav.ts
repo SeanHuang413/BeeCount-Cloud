@@ -17,6 +17,11 @@ export type AppSection =
   | 'admin-backup'
   | 'admin-data-cleanup'
   | 'import'
+  | 'sean-spend-insights'
+  | 'sean-reports'
+  | 'sean-monthly-comparison'
+  | 'sean-asset-trends'
+  | 'sean-actual-spend'
 
 export type NavItem = {
   key: AppSection
@@ -41,7 +46,7 @@ export const NAV_GROUPS: NavGroup[] = [
       { key: 'accounts', labelKey: 'nav.accounts' },
       { key: 'categories', labelKey: 'nav.categories' },
       { key: 'tags', labelKey: 'nav.tags' }
-      // 预算从顶部 bookkeeping 组移出,改放头像下拉的"工具"里 —— 用户
+      // 预算和自定义报表从顶部 bookkeeping 组移出,改放头像下拉菜单 —— 用户
       // 场景下预算访问频率低于 tx/account/category,顶部 nav 保持瘦。
     ]
   },

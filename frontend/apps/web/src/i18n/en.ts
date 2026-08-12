@@ -72,6 +72,12 @@ const en = {
   'nav.budgets': 'Budgets',
   'nav.ledgers': 'Ledgers',
   'nav.annualReport': 'Annual Report',
+  'nav.group.seanCustom': 'Custom features',
+  'nav.seanSpendInsights': 'Spend Insights',
+  'nav.seanReports': 'My Reports',
+  'nav.seanMonthlyComparison': 'Monthly Comparison',
+  'nav.seanAssetTrends': 'Asset Trends',
+  'nav.seanActualSpend': 'Actual Spend',
   'nav.integrity': 'Data Integrity',
 
 
@@ -1120,6 +1126,8 @@ const en = {
   'detail.stats.accumExpense': 'Total expense',
   'detail.stats.accumIncome': 'Total income',
   'detail.stats.currentBalance': 'Current balance',
+  'sean.tagSettlement.balance': 'Balance',
+  'sean.tagSettlement.accumulatedBalance': 'Net total',
   'detail.account.bankUnknown': 'Unknown bank',
   'detail.account.creditLimit': 'Credit limit',
   'detail.account.remaining': '{value} left',
@@ -1468,6 +1476,25 @@ const en = {
   'error.USER_PASSWORD_TOO_SHORT': 'Password must be at least 6 characters.',
 
   'notice.userCreated': 'User created.',
+
+  // ===== Sean custom: spend insights =====
+  'sean.spendInsights.title': 'Spend Insights',
+  'sean.spendInsights.subtitle': 'Review spending patterns from the last 180 days of recorded expenses.',
+  'sean.spendInsights.refresh': 'Refresh data',
+  'sean.spendInsights.summary.title': 'Last 90 days',
+  'sean.spendInsights.summary.description': 'Compared with the preceding 90 days. Transactions excluded from statistics are omitted.',
+  'sean.spendInsights.summary.current': 'Expense in last 90 days',
+  'sean.spendInsights.summary.change': 'vs. preceding 90 days',
+  'sean.spendInsights.summary.records': 'Expense records analyzed',
+  'sean.spendInsights.kind.frequent': 'Frequent spending worth reviewing for alternatives',
+  'sean.spendInsights.kind.rising': 'Spending has grown enough to review why',
+  'sean.spendInsights.kind.subscription': 'Possible recurring charge — confirm that you still use it',
+  'sean.spendInsights.transactions': '{count} transactions in the last 90 days',
+  'sean.spendInsights.openTransactions': 'View related transactions',
+  'sean.spendInsights.empty.title': 'No strong review patterns yet',
+  'sean.spendInsights.empty.description': 'Keep recording for a while and check again. This page surfaces patterns; it does not decide what you should cut.',
+  'sean.spendInsights.error': 'Could not load transaction data. Please try again.',
+  'sean.spendInsights.disclaimer': 'Suggestions are generated from amount, frequency, and timing rules. They do not mean that a purchase is necessarily unnecessary.',
 
   // ===== Annual Report =====
   'annualReport.title': 'My Year in Numbers',

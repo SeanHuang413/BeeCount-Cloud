@@ -17,7 +17,7 @@ from ..schema import ImportFieldMapping
 _HEADER_ALIASES = {
     "tx_type": {"type", "类型", "類型"},
     "category": {"category", "分类", "分類"},
-    "subcategory": {"subcategory", "子分类", "子分類"},
+    "subcategory": {"subcategory", "子分类", "子分類", "二级分类", "二級分類"},
     "amount": {"amount", "金额", "金額"},
     "account": {"account", "账户", "帳戶"},
     "from_account": {"from_account", "from account", "转出账户", "轉出帳戶"},

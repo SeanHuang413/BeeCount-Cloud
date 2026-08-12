@@ -6,7 +6,7 @@ import {
   DialogTitle,
   useT
 } from '@beecount/ui'
-import { TransactionList } from '@beecount/web-features'
+import { calculateSeanTagSettlement, TransactionList } from '@beecount/web-features'
 
 import { useAuth } from '../../context/AuthContext'
 import type { DetailScope } from '../../lib/txDialogEvents'
@@ -72,7 +72,7 @@ export function TagDetailDialog({
         {tag ? (
           <div className="flex min-h-0 flex-1 flex-col">
             {stats ? (
-              <div className="grid grid-cols-3 gap-3 border-b border-border/60 bg-muted/20 px-6 py-4 text-center">
+              <div className="grid grid-cols-2 gap-3 border-b border-border/60 bg-muted/20 px-6 py-4 text-center sm:grid-cols-4">
                 <StatCell label={t('detail.stats.txCount')} value={stats.count} bold />
                 <StatCell
                   label={t('detail.stats.accumExpense')}
@@ -83,6 +83,11 @@ export function TagDetailDialog({
                   label={t('detail.stats.accumIncome')}
                   value={stats.income}
                   tone="income"
+                />
+                <StatCell
+                  label={t('sean.tagSettlement.accumulatedBalance')}
+                  value={calculateSeanTagSettlement(stats)}
+                  tone={stats.income >= stats.expense ? 'income' : 'expense'}
                 />
               </div>
             ) : null}

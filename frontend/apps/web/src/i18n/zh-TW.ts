@@ -72,6 +72,12 @@ const zhTW = {
   'nav.budgets': '預算',
   'nav.ledgers': '帳本',
   'nav.annualReport': '年度報告',
+  'nav.group.seanCustom': '自訂功能',
+  'nav.seanSpendInsights': '省錢洞察',
+  'nav.seanReports': '我的報表',
+  'nav.seanMonthlyComparison': '月度對比',
+  'nav.seanAssetTrends': '資產趨勢',
+  'nav.seanActualSpend': '實際支出',
   'nav.integrity': '資料完整性',
 
 
@@ -1121,6 +1127,8 @@ const zhTW = {
   'detail.stats.accumExpense': '累計支出',
   'detail.stats.accumIncome': '累計收入',
   'detail.stats.currentBalance': '當前餘額',
+  'sean.tagSettlement.balance': '結餘',
+  'sean.tagSettlement.accumulatedBalance': '累計結餘',
   'detail.account.bankUnknown': '未知銀行',
   'detail.account.creditLimit': '信用額度',
   'detail.account.remaining': '剩餘 {value}',
@@ -1467,6 +1475,25 @@ const zhTW = {
   'error.USER_PASSWORD_TOO_SHORT': '密碼至少需 6 碼。',
 
   'notice.userCreated': '使用者已建立。',
+
+  // ===== Sean custom: spend insights =====
+  'sean.spendInsights.title': '省錢洞察',
+  'sean.spendInsights.subtitle': '從近 180 天的已記帳支出中，找出值得親自複核的消費模式。',
+  'sean.spendInsights.refresh': '重新整理資料',
+  'sean.spendInsights.summary.title': '近 90 天支出概覽',
+  'sean.spendInsights.summary.description': '與此前 90 天比較；已標記「不計入統計」的交易會自動排除。',
+  'sean.spendInsights.summary.current': '近 90 天支出',
+  'sean.spendInsights.summary.change': '較此前 90 天',
+  'sean.spendInsights.summary.records': '參與分析的支出筆數',
+  'sean.spendInsights.kind.frequent': '高頻消費，適合檢查是否有替代方案',
+  'sean.spendInsights.kind.rising': '支出成長明顯，值得回看原因',
+  'sean.spendInsights.kind.subscription': '疑似週期扣費，請確認是否仍在使用',
+  'sean.spendInsights.transactions': '近 90 天 {count} 筆交易',
+  'sean.spendInsights.openTransactions': '查看相關交易',
+  'sean.spendInsights.empty.title': '暫未發現明顯的可複核模式',
+  'sean.spendInsights.empty.description': '繼續記帳一段時間後再來看；本頁只提示模式，不會自動判斷某筆消費是否應該砍掉。',
+  'sean.spendInsights.error': '讀取交易資料失敗，請稍後重試。',
+  'sean.spendInsights.disclaimer': '提示根據金額、頻率和時間間隔規則產生，不代表這些消費一定不必要。請結合真實需求再決定是否削減。',
 
   // ===== Annual Report =====
   'annualReport.title': '我的年度記帳報告',

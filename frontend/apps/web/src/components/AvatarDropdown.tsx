@@ -4,14 +4,17 @@ import {
   BookOpen,
   Bot,
   Brush,
+  ChartNoAxesCombined,
   Info,
   Key,
   Languages,
   LogOut,
   Moon,
+  ReceiptText,
   Smartphone,
   Sparkles,
   Sun,
+  TrendingUp,
   User,
   Users,
   Wallet,
@@ -144,6 +147,25 @@ export function AvatarDropdown({
           </MenuButton>
           <MenuButton icon={Sparkles} onClick={onOpenAnnualReport}>
             {t('nav.annualReport')}
+          </MenuButton>
+
+          <Divider />
+
+          <GroupLabel>{t('nav.group.seanCustom')}</GroupLabel>
+          <MenuButton icon={ReceiptText} active={currentSection === 'sean-spend-insights'} onClick={() => onNavigate('sean-spend-insights')}>
+            {t('nav.seanSpendInsights')}
+          </MenuButton>
+          <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-reports'} onClick={() => onNavigate('sean-reports')}>
+            {t('nav.seanReports')}
+          </MenuButton>
+          <MenuButton icon={TrendingUp} active={currentSection === 'sean-monthly-comparison'} onClick={() => onNavigate('sean-monthly-comparison')}>
+            {t('nav.seanMonthlyComparison')}
+          </MenuButton>
+          <MenuButton icon={TrendingUp} active={currentSection === 'sean-asset-trends'} onClick={() => onNavigate('sean-asset-trends')}>
+            {t('nav.seanAssetTrends')}
+          </MenuButton>
+          <MenuButton icon={ReceiptText} active={currentSection === 'sean-actual-spend'} onClick={() => onNavigate('sean-actual-spend')}>
+            {t('nav.seanActualSpend')}
           </MenuButton>
 
           <Divider />
