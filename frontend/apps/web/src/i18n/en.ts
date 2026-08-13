@@ -77,6 +77,7 @@ const en = {
   'nav.seanReports': 'My Reports',
   'nav.seanMonthlyComparison': 'Monthly Comparison',
   'nav.seanAssetTrends': 'Asset Trends',
+  'nav.seanAssets': 'Asset Center',
   'nav.seanActualSpend': 'Actual Spend',
   'nav.integrity': 'Data Integrity',
 

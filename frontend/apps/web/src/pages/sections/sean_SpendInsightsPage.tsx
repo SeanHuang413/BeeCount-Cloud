@@ -10,9 +10,16 @@ import { useSyncRefresh } from '../../context/SyncSocketContext'
 const PAGE_SIZE = 500
 const MAX_PAGES = 20
 
-function dateRangeFor(period: SeanSpendInsightPeriod): { dateFrom?: string; dateTo?: string } {
+function currentMonth(): string { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}` }
+function dateRangeFor(period: SeanSpendInsightPeriod, selectedMonth: string): { dateFrom?: string; dateTo?: string } {
   if (period === 'all') return {}
   const now = new Date()
+  if (period === 'custom-month') {
+    const candidate = /^\d{4}-(0[1-9]|1[0-2])$/.test(selectedMonth) ? selectedMonth : currentMonth()
+    const safeMonth = candidate > currentMonth() ? currentMonth() : candidate
+    const [year, month] = safeMonth.split('-').map(Number)
+    return { dateFrom: new Date(year, month - 1, 1).toISOString(), dateTo: new Date(year, month, 1).toISOString() }
+  }
   const start = new Date(now.getFullYear(), now.getMonth(), 1)
   if (period === 'last-month') {
     start.setMonth(start.getMonth() - 1)
@@ -28,6 +35,7 @@ export function SeanSpendInsightsPage() {
   const { activeLedgerId, currency } = useLedgers()
   const [transactions, setTransactions] = useState<WorkspaceTransaction[]>([])
   const [period, setPeriod] = useState<SeanSpendInsightPeriod>('month')
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
 
@@ -36,7 +44,7 @@ export function SeanSpendInsightsPage() {
     setLoading(true); setError(false)
     try {
       const rows: WorkspaceTransaction[] = []
-      const range = dateRangeFor(period)
+      const range = dateRangeFor(period, selectedMonth)
       for (let page = 0; page < MAX_PAGES; page += 1) {
         const response = await fetchWorkspaceTransactions(token, { ledgerId: activeLedgerId, ...range, limit: PAGE_SIZE, offset: page * PAGE_SIZE })
         rows.push(...response.items)
@@ -44,9 +52,9 @@ export function SeanSpendInsightsPage() {
       }
       setTransactions(rows)
     } catch { setTransactions([]); setError(true) } finally { setLoading(false) }
-  }, [token, activeLedgerId, period])
+  }, [token, activeLedgerId, period, selectedMonth])
 
   useEffect(() => { void load() }, [load])
   useSyncRefresh(() => { void load() })
-  return <SeanSpendInsightsPanel transactions={transactions} currency={currency} period={period} onPeriodChange={setPeriod} loading={loading} error={error} onRefresh={() => void load()} />
+  return <SeanSpendInsightsPanel transactions={transactions} currency={currency} period={period} onPeriodChange={setPeriod} selectedMonth={selectedMonth} onSelectedMonthChange={setSelectedMonth} loading={loading} error={error} onRefresh={() => void load()} />
 }

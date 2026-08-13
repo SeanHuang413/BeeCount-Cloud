@@ -568,6 +568,7 @@ const zhCN = {
   'nav.seanReports': '我的报表',
   'nav.seanMonthlyComparison': '月度对比',
   'nav.seanAssetTrends': '资产趋势',
+  'nav.seanAssets': '资产中心',
   'nav.seanActualSpend': '实际支出',
   'nav.integrity': '数据完整性',
 

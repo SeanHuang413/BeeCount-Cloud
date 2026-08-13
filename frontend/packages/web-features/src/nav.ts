@@ -21,6 +21,7 @@ export type AppSection =
   | 'sean-reports'
   | 'sean-monthly-comparison'
   | 'sean-asset-trends'
+  | 'sean-assets'
   | 'sean-actual-spend'
 
 export type NavItem = {

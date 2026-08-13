@@ -18,6 +18,7 @@ import {
   User,
   Users,
   Wallet,
+  WalletCards,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -152,6 +153,9 @@ export function AvatarDropdown({
           <Divider />
 
           <GroupLabel>{t('nav.group.seanCustom')}</GroupLabel>
+          <MenuButton icon={WalletCards} active={currentSection === 'sean-assets'} onClick={() => onNavigate('sean-assets')}>
+            {t('nav.seanAssets')}
+          </MenuButton>
           <MenuButton icon={ReceiptText} active={currentSection === 'sean-spend-insights'} onClick={() => onNavigate('sean-spend-insights')}>
             {t('nav.seanSpendInsights')}
           </MenuButton>

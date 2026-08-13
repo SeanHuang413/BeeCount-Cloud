@@ -32,6 +32,7 @@ export const APP_SECTIONS: AppSection[] = [
   'sean-reports',
   'sean-monthly-comparison',
   'sean-asset-trends',
+  'sean-assets',
   'sean-actual-spend',
 ]
 
@@ -102,6 +103,8 @@ function parseRootSection(parts: string[]): AppSection {
       return 'sean-monthly-comparison'
     case 'sean-asset-trends':
       return 'sean-asset-trends'
+    case 'sean-assets':
+      return 'sean-assets'
     case 'sean-actual-spend':
       return 'sean-actual-spend'
     case 'admin/users':
@@ -197,6 +200,7 @@ export function parseRoute(pathname: string): AppRoute {
     parts[1] === 'sean-reports' ||
     parts[1] === 'sean-monthly-comparison' ||
     parts[1] === 'sean-asset-trends'
+    || parts[1] === 'sean-assets'
     || parts[1] === 'sean-actual-spend'
   ) {
     return { kind: 'app', ledgerId: '', section: parseRootSection(parts.slice(1)) }
@@ -242,6 +246,8 @@ export function routePath(route: AppRoute): string {
       return '/app/sean-monthly-comparison'
     case 'sean-asset-trends':
       return '/app/sean-asset-trends'
+    case 'sean-assets':
+      return '/app/sean-assets'
     case 'sean-actual-spend':
       return '/app/sean-actual-spend'
     case 'settings-profile':

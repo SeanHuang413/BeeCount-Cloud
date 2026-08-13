@@ -1,7 +1,7 @@
 import type { WorkspaceTransaction } from '@beecount/api-client'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@beecount/ui'
 
-export type SeanReportDetailKind = 'tag' | 'merchant' | 'income' | 'category'
+export type SeanReportDetailKind = 'tag' | 'merchant' | 'income' | 'category' | 'large-expense'
 export type SeanReportDetailSelection = { kind: SeanReportDetailKind; name: string; categoryNames?: string[] } | null
 
 type Props = { selection: SeanReportDetailSelection; transactions: WorkspaceTransaction[]; currency: string; onOpenChange: (open: boolean) => void }
@@ -13,11 +13,12 @@ function money(value: number, currency: string): string {
 
 function amountOf(tx: WorkspaceTransaction): number { return Math.abs(Number(tx.native_amount ?? tx.amount) || 0) }
 function tagsOf(tx: WorkspaceTransaction): string[] { return tx.tags_list?.filter(Boolean) || (tx.tags || '').split(',').map((name) => name.trim()).filter(Boolean) }
-function label(kind: SeanReportDetailKind): string { return kind === 'tag' ? '标签' : kind === 'merchant' ? '高频消费' : kind === 'income' ? '收入来源' : '分类消费' }
+function label(kind: SeanReportDetailKind): string { return kind === 'tag' ? '标签' : kind === 'merchant' ? '高频消费' : kind === 'income' ? '收入来源' : kind === 'large-expense' ? '大额支出' : '分类消费' }
 
 function matches(tx: WorkspaceTransaction, selection: Exclude<SeanReportDetailSelection, null>): boolean {
   if (tx.exclude_from_stats || !['expense', 'income'].includes(tx.tx_type) || amountOf(tx) <= 0) return false
   if (selection.kind === 'tag') return tagsOf(tx).includes(selection.name)
+  if (selection.kind === 'large-expense') return tx.id === selection.name
   if (selection.kind === 'category') return tx.tx_type === 'expense' && (selection.categoryNames || [selection.name]).includes((tx.category_name || '').trim())
   const name = (tx.note || tx.category_name || '').trim()
   return selection.kind === 'merchant' ? tx.tx_type === 'expense' && name === selection.name : tx.tx_type === 'income' && name === selection.name

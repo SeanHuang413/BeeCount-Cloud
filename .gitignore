@@ -9,6 +9,7 @@ __pycache__/
 .ruff_cache/
 .docker_temp_232262871
 .dockerignore
+.pnpm-*
 
 frontend/node_modules/
 frontend/apps/web/node_modules/

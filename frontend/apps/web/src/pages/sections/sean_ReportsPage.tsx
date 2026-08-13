@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { fetchWorkspaceAccounts, fetchWorkspaceCategories, fetchWorkspaceTransactions, type WorkspaceAccount, type WorkspaceCategory, type WorkspaceTransaction } from '@beecount/api-client'
+import { fetchWorkspaceCategories, fetchWorkspaceTransactions, type WorkspaceCategory, type WorkspaceTransaction } from '@beecount/api-client'
 import { SeanReportCenterPanel } from '@beecount/web-features'
 
 import { useAuth } from '../../context/AuthContext'
@@ -10,11 +10,18 @@ import { useSyncRefresh } from '../../context/SyncSocketContext'
 
 const PAGE_SIZE = 500
 const MAX_PAGES = 20
-export type SeanReportPeriod = 'month' | 'last-month' | 'three-months' | 'six-months' | 'twelve-months' | 'all'
+export type SeanReportPeriod = 'month' | 'last-month' | 'three-months' | 'six-months' | 'twelve-months' | 'custom-month' | 'all'
 
-function dateRangeFor(period: SeanReportPeriod): { dateFrom?: string; dateTo?: string } {
+function currentMonth(): string { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}` }
+function dateRangeFor(period: SeanReportPeriod, selectedMonth: string): { dateFrom?: string; dateTo?: string } {
   if (period === 'all') return {}
   const now = new Date()
+  if (period === 'custom-month') {
+    const candidate = /^\d{4}-(0[1-9]|1[0-2])$/.test(selectedMonth) ? selectedMonth : currentMonth()
+    const safeMonth = candidate > currentMonth() ? currentMonth() : candidate
+    const [year, month] = safeMonth.split('-').map(Number)
+    return { dateFrom: new Date(year, month - 1, 1).toISOString(), dateTo: new Date(year, month, 1).toISOString() }
+  }
   const start = new Date(now.getFullYear(), now.getMonth(), 1)
   if (period === 'last-month') {
     start.setMonth(start.getMonth() - 1)
@@ -32,27 +39,27 @@ export function SeanReportsPage() {
   const { token } = useAuth()
   const { activeLedgerId, currency } = useLedgers()
   const [transactions, setTransactions] = useState<WorkspaceTransaction[]>([])
-  const [accounts, setAccounts] = useState<WorkspaceAccount[]>([])
   const [categories, setCategories] = useState<WorkspaceCategory[]>([])
   const [period, setPeriod] = useState<SeanReportPeriod>('month')
+  const [selectedMonth, setSelectedMonth] = useState(currentMonth)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)
   const load = useCallback(async () => {
-    if (!activeLedgerId) { setTransactions([]); setAccounts([]); setCategories([]); return }
+    if (!activeLedgerId) { setTransactions([]); setCategories([]); return }
     setLoading(true); setError(false)
     try {
-      const range = dateRangeFor(period)
+      const range = dateRangeFor(period, selectedMonth)
       const rows: WorkspaceTransaction[] = []
       for (let page = 0; page < MAX_PAGES; page += 1) {
         const response = await fetchWorkspaceTransactions(token, { ledgerId: activeLedgerId, ...range, limit: PAGE_SIZE, offset: page * PAGE_SIZE })
         rows.push(...response.items)
         if (rows.length >= response.total || response.items.length < PAGE_SIZE) break
       }
-      const categoryRows = await fetchWorkspaceCategories(token, { limit: PAGE_SIZE })
-      setTransactions(rows); setCategories(categoryRows)
-    } catch { setTransactions([]); setAccounts([]); setCategories([]); setError(true) } finally { setLoading(false) }
-  }, [token, activeLedgerId, period])
+      setCategories(await fetchWorkspaceCategories(token, { limit: PAGE_SIZE }))
+      setTransactions(rows)
+    } catch { setTransactions([]); setCategories([]); setError(true) } finally { setLoading(false) }
+  }, [token, activeLedgerId, period, selectedMonth])
   useEffect(() => { void load() }, [load])
   useSyncRefresh(() => { void load() })
-  return <SeanReportCenterPanel transactions={transactions} accounts={accounts} categories={categories} currency={currency} period={period} onPeriodChange={setPeriod} loading={loading} error={error} onRefresh={() => void load()} onOpenTransactions={(query) => navigate(`/app/transactions${query ? `?q=${encodeURIComponent(query)}` : ''}`)} onOpenAssets={() => navigate('/app/accounts')} />
+  return <SeanReportCenterPanel transactions={transactions} categories={categories} currency={currency} period={period} onPeriodChange={setPeriod} selectedMonth={selectedMonth} onSelectedMonthChange={setSelectedMonth} loading={loading} error={error} onRefresh={() => void load()} onOpenTransactions={(query) => navigate(`/app/transactions${query ? `?q=${encodeURIComponent(query)}` : ''}`)} />
 }

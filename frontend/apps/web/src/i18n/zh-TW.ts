@@ -77,6 +77,7 @@ const zhTW = {
   'nav.seanReports': '我的報表',
   'nav.seanMonthlyComparison': '月度對比',
   'nav.seanAssetTrends': '資產趨勢',
+  'nav.seanAssets': '資產中心',
   'nav.seanActualSpend': '實際支出',
   'nav.integrity': '資料完整性',
 
