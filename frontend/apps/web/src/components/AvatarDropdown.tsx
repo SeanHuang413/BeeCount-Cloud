@@ -21,6 +21,7 @@ import {
   WalletCards,
   type LucideIcon,
 } from 'lucide-react'
+import { useState } from 'react'
 
 import type { AppSection, NavItem } from '@beecount/web-features'
 import { useLocale, useT, useTheme } from '@beecount/ui'
@@ -46,9 +47,8 @@ const SETTINGS_ICONS: Record<string, LucideIcon> = {
  *   - Info:关于(版本对比 + 仓库链接 + 更新日志,合并自旧的「更新日志」+「GitHub 仓库」)
  *   - Actions:退出登录
  *
- * 行为:跟原 inline 实现一致 —— pure CSS group-hover + focus-within,
- * hover 进 avatar 包裹区打开,离开后 150ms 淡出关闭。菜单里按钮的 active
- * 态跟 `currentSection` 比对。
+ * 行为:hover 或聚焦头像时打开，离开时关闭；点击导航、弹窗入口或退出后
+ * 立即关闭。菜单里按钮的 active 态跟 `currentSection` 比对。
  */
 interface Props {
   profileMe: {
@@ -76,16 +76,37 @@ export function AvatarDropdown({
   onOpenAbout,
   onOpenAnnualReport,
 }: Props) {
+  const [open, setOpen] = useState(false)
   const t = useT()
   const { locale, setLocale } = useLocale()
   const { mode: themeMode, setMode: setThemeMode } = useTheme()
 
   const avatarSrc = withAvatarCacheBust(profileMe.avatar_url, profileMe.avatar_version)
+  const navigateAndClose = (section: AppSection) => {
+    setOpen(false)
+    onNavigate(section)
+  }
+  const runAndClose = (action: () => void) => {
+    setOpen(false)
+    action()
+  }
 
   return (
-    <div className="group relative" tabIndex={-1}>
+    <div
+      className="relative"
+      tabIndex={-1}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+      onFocus={() => setOpen(true)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setOpen(false)
+      }}
+    >
       <button
         type="button"
+        aria-haspopup="menu"
+        aria-expanded={open}
+        onClick={() => setOpen((value) => !value)}
         className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
         title={profileMe.display_name || profileMe.email}
       >
@@ -104,9 +125,9 @@ export function AvatarDropdown({
           </div>
         )}
       </button>
-      {/* 悬浮面板 —— 默认透明不接收指针,hover/focus 状态打开 */}
-      <div className="invisible absolute right-0 top-full z-50 w-60 pt-2 opacity-0 transition-[opacity,visibility] duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-        <div className="rounded-xl border border-border/60 bg-card/95 p-1.5 shadow-xl backdrop-blur">
+      {/* 悬浮面板 —— 受控开关确保点击链接后立即隐藏。 */}
+      <div className={`${open ? 'visible opacity-100' : 'invisible opacity-0'} absolute right-0 top-full z-50 w-60 pt-2 transition-[opacity,visibility] duration-150`}>
+        <div className="max-h-[calc(100dvh-4.5rem)] overflow-y-auto overscroll-contain rounded-xl border border-border/60 bg-card/95 p-1.5 shadow-xl backdrop-blur">
           {/* 头部:角色标识 + email。display_name 跟 email 重复已删;
               admin/user 用 ShieldCheck/UserRound 区分 + tooltip 显示完整角色名。 */}
           <div className="flex items-center gap-1.5 px-2 py-2">
@@ -135,40 +156,40 @@ export function AvatarDropdown({
           <MenuButton
             icon={Wallet}
             active={currentSection === 'budgets'}
-            onClick={() => onNavigate('budgets')}
+            onClick={() => navigateAndClose('budgets')}
           >
             {t('nav.budgets')}
           </MenuButton>
           <MenuButton
             icon={BookOpen}
             active={currentSection === 'ledgers'}
-            onClick={() => onNavigate('ledgers')}
+            onClick={() => navigateAndClose('ledgers')}
           >
             {t('nav.ledgers')}
           </MenuButton>
-          <MenuButton icon={Sparkles} onClick={onOpenAnnualReport}>
+          <MenuButton icon={Sparkles} onClick={() => runAndClose(onOpenAnnualReport)}>
             {t('nav.annualReport')}
           </MenuButton>
 
           <Divider />
 
           <GroupLabel>{t('nav.group.seanCustom')}</GroupLabel>
-          <MenuButton icon={WalletCards} active={currentSection === 'sean-assets'} onClick={() => onNavigate('sean-assets')}>
+          <MenuButton icon={WalletCards} active={currentSection === 'sean-assets'} onClick={() => navigateAndClose('sean-assets')}>
             {t('nav.seanAssets')}
           </MenuButton>
-          <MenuButton icon={ReceiptText} active={currentSection === 'sean-spend-insights'} onClick={() => onNavigate('sean-spend-insights')}>
+          <MenuButton icon={ReceiptText} active={currentSection === 'sean-spend-insights'} onClick={() => navigateAndClose('sean-spend-insights')}>
             {t('nav.seanSpendInsights')}
           </MenuButton>
-          <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-reports'} onClick={() => onNavigate('sean-reports')}>
+          <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-reports'} onClick={() => navigateAndClose('sean-reports')}>
             {t('nav.seanReports')}
           </MenuButton>
-          <MenuButton icon={TrendingUp} active={currentSection === 'sean-monthly-comparison'} onClick={() => onNavigate('sean-monthly-comparison')}>
+          <MenuButton icon={TrendingUp} active={currentSection === 'sean-monthly-comparison'} onClick={() => navigateAndClose('sean-monthly-comparison')}>
             {t('nav.seanMonthlyComparison')}
           </MenuButton>
-          <MenuButton icon={TrendingUp} active={currentSection === 'sean-asset-trends'} onClick={() => onNavigate('sean-asset-trends')}>
+          <MenuButton icon={TrendingUp} active={currentSection === 'sean-asset-trends'} onClick={() => navigateAndClose('sean-asset-trends')}>
             {t('nav.seanAssetTrends')}
           </MenuButton>
-          <MenuButton icon={ReceiptText} active={currentSection === 'sean-actual-spend'} onClick={() => onNavigate('sean-actual-spend')}>
+          <MenuButton icon={ReceiptText} active={currentSection === 'sean-actual-spend'} onClick={() => navigateAndClose('sean-actual-spend')}>
             {t('nav.seanActualSpend')}
           </MenuButton>
 
@@ -181,7 +202,7 @@ export function AvatarDropdown({
               key={item.key}
               icon={SETTINGS_ICONS[item.key]}
               active={currentSection === item.key}
-              onClick={() => onNavigate(item.key)}
+              onClick={() => navigateAndClose(item.key)}
             >
               {t(item.labelKey)}
             </MenuButton>
@@ -195,21 +216,21 @@ export function AvatarDropdown({
               <MenuButton
                 icon={Users}
                 active={currentSection === 'admin-users'}
-                onClick={() => onNavigate('admin-users')}
+                onClick={() => navigateAndClose('admin-users')}
               >
                 {t('nav.users')}
               </MenuButton>
               <MenuButton
                 icon={Archive}
                 active={currentSection === 'admin-backup'}
-                onClick={() => onNavigate('admin-backup')}
+                onClick={() => navigateAndClose('admin-backup')}
               >
                 {t('nav.backup')}
               </MenuButton>
               <MenuButton
                 icon={Brush}
                 active={currentSection === 'admin-data-cleanup'}
-                onClick={() => onNavigate('admin-data-cleanup')}
+                onClick={() => navigateAndClose('admin-data-cleanup')}
               >
                 {t('nav.dataCleanup')}
               </MenuButton>
@@ -219,7 +240,7 @@ export function AvatarDropdown({
           {/* Info 组:关于 —— 合并旧的「更新日志」+「GitHub 仓库」两条菜单 */}
           <Divider />
           <GroupLabel>{t('avatar.group.info')}</GroupLabel>
-          <MenuButton icon={Info} onClick={onOpenAbout}>
+          <MenuButton icon={Info} onClick={() => runAndClose(onOpenAbout)}>
             {t('avatar.about')}
           </MenuButton>
 
@@ -276,7 +297,7 @@ export function AvatarDropdown({
           <button
             type="button"
             className="flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-[12px] text-destructive hover:bg-destructive/10"
-            onClick={onLogout}
+            onClick={() => runAndClose(onLogout)}
           >
             <LogOut className="h-3.5 w-3.5" />
             {t('shell.logout')}

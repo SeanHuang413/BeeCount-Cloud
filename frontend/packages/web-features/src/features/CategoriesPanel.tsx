@@ -48,14 +48,16 @@ type CardBodyProps = {
   renderIcon: (
     icon: string | null | undefined,
     iconType: string | null | undefined,
-    iconCloudFileId?: string | null
+    iconCloudFileId?: string | null,
+    customSize?: number
   ) => ReactNode
 }
 
 type RenderIcon = (
   icon: string | null | undefined,
   iconType: string | null | undefined,
-  iconCloudFileId?: string | null
+  iconCloudFileId?: string | null,
+  customSize?: number
 ) => ReactNode
 
 /** 按窗口宽度选网格列数(管理页比选择器宽,桌面端铺密一点)。 */
@@ -177,7 +179,12 @@ function ManageCategoryCell({
               : 'bg-muted/60 group-hover:bg-accent/60'
           }`}
         >
-          {renderIcon(category.icon, category.icon_type, category.icon_cloud_file_id)}
+          {renderIcon(
+            category.icon,
+            category.icon_type,
+            category.icon_cloud_file_id,
+            compact ? 34 : 42,
+          )}
         </div>
         {hasChildren && !compact ? (
           <span
@@ -681,14 +688,16 @@ export function CategoriesPanel({
   const renderIcon = (
     icon: string | null | undefined,
     iconType: string | null | undefined,
-    iconCloudFileId?: string | null
+    iconCloudFileId?: string | null,
+    customSize?: number,
   ) => (
     <CategoryIcon
       icon={icon}
       iconType={iconType}
       iconCloudFileId={iconCloudFileId}
       iconPreviewUrlByFileId={iconPreviewUrlByFileId}
-      size={20}
+      size={iconType === 'custom' ? customSize ?? 20 : 20}
+      imageFit="contain"
       className="text-primary"
     />
   )

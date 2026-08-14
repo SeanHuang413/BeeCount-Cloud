@@ -9,6 +9,7 @@ import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle } fro
 import {
   ArrowRight,
   Building2,
+  ChevronRight,
   CreditCard,
   Landmark,
   RefreshCw,
@@ -98,7 +99,10 @@ function AccountRow({ row, onOpen, overallTotals, showGroupHeader = true, showDe
   const Icon = accountIcon(displayType)
   const balance = accountBalance(row)
   const liability = LIABILITY_TYPES.has(displayType)
-  const amountLabel = liability ? '当前欠款' : '当前余额'
+  const colorKey = liability
+    ? `liability_${displayType || 'other'}`
+    : seanAssetGroup(row)
+  const groupColor = CATEGORY_COLORS[colorKey] || CATEGORY_COLORS.other
   const currency = (row.currency || 'CNY').toUpperCase()
   const creditUsageRate = displayType === 'credit_card' && typeof row.credit_limit === 'number' && row.credit_limit > 0
     ? Math.abs(balance) / row.credit_limit
@@ -119,10 +123,13 @@ function AccountRow({ row, onOpen, overallTotals, showGroupHeader = true, showDe
       type="button"
       onClick={() => showDetails && onOpen(row)}
       disabled={!showDetails}
-      className={`group flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left ${showDetails ? 'transition-colors hover:bg-muted/60' : 'cursor-default'}`}
+      className={`group grid w-full min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 rounded-xl px-3 py-2.5 text-left ${showDetails ? 'transition-colors hover:bg-muted/60' : 'cursor-default'}`}
     >
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-        <Icon className="h-5 w-5" />
+      <span
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+        style={{ color: groupColor, backgroundColor: `${groupColor}1a` }}
+      >
+        <Icon className="h-[18px] w-[18px]" />
       </span>
       <span className="min-w-0 flex-1">
         <span className="flex items-center gap-2">
@@ -143,12 +150,11 @@ function AccountRow({ row, onOpen, overallTotals, showGroupHeader = true, showDe
           </span>
         </span> : null}
       </span>
-      <span className="shrink-0 text-right">
-        <span className="block text-[11px] text-muted-foreground">{amountLabel}</span>
-        <span className={`block font-mono text-sm font-semibold ${liability ? 'text-expense' : balance >= 0 ? 'text-income' : 'text-expense'}`}>
+      <span className="flex min-w-0 items-center gap-1 text-right">
+        <span className={`block whitespace-nowrap font-mono text-sm font-semibold ${liability ? 'text-expense' : balance >= 0 ? 'text-income' : 'text-expense'}`}>
           {liability ? '-' : ''}{money(Math.abs(balance), currency)}
         </span>
-        {showDetails ? <span className="text-[11px] text-muted-foreground group-hover:text-primary">查看明细</span> : null}
+        {showDetails ? <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary" /> : null}
       </span>
     </button>
   </>
@@ -205,24 +211,18 @@ export function SeanAssetsCenterPanel(props: Props) {
       const type = seanAssetGroup(row)
       grouped.set(type, (grouped.get(type) || 0) + value)
     }
-    for (const row of summary.liabilities) {
-      const value = Math.abs(accountBalance(row))
-      if (value <= 0) continue
-      const type = `liability_${seanAccountType(row) || 'other'}`
-      grouped.set(type, (grouped.get(type) || 0) + value)
-    }
     return [...grouped].map(([type, value]) => ({
       name: TYPE_LABELS[type] || '其他资产',
       value,
       color: CATEGORY_COLORS[type] || CATEGORY_COLORS.other,
     }))
-  }, [summary.assets, summary.liabilities])
+  }, [summary.assets])
   const compositionTotal = composition.reduce((sum, item) => sum + item.value, 0)
 
-  return <div className="space-y-5">
+  return <div className="min-w-0 space-y-5">
     <div className="flex flex-wrap items-start justify-between gap-3">
       <div><h1 className="text-2xl font-bold tracking-tight">资产中心</h1><p className="mt-1 text-sm text-muted-foreground">独立的只读资产驾驶舱，不改变官方资产与账户管理功能。</p></div>
-      <div className="flex gap-2"><Button variant="outline" onClick={props.onRefresh} disabled={props.loading}><RefreshCw className={`mr-2 h-4 w-4 ${props.loading ? 'animate-spin' : ''}`} />刷新</Button><Button onClick={props.onManageAccounts}>管理账户 <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
+      <div className="flex flex-wrap gap-2"><Button variant="outline" onClick={props.onRefresh} disabled={props.loading}><RefreshCw className={`mr-2 h-4 w-4 ${props.loading ? 'animate-spin' : ''}`} />刷新</Button><Button onClick={props.onManageAccounts}>管理账户 <ArrowRight className="ml-2 h-4 w-4" /></Button></div>
     </div>
     {props.error ? <Card><CardContent className="py-6 text-sm text-destructive">资产数据加载失败，请稍后重试。</CardContent></Card> : null}
     {summary.unknownTypeAccounts.length ? <Card className="border-amber-500/30 bg-amber-500/5"><CardContent className="py-4 text-sm"><p className="font-medium text-amber-700 dark:text-amber-400">账户类型需要检查</p><p className="mt-1 text-muted-foreground">{summary.unknownTypeAccounts.map((row) => row.name).join('、')} 未设置可识别类型，资产中心不会根据名称猜测其属于资产或负债。请在账户管理中确认类型。</p></CardContent></Card> : null}

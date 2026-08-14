@@ -181,7 +181,8 @@ export function CategoryDetailDialog({
                   iconType={category.icon_type}
                   iconCloudFileId={category.icon_cloud_file_id}
                   iconPreviewUrlByFileId={iconPreviewUrlByFileId}
-                  size={28}
+                  size={category.icon_type === 'custom' ? 40 : 28}
+                  imageFit="contain"
                 />
               </span>
             ) : null}

@@ -13,6 +13,8 @@ interface Props {
   size?: number
   /** 图标颜色,默认 `currentColor`(继承父元素)。 */
   color?: string
+  /** 自定义图片的缩放方式。详情预览可用 `contain` 避免裁切。 */
+  imageFit?: CSSProperties['objectFit']
 }
 
 /**
@@ -33,6 +35,7 @@ export function CategoryIcon({
   style,
   size = 20,
   color,
+  imageFit = 'cover',
 }: Props) {
   const normalized = (icon || '').trim()
   const kind = (iconType || 'material').trim() || 'material'
@@ -45,7 +48,7 @@ export function CategoryIcon({
         alt=""
         className={className}
         src={cloudPreview}
-        style={{ width: size, height: size, objectFit: 'cover', ...style }}
+        style={{ width: size, height: size, objectFit: imageFit, ...style }}
       />
     )
   }
@@ -55,7 +58,7 @@ export function CategoryIcon({
         alt=""
         className={className}
         src={normalized}
-        style={{ width: size, height: size, objectFit: 'cover', ...style }}
+        style={{ width: size, height: size, objectFit: imageFit, ...style }}
       />
     )
   }
