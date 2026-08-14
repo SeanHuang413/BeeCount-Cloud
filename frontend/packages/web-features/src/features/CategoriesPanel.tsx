@@ -22,6 +22,7 @@ import type { ReadCategory, WorkspaceCategory } from '@beecount/api-client'
 
 import { CategoryIcon } from '../components/CategoryIcon'
 import { CategoryPickerDialog } from '../components/CategoryPickerDialog'
+import { buildCategoryDisplayCounts } from '../lib/categoryDisplayCounts'
 import { getIconGroupsByKind, type CategoryIconItem } from '../lib/categoryIconGroups'
 import type { CategoryForm } from '../forms'
 
@@ -271,6 +272,10 @@ function CategoriesCardBody({
     }),
     [rows]
   )
+  const displayCountById = useMemo(
+    () => buildCategoryDisplayCounts(rows, txCountById),
+    [rows, txCountById],
+  )
 
   if (rows.length === 0) {
     return null  // 空态由外层 panel 渲染(带新建 CTA)
@@ -355,7 +360,7 @@ function CategoriesCardBody({
                         key={parent.id}
                         category={parent}
                         renderIcon={renderIcon}
-                        count={txCountById[parent.id] ?? 0}
+                        count={displayCountById[parent.id] ?? 0}
                         countUnit={countUnit}
                         hasChildren={hasChildren}
                         expanded={isExpanded}

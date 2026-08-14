@@ -113,6 +113,7 @@ pnpm -C frontend/apps/web build
 - 新增普通 HTTP API 时，按现有领域放到对应 `src/routers/<group>/`，不要把业务逻辑堆进 `__init__.py` 或 `src/main.py`。
 - Web 写入的公共逻辑放在 `src/routers/write/_shared.py`；单一资源 endpoint 放在对应实体文件。
 - 前端页面不得自行复制鉴权、refresh 或 fetch 逻辑；通过 `frontend/packages/api-client/` 暴露新 API。
+- 分类接口的 `tx_count` 保持“交易直接引用该分类 ID 的笔数”语义，供父级候选校验等逻辑使用；分类卡片展示时，子分类显示自身笔数，主分类显示自身笔数与所有直属子分类笔数之和。不得直接把后端字段改成父级汇总值。
 - 新 API 必须有 TypeScript 类型、错误处理和至少一个后端测试。
 - 保持 `api-client` → `web-features` → `apps/web` 的依赖方向；不要让基础 package 依赖应用层页面。
 - 优先新增独立 feature、页面、router、service 或 adapter；避免持续膨胀高冲突文件，如：
@@ -185,6 +186,12 @@ pnpm -C frontend/apps/web build
 - 每次同步 upstream 前后都运行完整后端与前端检查；解决冲突后优先验证 schema、同步、projection 和共享账本行为。
 - 依赖限制属于兼容性契约。例如 `mcp` 当前固定 `<2`；未完成完整迁移和 MCP 测试前不得解除。
 
+## 当前 upstream 功能边界
+
+- `develop` 当前已合入官方 `1.6.3`。该版本的“智能记账支持多币种”仅扩展 AI 文本/图片记账的币种解析和草稿确认，不新增独立页面或普通交易多币种入口。
+- 官方周年皮肤在 Web 端仅提供“个人资料 → 皮肤”的分组下拉、动效开关和偏好同步；Web 本身不渲染头部皮肤，实际皮肤效果由移动端 App 展示。
+- Git tag、Git 分支和运行时版本号彼此独立。本地运行时版本由 `APP_VERSION` / `VITE_APP_VERSION` 注入，不能仅根据是否合入某个 tag 判断页面显示的版本号。
+
 ## Sean 自定义报表与云端扩展
 
 ### 已有自定义功能
@@ -203,6 +210,7 @@ pnpm -C frontend/apps/web build
 - 自定义页面放在 `frontend/apps/web/src/pages/sections/sean_*.tsx`。
 - 自定义 feature 放在 `frontend/packages/web-features/src/features/sean_*/`，不要把业务实现塞进官方大组件。
 - Sean 报表不进入主导航；入口在头像下拉菜单的“自定义功能”分组。预算保留在同一头像菜单的官方“工具”分组，避免重复入口。
+- 头像下拉菜单必须在导航、打开弹窗或退出后主动关闭；菜单高度超过可视窗口时应在菜单内部纵向滚动，并避免带动后方页面滚动。
 - 允许为接入功能做最小修改的文件仅限路由、导航、导出和文案：
   - `frontend/apps/web/src/App.tsx`
   - `frontend/apps/web/src/state/router.ts`
@@ -226,10 +234,13 @@ pnpm -C frontend/apps/web build
 - `社会保障` 是独立大分组，包含公积金、社保、社会保险、医保和医疗保险；`保险` 也是独立大分组。二者排列在负债账户区块下方，仅展示账户名称、余额、账户数和小计，不提供明细点击，因为官方当前不支持这些账户录入流水。
 - 每个分组顶部展示账户数、分币种总金额及其占总资产或总负债比例；每个账户展示其占本组金额比例。信用卡的“占本组金额”和“额度使用率”是两个不同指标，不得合并。
 - 资产构成只统计正余额资产，负债单独列示。图例展示分类名称、金额和占比；分类颜色必须由稳定的类型到颜色映射决定，不得按数组序号循环导致颜色重复或刷新后变化。
+- 下方账户图标必须复用资产构成的稳定分组颜色；信用卡和贷款使用独立负债色。图标颜色只表达分组，账户余额仍使用系统收入/支出主题色。
+- 账户列表在窄屏保持紧凑的“图标 + 账户信息 + 余额”主结构，不重复显示“当前余额 / 查看明细”等冗余文案；必要的账户占比、银行卡信息和信用卡额度信息仍需保留。
 - 净资产顶部保留净资产、总资产、总负债、较上月金额与比例以及资产负债率；不要再增加重复的流动资产、账户完整性等统计卡。
 
 ### 视觉、依赖与验证
 
 - 收入和支出颜色必须跟随系统主题：使用 `text-income`、`text-expense` 或 `rgb(var(--income-rgb))`、`rgb(var(--expense-rgb))`；不要硬编码红绿等收支颜色。黄色只可用于标签结算提示，不代表收支。
+- 分类自定义图片保留高分辨率源文件并按使用场景显示：普通分类卡片约 `42px`、紧凑卡片约 `34px`、分类详情约 `40px`，使用 `object-fit: contain` 避免裁切；Material 图标保持原有较小尺寸，不得全局统一放大到源图片像素尺寸。
 - 图表统一使用 `recharts`，并保持为 `frontend/packages/web-features/package.json` 的直接依赖；依赖变更后必须同步更新 `frontend/pnpm-lock.yaml`，确保 Docker 的 frozen lockfile 安装可用。
 - 修改任一 `sean_*` 功能后，至少运行对应单元测试、`pnpm -C frontend/apps/web exec tsc --noEmit --skipLibCheck` 和 `pnpm -C frontend/apps/web build`；涉及数据计算时补充或更新该 feature 的分析函数测试。
