@@ -652,9 +652,9 @@ class WorkspaceAccountOut(ReadAccountOut):
 
 class WorkspaceCategoryOut(ReadCategoryOut):
     # 跨账本按该分类聚合的笔数。Web 列表展示用,跟 tags 的 tx_count 对齐。
-    # 不带 expense/income total — 分类本身已经按 kind 区分(支出/收入),
-    # 累计金额可在分类详情页另行查询。None = 历史接口可选不提供。
+    # amount_total 同样保持“交易直接引用该分类”的口径；父级展示汇总由前端完成。
     tx_count: int | None = None
+    amount_total: float | None = None
 
 
 class WorkspaceTagOut(ReadTagOut):

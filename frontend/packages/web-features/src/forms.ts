@@ -134,7 +134,7 @@ export const categoryDefaults = (): CategoryForm => ({
   name: '',
   kind: 'expense',
   level: '1',
-  sort_order: '1',
+  sort_order: '',
   icon: '',
   icon_type: 'material',
   custom_icon_path: '',

@@ -16,6 +16,7 @@ import {
 import type { ReadTag } from '@beecount/api-client'
 
 import type { TagForm } from '../forms'
+import { compareTagsForDisplay } from '../lib/tagDisplaySorting'
 import { SeanTagSettlementInline } from './sean_tag-settlement'
 import {
   TAG_COLOR_PALETTE,
@@ -70,6 +71,10 @@ export function TagsPanel({
   const hasStats = Boolean(statsById)
   const fmt = (v: number) =>
     v.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  const sortedRows = useMemo(
+    () => [...rows].sort((a, b) => compareTagsForDisplay(a, b, statsById ?? {})),
+    [rows, statsById],
+  )
 
   // 同名查重:把当前用户已有标签名字小写化收成 Set,提交时 O(1) 查。编辑模
   // 式下排除自己 (form.editingId 对应的行) 以允许"改色不改名"。
@@ -145,7 +150,7 @@ export function TagsPanel({
         />
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {rows.map((row) => {
+          {sortedRows.map((row) => {
             const stats = statsById?.[row.id]
             const color = row.color || '#94a3b8'
             return (
@@ -221,13 +226,13 @@ export function TagsPanel({
                       {/* 次要统计：支出/收入左右排 */}
                       <div className="flex items-center justify-between gap-2 rounded-lg border border-border/40 bg-background/40 px-3 py-2 text-xs">
                         <div className="flex items-center gap-1.5 text-expense">
-                          <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-expense" />
                           <span className="font-mono font-semibold">
                             {stats ? fmt(stats.expense) : '0.00'}
                           </span>
                         </div>
                         <div className="flex items-center gap-1.5 text-income">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-income" />
                           <span className="font-mono font-semibold">
                             {stats ? fmt(stats.income) : '0.00'}
                           </span>

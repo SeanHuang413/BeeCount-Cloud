@@ -322,6 +322,8 @@ export type WorkspaceCategory = ReadCategory & {
   // 服务端按 category_sync_id 聚合的笔数,跨所有账本累加(跟 dedup 后的展
   // 示口径一致)。None = 历史接口未提供。
   tx_count?: number | null
+  /** 该分类被交易直接引用的累计金额；按分类类型统计，一级汇总由展示层计算。 */
+  amount_total?: number | null
 }
 
 export type WorkspaceTag = ReadTag & {

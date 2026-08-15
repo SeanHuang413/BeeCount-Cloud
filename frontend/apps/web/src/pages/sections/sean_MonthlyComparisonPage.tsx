@@ -36,5 +36,7 @@ export function SeanMonthlyComparisonPage() {
   }, [token, activeLedgerId])
   useEffect(() => { void load() }, [load])
   useSyncRefresh(() => { void load() })
-  return <SeanMonthlyComparisonPanel transactions={transactions} currency={currency} loading={loading} error={error} />
+  return <div className="mx-auto max-w-[1440px]">
+    <SeanMonthlyComparisonPanel transactions={transactions} currency={currency} loading={loading} error={error} />
+  </div>
 }

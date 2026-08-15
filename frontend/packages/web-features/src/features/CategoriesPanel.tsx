@@ -22,7 +22,8 @@ import type { ReadCategory, WorkspaceCategory } from '@beecount/api-client'
 
 import { CategoryIcon } from '../components/CategoryIcon'
 import { CategoryPickerDialog } from '../components/CategoryPickerDialog'
-import { buildCategoryDisplayCounts } from '../lib/categoryDisplayCounts'
+import { buildCategoryDisplayAmounts, buildCategoryDisplayCounts } from '../lib/categoryDisplayCounts'
+import { compareCategoriesForDisplay } from '../lib/categoryDisplaySorting'
 import { getIconGroupsByKind, type CategoryIconItem } from '../lib/categoryIconGroups'
 import type { CategoryForm } from '../forms'
 
@@ -232,6 +233,24 @@ function CategoriesCardBody({
     window.addEventListener('resize', onResize)
     return () => window.removeEventListener('resize', onResize)
   }, [])
+  const directCountById = useMemo(() => {
+    const out: Record<string, number> = {}
+    for (const row of rows) out[row.id] = txCountById[row.id] ?? row.tx_count ?? 0
+    return out
+  }, [rows, txCountById])
+  const directAmountById = useMemo(() => {
+    const out: Record<string, number> = {}
+    for (const row of rows) out[row.id] = row.amount_total ?? 0
+    return out
+  }, [rows])
+  const displayCountById = useMemo(
+    () => buildCategoryDisplayCounts(rows, directCountById),
+    [rows, directCountById],
+  )
+  const displayAmountById = useMemo(
+    () => buildCategoryDisplayAmounts(rows, directAmountById),
+    [rows, directAmountById],
+  )
   const grouped = useMemo(() => {
     // 用 WorkspaceCategory 而不是 ReadCategory — 保留 ledger_id / tx_count 等字段,
     // 行点击回调要把完整 WorkspaceCategory 传给详情弹窗。
@@ -254,16 +273,16 @@ function CategoriesCardBody({
     }
     for (const kind of Object.keys(parentsByKind) as CategoryKind[]) {
       parentsByKind[kind].sort(
-        (a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0) || a.name.localeCompare(b.name)
+        (a, b) => compareCategoriesForDisplay(a, b, displayCountById, displayAmountById)
       )
     }
     for (const key of Object.keys(childrenByParent)) {
       childrenByParent[key].sort(
-        (a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0) || a.name.localeCompare(b.name)
+        (a, b) => compareCategoriesForDisplay(a, b, displayCountById, displayAmountById)
       )
     }
     return { parentsByKind, childrenByParent }
-  }, [rows])
+  }, [rows, displayCountById, displayAmountById])
   const kindCounts = useMemo(
     () => ({
       expense: rows.filter((r) => r.kind === 'expense').length,
@@ -272,11 +291,6 @@ function CategoriesCardBody({
     }),
     [rows]
   )
-  const displayCountById = useMemo(
-    () => buildCategoryDisplayCounts(rows, txCountById),
-    [rows, txCountById],
-  )
-
   if (rows.length === 0) {
     return null  // 空态由外层 panel 渲染(带新建 CTA)
   }

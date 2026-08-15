@@ -87,7 +87,7 @@ export function TagDetailDialog({
                 <StatCell
                   label={t('sean.tagSettlement.accumulatedBalance')}
                   value={calculateSeanTagSettlement(stats)}
-                  tone={stats.income >= stats.expense ? 'income' : 'expense'}
+                  tone="settlement"
                 />
               </div>
             ) : null}
@@ -125,11 +125,17 @@ function StatCell({
 }: {
   label: string
   value: number
-  tone?: 'income' | 'expense'
+  tone?: 'income' | 'expense' | 'settlement'
   bold?: boolean
 }) {
   const colorClass =
-    tone === 'income' ? 'text-income' : tone === 'expense' ? 'text-expense' : ''
+    tone === 'income'
+      ? 'text-income'
+      : tone === 'expense'
+        ? 'text-expense'
+        : tone === 'settlement'
+          ? 'text-amber-600 dark:text-amber-400'
+          : ''
   return (
     <div>
       <div className="text-[10px] uppercase tracking-wider text-muted-foreground">

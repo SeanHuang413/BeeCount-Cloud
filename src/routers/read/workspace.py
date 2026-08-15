@@ -736,11 +736,16 @@ def list_workspace_categories(
     # 限定在 caller 可见 ledger 范围内。
     from collections import defaultdict
     tx_count_by_sync_id: dict[str, int] = defaultdict(int)
+    amount_by_sync_id: dict[str, float] = defaultdict(float)
     if ledger_internal_ids:
         tx_count_rows = db.execute(
             select(
                 ReadTxProjection.category_sync_id,
                 func.count(),
+                func.coalesce(func.sum(func.coalesce(
+                    ReadTxProjection.native_amount,
+                    ReadTxProjection.amount,
+                )), 0.0),
             )
             .where(
                 ReadTxProjection.ledger_id.in_(ledger_internal_ids),
@@ -752,6 +757,7 @@ def list_workspace_categories(
             sid = row[0]
             if sid:
                 tx_count_by_sync_id[sid] += int(row[1] or 0)
+                amount_by_sync_id[sid] += float(row[2] or 0.0)
 
     all_categories: list[WorkspaceCategoryOut] = []
     for cat in db.scalars(cat_query).all():
@@ -766,7 +772,7 @@ def list_workspace_categories(
                 name=name,
                 kind=kind,
                 level=int(cat.level or 1),
-                sort_order=int(cat.sort_order or 0),
+                sort_order=cat.sort_order,
                 icon=cat.icon,
                 icon_type=cat.icon_type,
                 custom_icon_path=cat.custom_icon_path,
@@ -779,6 +785,7 @@ def list_workspace_categories(
                 created_by_user_id=target_user_id,
                 created_by_email=target_email,
                 tx_count=tx_count_by_sync_id.get(sync_id, 0) if sync_id else 0,
+                amount_total=amount_by_sync_id.get(sync_id, 0.0) if sync_id else 0.0,
             )
         )
 

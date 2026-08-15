@@ -218,8 +218,7 @@ export function SeanAssetsCenterPanel(props: Props) {
     }))
   }, [summary.assets])
   const compositionTotal = composition.reduce((sum, item) => sum + item.value, 0)
-
-  return <div className="min-w-0 space-y-5">
+  return <div className="mx-auto min-w-0 max-w-[1440px] space-y-5">
     <div className="flex flex-wrap items-start justify-between gap-3">
       <div><h1 className="text-2xl font-bold tracking-tight">资产中心</h1><p className="mt-1 text-sm text-muted-foreground">独立的只读资产驾驶舱，不改变官方资产与账户管理功能。</p></div>
       <div className="flex flex-wrap gap-2"><Button variant="outline" onClick={props.onRefresh} disabled={props.loading}><RefreshCw className={`mr-2 h-4 w-4 ${props.loading ? 'animate-spin' : ''}`} />刷新</Button><Button onClick={props.onManageAccounts}>管理账户 <ArrowRight className="ml-2 h-4 w-4" /></Button></div>

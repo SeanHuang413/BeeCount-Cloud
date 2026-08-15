@@ -4,13 +4,16 @@ import {
   BookOpen,
   Bot,
   Brush,
+  CalendarRange,
   ChartNoAxesCombined,
   Info,
   Key,
   Languages,
   LogOut,
   Moon,
+  PiggyBank,
   ReceiptText,
+  Scale,
   Smartphone,
   Sparkles,
   Sun,
@@ -177,19 +180,19 @@ export function AvatarDropdown({
           <MenuButton icon={WalletCards} active={currentSection === 'sean-assets'} onClick={() => navigateAndClose('sean-assets')}>
             {t('nav.seanAssets')}
           </MenuButton>
-          <MenuButton icon={ReceiptText} active={currentSection === 'sean-spend-insights'} onClick={() => navigateAndClose('sean-spend-insights')}>
+          <MenuButton icon={PiggyBank} active={currentSection === 'sean-spend-insights'} onClick={() => navigateAndClose('sean-spend-insights')}>
             {t('nav.seanSpendInsights')}
           </MenuButton>
           <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-reports'} onClick={() => navigateAndClose('sean-reports')}>
             {t('nav.seanReports')}
           </MenuButton>
-          <MenuButton icon={TrendingUp} active={currentSection === 'sean-monthly-comparison'} onClick={() => navigateAndClose('sean-monthly-comparison')}>
+          <MenuButton icon={CalendarRange} active={currentSection === 'sean-monthly-comparison'} onClick={() => navigateAndClose('sean-monthly-comparison')}>
             {t('nav.seanMonthlyComparison')}
           </MenuButton>
           <MenuButton icon={TrendingUp} active={currentSection === 'sean-asset-trends'} onClick={() => navigateAndClose('sean-asset-trends')}>
             {t('nav.seanAssetTrends')}
           </MenuButton>
-          <MenuButton icon={ReceiptText} active={currentSection === 'sean-actual-spend'} onClick={() => navigateAndClose('sean-actual-spend')}>
+          <MenuButton icon={Scale} active={currentSection === 'sean-actual-spend'} onClick={() => navigateAndClose('sean-actual-spend')}>
             {t('nav.seanActualSpend')}
           </MenuButton>
 

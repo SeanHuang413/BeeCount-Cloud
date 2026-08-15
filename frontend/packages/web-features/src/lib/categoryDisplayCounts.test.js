@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { buildCategoryDisplayCounts } from './categoryDisplayCounts'
+import { buildCategoryDisplayAmounts, buildCategoryDisplayCounts } from './categoryDisplayCounts'
 
 const row = (id, name, kind = 'expense', parentName = null) => ({
   id,
@@ -54,6 +54,17 @@ describe('buildCategoryDisplayCounts', () => {
     expect(buildCategoryDisplayCounts(rows, { orphan: 6 })).toEqual({
       parent: 0,
       orphan: 6,
+    })
+  })
+
+  it('aggregates child amounts for parent sorting', () => {
+    const rows = [
+      row('parent', 'Food'),
+      row('child', 'Lunch', 'expense', 'Food'),
+    ]
+    expect(buildCategoryDisplayAmounts(rows, { parent: 10, child: 25 })).toEqual({
+      parent: 35,
+      child: 25,
     })
   })
 })

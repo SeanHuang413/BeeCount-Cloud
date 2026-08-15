@@ -36,6 +36,39 @@ export function buildCategoryDisplayCounts(
   return displayCounts
 }
 
+export function buildCategoryDisplayAmounts(
+  rows: CategoryCountRow[],
+  directAmountById: Record<string, number>,
+): Record<string, number> {
+  return buildCategoryDisplayValues(rows, directAmountById)
+}
+
+function buildCategoryDisplayValues(
+  rows: CategoryCountRow[],
+  directValueById: Record<string, number>,
+): Record<string, number> {
+  const displayValues: Record<string, number> = {}
+  const parentByKindAndName = new Map<string, CategoryCountRow>()
+
+  for (const row of rows) {
+    if (!row.id) continue
+    displayValues[row.id] = directValueById[row.id] ?? 0
+    if (!(row.parent_name || '').trim()) {
+      parentByKindAndName.set(categoryKey(row.kind, row.name), row)
+    }
+  }
+
+  for (const row of rows) {
+    const parentName = (row.parent_name || '').trim()
+    if (!row.id || !parentName) continue
+    const parent = parentByKindAndName.get(categoryKey(row.kind, parentName))
+    if (!parent?.id) continue
+    displayValues[parent.id] = (displayValues[parent.id] ?? 0) + (directValueById[row.id] ?? 0)
+  }
+
+  return displayValues
+}
+
 function categoryKey(kind: string | null | undefined, name: string): string {
   return `${kind || 'expense'}::${name.trim().toLocaleLowerCase()}`
 }

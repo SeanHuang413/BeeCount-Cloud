@@ -42,7 +42,7 @@ export function SeanReportCenterPanel({ transactions, categories, currency, peri
   const report = analyzeSeanReports(transactions)
   const [detailSelection, setDetailSelection] = useState<SeanReportDetailSelection>(null)
   const openDetails = (kind: SeanReportDetailKind) => (name: string) => setDetailSelection({ kind, name })
-  return <div className="space-y-5">
+  return <div className="mx-auto max-w-[1440px] space-y-5">
     <div className="flex flex-wrap items-start justify-between gap-3"><div><h1 className="text-2xl font-bold tracking-tight">我的报表</h1><p className="mt-1 text-sm text-muted-foreground">基于云端已同步交易的只读分析；转账单独展示，“不计入统计”交易自动排除。</p></div><div className="flex flex-wrap items-center gap-2"><Select value={period} onValueChange={(value) => onPeriodChange(value as SeanReportPeriod)}><SelectTrigger className="w-36"><SelectValue /></SelectTrigger><SelectContent><SelectItem value="month">本月</SelectItem><SelectItem value="last-month">上月</SelectItem><SelectItem value="three-months">近 3 个月</SelectItem><SelectItem value="six-months">近 6 个月</SelectItem><SelectItem value="twelve-months">近 12 个月</SelectItem><SelectItem value="custom-month">指定月份</SelectItem><SelectItem value="all">全部记录</SelectItem></SelectContent></Select>{period === 'custom-month' ? <Input type="month" value={selectedMonth} max={new Date().toLocaleDateString('sv-SE').slice(0, 7)} onChange={(event) => onSelectedMonthChange(event.target.value)} className="w-40"/> : null}<Button variant="outline" onClick={onRefresh} disabled={loading}>刷新数据</Button></div></div>
     {error ? <Card><CardContent className="py-8 text-sm text-destructive">报表数据加载失败，请稍后重试。</CardContent></Card> : null}
     <div className="grid gap-4 xl:grid-cols-3">
