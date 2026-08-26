@@ -34,6 +34,9 @@ export const APP_SECTIONS: AppSection[] = [
   'sean-asset-trends',
   'sean-assets',
   'sean-actual-spend',
+  'sean-cashflow-calendar',
+  'sean-anomaly-detection',
+  'sean-account-reconciliation',
 ]
 
 export const DEFAULT_APP_SECTION: AppSection = 'transactions'
@@ -107,6 +110,12 @@ function parseRootSection(parts: string[]): AppSection {
       return 'sean-assets'
     case 'sean-actual-spend':
       return 'sean-actual-spend'
+    case 'sean-cashflow-calendar':
+      return 'sean-cashflow-calendar'
+    case 'sean-anomaly-detection':
+      return 'sean-anomaly-detection'
+    case 'sean-account-reconciliation':
+      return 'sean-account-reconciliation'
     case 'admin/users':
       return 'admin-users'
     case 'settings/profile':
@@ -202,6 +211,9 @@ export function parseRoute(pathname: string): AppRoute {
     parts[1] === 'sean-asset-trends'
     || parts[1] === 'sean-assets'
     || parts[1] === 'sean-actual-spend'
+    || parts[1] === 'sean-cashflow-calendar'
+    || parts[1] === 'sean-anomaly-detection'
+    || parts[1] === 'sean-account-reconciliation'
   ) {
     return { kind: 'app', ledgerId: '', section: parseRootSection(parts.slice(1)) }
   }
@@ -250,6 +262,12 @@ export function routePath(route: AppRoute): string {
       return '/app/sean-assets'
     case 'sean-actual-spend':
       return '/app/sean-actual-spend'
+    case 'sean-cashflow-calendar':
+      return '/app/sean-cashflow-calendar'
+    case 'sean-anomaly-detection':
+      return '/app/sean-anomaly-detection'
+    case 'sean-account-reconciliation':
+      return '/app/sean-account-reconciliation'
     case 'settings-profile':
       return '/app/settings/profile'
     case 'settings-appearance':

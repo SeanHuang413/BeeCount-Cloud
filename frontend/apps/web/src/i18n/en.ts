@@ -79,6 +79,9 @@ const en = {
   'nav.seanAssetTrends': 'Asset Trends',
   'nav.seanAssets': 'Asset Center',
   'nav.seanActualSpend': 'Actual Spend',
+  'nav.seanCashflowCalendar': 'Cashflow Calendar',
+  'nav.seanAnomalyDetection': 'Transaction Anomalies',
+  'nav.seanAccountReconciliation': 'Account Reconciliation',
   'nav.integrity': 'Data Integrity',
 
 

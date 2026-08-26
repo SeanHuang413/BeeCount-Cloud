@@ -23,6 +23,9 @@ export type AppSection =
   | 'sean-asset-trends'
   | 'sean-assets'
   | 'sean-actual-spend'
+  | 'sean-cashflow-calendar'
+  | 'sean-anomaly-detection'
+  | 'sean-account-reconciliation'
 
 export type NavItem = {
   key: AppSection

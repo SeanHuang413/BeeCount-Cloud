@@ -583,6 +583,9 @@ const zhCN = {
   'nav.seanAssetTrends': '资产趋势',
   'nav.seanAssets': '资产中心',
   'nav.seanActualSpend': '实际支出',
+  'nav.seanCashflowCalendar': '资金日历',
+  'nav.seanAnomalyDetection': '异常交易检测',
+  'nav.seanAccountReconciliation': '账户对账',
   'nav.integrity': '数据完整性',
 
 

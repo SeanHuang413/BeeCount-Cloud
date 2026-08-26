@@ -79,6 +79,9 @@ const zhTW = {
   'nav.seanAssetTrends': '資產趨勢',
   'nav.seanAssets': '資產中心',
   'nav.seanActualSpend': '實際支出',
+  'nav.seanCashflowCalendar': '資金日曆',
+  'nav.seanAnomalyDetection': '異常交易檢測',
+  'nav.seanAccountReconciliation': '帳戶對帳',
   'nav.integrity': '資料完整性',
 
 

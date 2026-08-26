@@ -29,6 +29,21 @@ expect(parseRoute('/app/workspace/transactions')).toEqual({
       ledgerId: '',
       section: 'settings-health'
     })
+    expect(parseRoute('/app/sean-cashflow-calendar')).toEqual({
+      kind: 'app',
+      ledgerId: '',
+      section: 'sean-cashflow-calendar'
+    })
+    expect(parseRoute('/app/sean-anomaly-detection')).toEqual({
+      kind: 'app',
+      ledgerId: '',
+      section: 'sean-anomaly-detection'
+    })
+    expect(parseRoute('/app/sean-account-reconciliation')).toEqual({
+      kind: 'app',
+      ledgerId: '',
+      section: 'sean-account-reconciliation'
+    })
   })
 
   it('falls back to overview for unknown section', () => {
@@ -54,5 +69,26 @@ expect(parseRoute('/app/workspace/transactions')).toEqual({
         section: 'settings-health'
       })
     ).toBe('/app/settings/health')
+    expect(
+      routePath({
+        kind: 'app',
+        ledgerId: '',
+        section: 'sean-cashflow-calendar'
+      })
+    ).toBe('/app/sean-cashflow-calendar')
+    expect(
+      routePath({
+        kind: 'app',
+        ledgerId: '',
+        section: 'sean-anomaly-detection'
+      })
+    ).toBe('/app/sean-anomaly-detection')
+    expect(
+      routePath({
+        kind: 'app',
+        ledgerId: '',
+        section: 'sean-account-reconciliation'
+      })
+    ).toBe('/app/sean-account-reconciliation')
   })
 })

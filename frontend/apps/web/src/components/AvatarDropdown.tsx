@@ -5,15 +5,18 @@ import {
   Bot,
   Brush,
   CalendarRange,
+  CalendarClock,
   ChartNoAxesCombined,
   Info,
   Key,
   Languages,
+  ListChecks,
   LogOut,
   Moon,
   PiggyBank,
   ReceiptText,
   Scale,
+  ShieldAlert,
   Smartphone,
   Sparkles,
   Sun,
@@ -194,6 +197,15 @@ export function AvatarDropdown({
           </MenuButton>
           <MenuButton icon={Scale} active={currentSection === 'sean-actual-spend'} onClick={() => navigateAndClose('sean-actual-spend')}>
             {t('nav.seanActualSpend')}
+          </MenuButton>
+          <MenuButton icon={CalendarClock} active={currentSection === 'sean-cashflow-calendar'} onClick={() => navigateAndClose('sean-cashflow-calendar')}>
+            {t('nav.seanCashflowCalendar')}
+          </MenuButton>
+          <MenuButton icon={ShieldAlert} active={currentSection === 'sean-anomaly-detection'} onClick={() => navigateAndClose('sean-anomaly-detection')}>
+            {t('nav.seanAnomalyDetection')}
+          </MenuButton>
+          <MenuButton icon={ListChecks} active={currentSection === 'sean-account-reconciliation'} onClick={() => navigateAndClose('sean-account-reconciliation')}>
+            {t('nav.seanAccountReconciliation')}
           </MenuButton>
 
           <Divider />

@@ -31,8 +31,8 @@ export function CategoryStructureCard({ transactions, categories, currency }: Pr
             <span className="shrink-0 font-mono text-sm font-semibold text-expense">-{money(row.expense, currency)}</span>
           </div>
           {row.children.length ? <div className="mt-2 space-y-1 border-l border-border/70 pl-3">
-            {row.children.map((child) => <div key={child.name} className="flex w-full items-center justify-between gap-3 py-1 text-sm">
-              <span className="truncate text-muted-foreground">{child.name}<span className="ml-1 text-xs">{child.count} 笔 · {row.expense ? (child.expense / row.expense * 100).toFixed(1) : '0.0'}%</span></span>
+            {row.children.map((child) => <div key={child.name} className="flex min-w-0 w-full items-center justify-between gap-3 py-1 text-sm">
+              <span className="min-w-0 flex-1 truncate text-muted-foreground">{child.name}<span className="ml-1 text-xs">{child.count} 笔 · {row.expense ? (child.expense / row.expense * 100).toFixed(1) : '0.0'}%</span></span>
               <span className="shrink-0 font-mono text-expense">-{money(child.expense, currency)}</span>
             </div>)}
           </div> : null}

@@ -86,6 +86,15 @@ const SeanAssetsPage = lazy(() =>
 const SeanActualSpendPage = lazy(() =>
   import('./pages/sections/sean_ActualSpendPage').then((m) => ({ default: m.SeanActualSpendPage })),
 )
+const SeanCashflowCalendarPage = lazy(() =>
+  import('./pages/sections/sean_CashflowCalendarPage').then((m) => ({ default: m.SeanCashflowCalendarPage })),
+)
+const SeanAnomalyDetectionPage = lazy(() =>
+  import('./pages/sections/sean_AnomalyDetectionPage').then((m) => ({ default: m.SeanAnomalyDetectionPage })),
+)
+const SeanAccountReconciliationPage = lazy(() =>
+  import('./pages/sections/sean_AccountReconciliationPage').then((m) => ({ default: m.SeanAccountReconciliationPage })),
+)
 
 /** 路由切换时的 Suspense fallback。section 切换通常 < 200ms,加个轻量
  *  loading shell 避免白屏闪烁。 */
@@ -257,6 +266,18 @@ function AppRoutes() {
         <Route
           path="sean-actual-spend"
           element={<Suspense fallback={<RouteFallback />}><SeanActualSpendPage /></Suspense>}
+        />
+        <Route
+          path="sean-cashflow-calendar"
+          element={<Suspense fallback={<RouteFallback />}><SeanCashflowCalendarPage /></Suspense>}
+        />
+        <Route
+          path="sean-anomaly-detection"
+          element={<Suspense fallback={<RouteFallback />}><SeanAnomalyDetectionPage /></Suspense>}
+        />
+        <Route
+          path="sean-account-reconciliation"
+          element={<Suspense fallback={<RouteFallback />}><SeanAccountReconciliationPage /></Suspense>}
         />
         <Route
           path="ledgers"
