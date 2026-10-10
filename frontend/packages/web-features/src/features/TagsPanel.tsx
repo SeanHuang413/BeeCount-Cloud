@@ -16,12 +16,9 @@ import {
 import type { ReadTag } from '@beecount/api-client'
 
 import type { TagForm } from '../forms'
-<<<<<<< HEAD
 import { compareTagsForDisplay } from '../lib/tagDisplaySorting'
 import { SeanTagSettlementInline } from './sean_tag-settlement'
-=======
 import { useSingleFlight } from '../lib/singleFlight'
->>>>>>> main
 import {
   TAG_COLOR_PALETTE,
   tagTextColorOn
