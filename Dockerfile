@@ -2,7 +2,10 @@
 # 多阶段构建：frontend (pnpm + Vite) + Python (FastAPI + Alembic)
 
 # ===== Stage 1: frontend 构建 =====
-FROM node:20-alpine AS frontend-builder
+# 固定跑在构建机原生平台($BUILDPLATFORM=amd64),不要进 arm64 的 QEMU 模拟:
+# 产物是静态 JS/CSS,架构无关;而 node/pnpm 在 QEMU 模拟下会偶发挂死
+# (2026-10-04 连续两次 release 卡死在 arm64 pnpm install,20+ 分钟零输出)。
+FROM --platform=$BUILDPLATFORM node:20-alpine AS frontend-builder
 WORKDIR /workspace/frontend
 RUN corepack enable
 
@@ -27,7 +30,8 @@ RUN pnpm -C apps/web build
 # 从 BeeCount-Website 拉构建好的 RAG 索引(由 Website CI 维护)。
 # Website 在 docs 改动时已经 build 好 sqlite 提交回 main,Cloud 这边只 cp。
 # 详见 .docs/web-cmdk-ai-doc-search.md。
-FROM alpine/git:latest AS docs-index-fetcher
+# 同理固定原生平台:git clone + 拷 sqlite 索引,产物架构无关,没必要进模拟。
+FROM --platform=$BUILDPLATFORM alpine/git:latest AS docs-index-fetcher
 ARG DOCS_INDEX_REPO=https://github.com/TNT-Likely/BeeCount-Website.git
 ARG DOCS_INDEX_BRANCH=main
 RUN git clone --depth 1 --branch ${DOCS_INDEX_BRANCH} ${DOCS_INDEX_REPO} /website || \
@@ -84,6 +88,8 @@ ENV APP_ENV=production \
     DATABASE_URL=sqlite:////data/beecount.db \
     BACKUP_STORAGE_DIR=/data/backups \
     ATTACHMENT_STORAGE_DIR=/data/attachments \
+    RAG_INDEX_CACHE_DIR=/data/rag-index \
+    RAG_INDEX_REFRESH_INTERVAL_SECONDS=21600 \
     RCLONE_CONFIG_PATH=/data/rclone.conf \
     WEB_STATIC_DIR=/app/static \
     ALLOW_APP_RW_SCOPES=true \

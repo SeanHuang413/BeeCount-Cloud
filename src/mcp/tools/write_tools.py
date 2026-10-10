@@ -15,7 +15,11 @@ router endpoint,而不是直接动 DB。原因:
 """
 from __future__ import annotations
 
+import asyncio
+import base64
+import binascii
 import logging
+import mimetypes
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
@@ -27,14 +31,17 @@ from ...models import (
     Ledger,
     ReadBudgetProjection,
     ReadTxProjection,
+    User,
     UserAccountProjection,
     UserCategoryProjection,
     UserExchangeRateProjection,
     UserTagProjection,
-    User,
 )
 from ...security import SCOPE_APP_WRITE, _create_token
-from .read_tools import _parse_dt, _resolve_ledger, live_ledgers
+from ..attachments import resolve_transaction_attachments
+from ..datetime_utils import parse_transaction_datetime
+from ..schemas import BatchTransactionItem, positive_amount
+from .read_tools import _resolve_ledger, live_ledgers
 
 logger = logging.getLogger(__name__)
 
@@ -139,6 +146,39 @@ def _resolve_write_ledger(
 # ---------- tools -----------------------------------------------------------
 
 
+async def upload_attachment(
+    user: User, *, file_name: str, content_base64: str,
+    ledger_id: str | None = None, mime_type: str | None = None,
+) -> dict[str, Any]:
+    """通过现有 multipart 上传路径保存客户端传来的文件，不读取服务端路径。"""
+    if not file_name.strip():
+        raise ValueError("file_name must not be empty")
+    settings = get_settings()
+    max_bytes = settings.attachment_max_upload_bytes
+    if len(content_base64) > 4 * ((max_bytes + 2) // 3):
+        raise ValueError("Attachment upload too large")
+    try:
+        data = await asyncio.to_thread(base64.b64decode, content_base64, validate=True)
+    except (ValueError, binascii.Error) as exc:
+        raise ValueError("content_base64 must be valid standard Base64, without a data URL prefix") from exc
+    if not data:
+        raise ValueError("Attachment file is empty")
+    if len(data) > max_bytes:
+        raise ValueError("Attachment upload too large")
+    with SessionLocal() as db:
+        led, ledger_status = _resolve_write_ledger(db, user, ledger_id)
+        if ledger_status is not None:
+            return ledger_status
+        assert led is not None
+        ledger_external_id = led.external_id
+    content_type = mime_type or mimetypes.guess_type(file_name)[0] or "application/octet-stream"
+    return await _self_call(
+        "POST", f"{settings.api_prefix}/attachments/upload", user,
+        data={"ledger_id": ledger_external_id},
+        files={"file": (file_name, data, content_type)},
+    )
+
+
 async def create_transaction(
     user: User,
     *,
@@ -151,6 +191,8 @@ async def create_transaction(
     tags: list[str] | None = None,
     ledger_id: str | None = None,
     currency: str | None = None,
+    time_zone: str | None = None,
+    attachments: list[str] | None = None,
 ) -> dict[str, Any]:
     """新建一笔交易。category / account 用名字。happened_at 不传 = 当前时间。
 
@@ -158,8 +200,11 @@ async def create_transaction(
     随账户币种、无账户随账本主币种。外币会按当前汇率折算到账本主币种。"""
     if tx_type not in {"expense", "income", "transfer"}:
         raise ValueError(f"Invalid tx_type: {tx_type}")
-    if amount <= 0:
-        raise ValueError("amount must be positive")
+    amount = positive_amount(amount)
+    happened = (
+        parse_transaction_datetime(happened_at, time_zone=time_zone)
+        if happened_at is not None else datetime.now(timezone.utc)
+    )
 
     with SessionLocal() as db:
         led, ledger_status = _resolve_write_ledger(db, user, ledger_id)
@@ -167,15 +212,16 @@ async def create_transaction(
             # 多账本未指定 / 账本不存在或已删 —— 交回 LLM 澄清,不写入。
             return ledger_status
         assert led is not None  # 契约:_resolve_write_ledger 的 status 为 None ⟺ led 命中
-        if category:
-            _lookup_category_sync_id(db, user.id, category, tx_type)
-        if account:
-            _lookup_account_sync_id(db, user.id, account)
+        category_id = _lookup_category_sync_id(db, user.id, category, tx_type)
+        account_id = _lookup_account_sync_id(db, user.id, account)
         ledger_external_id = led.external_id
         ledger_name = led.name
         led_internal_id = led.id  # 出 with 块后 led 会 detach,提前取值
         ledger_base_ccy = (led.currency or "CNY").strip().upper()  # v30 折算基准
         acc_ccy = _account_currency(db, user.id, account) if account else None
+        attachment_payload = (resolve_transaction_attachments(
+            db, ledger_id=led_internal_id, file_ids=attachments,
+        ) if attachments is not None else None)
         mcp_tag_missing = _is_tag_missing_in_ledger(
             db, user_id=user.id, ledger_id=led_internal_id, tag_name=_MCP_DEFAULT_TAG,
         )
@@ -186,7 +232,6 @@ async def create_transaction(
     if mcp_tag_missing:
         await _ensure_mcp_tag(user, ledger_external_id)
 
-    happened = _parse_dt(happened_at) if happened_at else datetime.now(timezone.utc)
     body: dict[str, Any] = {
         "base_change_id": 0,
         "tx_type": tx_type,
@@ -196,13 +241,18 @@ async def create_transaction(
     if note:
         body["note"] = note
     if category:
+        body["category_id"] = category_id
         body["category_name"] = category
         body["category_kind"] = tx_type
     if account:
         if tx_type == "transfer":
+            body["from_account_id"] = account_id
             body["from_account_name"] = account
         else:
+            body["account_id"] = account_id
             body["account_name"] = account
+    if attachment_payload is not None:
+        body["attachments"] = attachment_payload
     # 始终注入 MCP 默认标签;跟 LLM 传的 tags 并集去重,顺序保持 LLM 给的在前
     final_tags = _merge_default_tag(tags)
     body["tags"] = final_tags
@@ -233,6 +283,7 @@ async def create_transaction(
         "happened_at": happened.isoformat(),
         "category": category,
         "account": account,
+        **({"attachments": attachment_payload} if attachment_payload is not None else {}),
         "_meta": result,
     }
 
@@ -248,8 +299,14 @@ async def update_transaction(
     happened_at: str | None = None,
     note: str | None = None,
     tags: list[str] | None = None,
+    time_zone: str | None = None,
+    attachments: list[str] | None = None,
 ) -> dict[str, Any]:
     """更新现有交易。只更新传入的字段。"""
+    happened = (
+        parse_transaction_datetime(happened_at, time_zone=time_zone)
+        if happened_at is not None else None
+    )
     with SessionLocal() as db:
         existing = db.scalar(
             select(ReadTxProjection).where(
@@ -264,31 +321,35 @@ async def update_transaction(
             raise ValueError("Ledger missing for this tx")
         ledger_external_id = led.external_id
         effective_tx_type = tx_type or existing.tx_type
-        if category:
-            _lookup_category_sync_id(db, user.id, category, effective_tx_type)
-        if account:
-            _lookup_account_sync_id(db, user.id, account)
+        category_id = _lookup_category_sync_id(db, user.id, category, effective_tx_type)
+        account_id = _lookup_account_sync_id(db, user.id, account)
+        attachment_payload = (resolve_transaction_attachments(
+            db, ledger_id=led.id, file_ids=attachments,
+        ) if attachments is not None else None)
 
     patch: dict[str, Any] = {"base_change_id": 0}
+    if attachment_payload is not None:
+        patch["attachments"] = attachment_payload
     if amount is not None:
-        if amount <= 0:
-            raise ValueError("amount must be positive")
-        patch["amount"] = float(amount)
+        patch["amount"] = positive_amount(amount)
     if tx_type is not None:
         if tx_type not in {"expense", "income", "transfer"}:
             raise ValueError(f"Invalid tx_type: {tx_type}")
         patch["tx_type"] = tx_type
-    if happened_at is not None:
-        patch["happened_at"] = _parse_dt(happened_at).isoformat()
+    if happened is not None:
+        patch["happened_at"] = happened.isoformat()
     if note is not None:
         patch["note"] = note
     if category is not None:
+        patch["category_id"] = category_id
         patch["category_name"] = category
         patch["category_kind"] = effective_tx_type
     if account is not None:
         if effective_tx_type == "transfer":
+            patch["from_account_id"] = account_id
             patch["from_account_name"] = account
         else:
+            patch["account_id"] = account_id
             patch["account_name"] = account
     if tags is not None:
         patch["tags"] = list(tags)
@@ -299,6 +360,7 @@ async def update_transaction(
     return {
         "sync_id": sync_id,
         "updated": [k for k in patch.keys() if k != "base_change_id"],
+        **({"attachments": attachment_payload} if attachment_payload is not None else {}),
         "_meta": result,
     }
 
@@ -428,8 +490,9 @@ _BULK_MAX_TOTAL = 200
 async def create_transactions(
     user: User,
     *,
-    transactions: list[dict[str, Any]],
+    transactions: list[dict[str, Any] | BatchTransactionItem],
     ledger_id: str | None = None,
+    time_zone: str | None = None,
 ) -> dict[str, Any]:
     """批量新建交易(Excel / 对账单导入等)。
 
@@ -465,6 +528,10 @@ async def create_transactions(
     cat_needed: set[str] = set()
     acc_needed: set[str] = set()
     for i, raw in enumerate(transactions):
+        try:
+            raw = BatchTransactionItem.model_validate(raw).model_dump()
+        except ValueError as exc:
+            raise ValueError(f"transactions[{i}]: {exc}") from exc
         amount = raw.get("amount")
         tx_type = raw.get("tx_type") or "expense"
         if tx_type not in {"expense", "income", "transfer"}:
@@ -472,7 +539,13 @@ async def create_transactions(
         if not isinstance(amount, (int, float)) or isinstance(amount, bool) or amount <= 0:
             raise ValueError(f"transactions[{i}]: amount must be a positive number")
         happened_at = raw.get("happened_at")
-        happened = _parse_dt(happened_at) if happened_at else datetime.now(timezone.utc)
+        try:
+            happened = (
+                parse_transaction_datetime(happened_at, time_zone=time_zone)
+                if happened_at is not None else datetime.now(timezone.utc)
+            )
+        except ValueError as exc:
+            raise ValueError(f"transactions[{i}]: {exc}") from exc
         item: dict[str, Any] = {
             "tx_type": tx_type,
             "amount": float(amount),
@@ -504,6 +577,21 @@ async def create_transactions(
     #    跟单笔 create_transaction 的 _lookup_* 校验同口径)
     with SessionLocal() as db:
         _validate_names_exist(db, user.id, categories=cat_needed, accounts=acc_needed)
+        # 名称相同也需校验类型与唯一性；一次解析不同名称，避免逐笔重复查询。
+        category_ids = {
+            (item["category_name"], item["tx_type"]): _lookup_category_sync_id(
+                db, user.id, item["category_name"], item["tx_type"],
+            )
+            for item in norm_items if item.get("category_name")
+        }
+        account_ids = {name: _lookup_account_sync_id(db, user.id, name) for name in acc_needed}
+        for item in norm_items:
+            if item.get("category_name"):
+                item["category_id"] = category_ids[(item["category_name"], item["tx_type"])]
+            if item.get("account_name"):
+                item["account_id"] = account_ids[item["account_name"]]
+            if item.get("from_account_name"):
+                item["from_account_id"] = account_ids[item["from_account_name"]]
         mcp_tag_missing = _is_tag_missing_in_ledger(
             db, user_id=user.id, ledger_id=led_internal_id, tag_name=_MCP_DEFAULT_TAG,
         )
@@ -774,10 +862,12 @@ def _lookup_category_sync_id(db, user_id: str, name: str | None, tx_type: str | 
     )
     if tx_type and tx_type in {"expense", "income", "transfer"}:
         query = query.where(UserCategoryProjection.kind == tx_type)
-    row = db.scalar(query.limit(1))
-    if row is None:
+    rows = db.scalars(query.limit(2)).all()
+    if not rows:
         raise ValueError(f"Category not found: {name}")
-    return row.sync_id
+    if len(rows) > 1:
+        raise ValueError(f"Ambiguous category: {name!r} ({tx_type}); rename or select a unique category")
+    return rows[0].sync_id
 
 
 def _account_currency(db, user_id: str, name: str | None) -> str | None:
@@ -849,14 +939,16 @@ async def _build_currency_fields(
 def _lookup_account_sync_id(db, user_id: str, name: str | None) -> str | None:
     if not name:
         return None
-    row = db.scalar(
+    rows = db.scalars(
         select(UserAccountProjection)
         .where(
             UserAccountProjection.user_id == user_id,
             UserAccountProjection.name == name,
         )
-        .limit(1)
-    )
-    if row is None:
+        .limit(2)
+    ).all()
+    if not rows:
         raise ValueError(f"Account not found: {name}")
-    return row.sync_id
+    if len(rows) > 1:
+        raise ValueError(f"Ambiguous account: {name!r}; rename or select a unique account")
+    return rows[0].sync_id

@@ -16,8 +16,12 @@ import {
 import type { ReadTag } from '@beecount/api-client'
 
 import type { TagForm } from '../forms'
+<<<<<<< HEAD
 import { compareTagsForDisplay } from '../lib/tagDisplaySorting'
 import { SeanTagSettlementInline } from './sean_tag-settlement'
+=======
+import { useSingleFlight } from '../lib/singleFlight'
+>>>>>>> main
 import {
   TAG_COLOR_PALETTE,
   tagTextColorOn
@@ -68,6 +72,8 @@ export function TagsPanel({
   const t = useT()
   const [open, setOpen] = useState(false)
   const [duplicateError, setDuplicateError] = useState<string | null>(null)
+  // #450 同款:保存请求返回前的连点会重复创建 —— 单飞守卫 + 按钮禁用。
+  const { saving, guard } = useSingleFlight()
   const hasStats = Boolean(statsById)
   const fmt = (v: number) =>
     v.toLocaleString('zh-CN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
@@ -349,8 +355,8 @@ export function TagsPanel({
               {t('dialog.cancel')}
             </Button>
             <Button
-              disabled={!canManage}
-              onClick={() => void handleSave()}
+              disabled={!canManage || saving}
+              onClick={() => void guard(handleSave)}
             >
               {form.editingId ? t('tags.button.update') : t('tags.button.create')}
             </Button>

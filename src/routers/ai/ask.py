@@ -17,7 +17,7 @@ from __future__ import annotations
 
 import json
 import logging
-from typing import AsyncIterator
+from collections.abc import AsyncIterator
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.responses import StreamingResponse
@@ -38,6 +38,7 @@ from ...services.ai import (
     resolve_chat_provider,
     stream_chat_completion,
 )
+from ...services.ai.docs_refresh import get_docs_refresh_service
 from ...services.ai.provider_client import EmbeddingNotConfiguredError
 
 logger = logging.getLogger(__name__)
@@ -54,6 +55,18 @@ class AskRequest(BaseModel):
 
     query: str = Field(min_length=1, max_length=_MAX_QUERY_CHARS)
     locale: str = Field(default="zh", pattern=r"^(zh|zh-CN|zh-TW|en)$")
+
+
+@router.get("/docs-index/status")
+async def docs_index_status(
+    check_latest: bool = False,
+    _scopes: set[str] = Depends(_ASK_SCOPE_DEP),
+    _current_user: User = Depends(get_current_user),
+) -> dict:
+    """Authenticated users may view the active docs-index status, not refresh it."""
+    service = get_docs_refresh_service()
+    status = await service.check_latest() if check_latest else service.status()
+    return status.as_dict()
 
 
 def _sse(event_type: str, data: object) -> str:
@@ -78,7 +91,7 @@ async def ask(
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail={"error_code": "AI_NO_CHAT_PROVIDER", "message": str(exc)},
-        )
+        ) from exc
 
     # 2. 索引可用性检查 — 不可用也直接 503,不进 stream
     docs_idx = get_docs_index(req.locale)
@@ -98,10 +111,10 @@ async def ask(
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={"error_code": "AI_EMBEDDING_UNAVAILABLE", "message": str(exc)},
-        )
+        ) from exc
 
-    # 4. 检索 top-K
-    retrieved = docs_idx.search(qvec, k=_TOP_K)
+    # 4. 混合检索 top-K — 新索引用 FTS5 + RRF，旧索引自动回退向量检索。
+    retrieved = docs_idx.hybrid_search(query=req.query, query_vector=qvec, k=_TOP_K)
     if not retrieved:
         # 检索 0 命中也走流程,让 LLM 答「文档没找到」(prompt 已约束)
         logger.info("ai.ask top-K empty user=%s query=%s", current_user.id, req.query[:50])

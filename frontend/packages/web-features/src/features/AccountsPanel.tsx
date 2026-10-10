@@ -32,6 +32,7 @@ import {
   LIABILITY_TYPES,
   splitByCurrency
 } from '../lib/assetAggregation'
+import { useSingleFlight } from '../lib/singleFlight'
 
 
 type MobileStyleAssetsProps = {
@@ -45,6 +46,7 @@ type MobileStyleAssetsProps = {
   canManage: boolean
   onEdit: (row: ReadAccount) => void
   onDelete?: (row: ReadAccount) => void
+  onAdjustBalance?: (row: ReadAccount) => void
   /** 点卡片（非编辑/删除按钮）：外层用来打开"账户详情+交易列表"弹窗。 */
   onClickAccount?: (row: ReadAccount) => void
   /** "新建账户"按钮回调 — 渲染在 stats 卡片下方,跟分组列表之间。 */
@@ -70,6 +72,7 @@ function MobileStyleAssets({
   canManage,
   onEdit,
   onDelete,
+  onAdjustBalance,
   onClickAccount,
   onCreate,
   hideCurrencyCards = false,
@@ -199,6 +202,11 @@ function MobileStyleAssets({
                       canManage={canManage}
                       onEdit={() => onEdit(row)}
                       onDelete={onDelete ? () => onDelete(row) : undefined}
+                      onAdjustBalance={
+                        onAdjustBalance && !VALUATION_TYPES_SET.has(row.account_type || '')
+                          ? () => onAdjustBalance(row)
+                          : undefined
+                      }
                       onClick={onClickAccount ? () => onClickAccount(row) : undefined}
                     />
                   ))}
@@ -215,6 +223,7 @@ function MobileStyleAssets({
         rows={hiddenRows}
         canManage={canManage}
         onEdit={onEdit}
+        onAdjustBalance={onAdjustBalance}
         onRestore={onRestore}
         onClickAccount={onClickAccount}
       />
@@ -231,12 +240,14 @@ function HiddenAccountsSection({
   rows,
   canManage,
   onEdit,
+  onAdjustBalance,
   onRestore,
   onClickAccount
 }: {
   rows: ReadAccount[]
   canManage: boolean
   onEdit: (row: ReadAccount) => void
+  onAdjustBalance?: (row: ReadAccount) => void
   onRestore?: (row: ReadAccount) => void
   onClickAccount?: (row: ReadAccount) => void
 }) {
@@ -312,6 +323,16 @@ function HiddenAccountsSection({
                   size="sm"
                   className="text-muted-foreground"
                 />
+                {onAdjustBalance && !VALUATION_TYPES_SET.has(row.account_type || '') ? (
+                  <button
+                    type="button"
+                    disabled={!canManage}
+                    onClick={() => onAdjustBalance(row)}
+                    className="text-xs text-muted-foreground underline-offset-2 hover:text-foreground hover:underline disabled:pointer-events-none disabled:opacity-40"
+                  >
+                    {t('accounts.button.adjustBalance')}
+                  </button>
+                ) : null}
                 <button
                   type="button"
                   disabled={!canManage}
@@ -559,6 +580,7 @@ function BankCardTile({
   isLiability,
   canManage,
   onEdit,
+  onAdjustBalance,
   onDelete,
   onClick
 }: {
@@ -567,6 +589,7 @@ function BankCardTile({
   isLiability: boolean
   canManage: boolean
   onEdit: () => void
+  onAdjustBalance?: () => void
   onDelete?: () => void
   onClick?: () => void
 }) {
@@ -750,6 +773,19 @@ function BankCardTile({
 
       {/* hover 操作按钮浮层（右上角，避开正文 stats） */}
       <div className="absolute right-1.5 top-9 flex items-center gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+        {onAdjustBalance ? (
+          <button
+            type="button"
+            disabled={!canManage}
+            onClick={(event) => {
+              event.stopPropagation()
+              onAdjustBalance()
+            }}
+            className="rounded bg-black/35 px-1.5 py-0.5 text-[10px] text-white backdrop-blur hover:bg-primary/80"
+          >
+            {t('accounts.button.adjustBalance')}
+          </button>
+        ) : null}
         <button
           type="button"
           disabled={!canManage}
@@ -910,7 +946,7 @@ const ACCOUNT_ORDER: string[] = [
 export function computeTypeGroups(rows: ReadAccount[], t: (k: string) => string): AssetGroup[] {
   const buckets: Record<string, ReadAccount[]> = {}
   for (const row of rows) {
-    const key = row.account_type || 'other'
+    const key = ACCOUNT_ORDER.includes(row.account_type || '') ? row.account_type! : 'other'
     buckets[key] = buckets[key] || []
     buckets[key].push(row)
   }
@@ -1014,6 +1050,7 @@ type AccountsPanelProps = {
   onReset: () => void
   onEdit: (row: ReadAccount) => void
   onDelete?: (row: ReadAccount) => void
+  onAdjustBalance?: (row: ReadAccount) => void
   onClickAccount?: (row: ReadAccount) => void
   /** true 时跳过多币种「每币种一张卡」网格区(用于折算汇总视图);缺省 false,
    *  其它调用方零影响。详见 MobileStyleAssets。 */
@@ -1033,12 +1070,15 @@ export function AccountsPanel({
   onReset,
   onEdit,
   onDelete,
+  onAdjustBalance,
   onClickAccount,
   hideCurrencyCards = false,
   onRestore
 }: AccountsPanelProps) {
   const t = useT()
   const [open, setOpen] = useState(false)
+  // #450 同款:保存请求返回前的连点会重复创建 —— 单飞守卫 + 按钮禁用。
+  const { saving, guard } = useSingleFlight()
 
   // 账户隐藏(issue #240):净资产 hero / 资产构成饼图按 D1 用全量 rows 计算
   // (隐藏不改「钱在哪」);只有「底部分组列表」拆成在用/已隐藏两部分展示。
@@ -1113,6 +1153,7 @@ export function AccountsPanel({
             setOpen(true)
           }}
           onDelete={onDelete}
+          onAdjustBalance={onAdjustBalance}
           onClickAccount={onClickAccount}
           onCreate={handleOpenCreate}
           hideCurrencyCards={hideCurrencyCards}
@@ -1335,13 +1376,15 @@ export function AccountsPanel({
               {t('dialog.cancel')}
             </Button>
             <Button
-              disabled={!canManage}
-              onClick={async () => {
-                const success = await onSave()
-                if (success) {
-                  setOpen(false)
-                }
-              }}
+              disabled={!canManage || saving}
+              onClick={() =>
+                guard(async () => {
+                  const success = await onSave()
+                  if (success) {
+                    setOpen(false)
+                  }
+                })
+              }
             >
               {form.editingId ? t('accounts.button.update') : t('accounts.button.create')}
             </Button>

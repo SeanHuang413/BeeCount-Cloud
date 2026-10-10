@@ -2,7 +2,7 @@
 
 方案 B 里 projection 是权威源,snapshot 不再 runtime 写入。但 mobile 协议
 (`/sync/full`)、snapshot_mutator(web write 路径)还吃 snapshot dict 作输入,所以
-提供一个按 (ledger_id, max_change_id) 缓存的 builder。
+提供 builder 与 ledger / owner user-global 两侧的版本查询供全量同步缓存使用。
 
 字段 shape 跟原先 mobile push 来的 snapshot 完全对齐 —— mobile 客户端零改动。
 """
@@ -71,6 +71,8 @@ def build(db: Session, ledger: Ledger) -> dict[str, Any]:
         # 全量同步后外币折算全部丢失(apply 缺省 nativeAmount=amount 退化 1:1)。
         ReadTxProjection.currency_code,
         ReadTxProjection.native_amount,
+        ReadTxProjection.exclude_from_stats,
+        ReadTxProjection.exclude_from_budget,
     ).where(ReadTxProjection.ledger_id == ledger_id).order_by(
         ReadTxProjection.happened_at.desc(),
         ReadTxProjection.tx_index.desc(),
@@ -83,12 +85,14 @@ def build(db: Session, ledger: Ledger) -> dict[str, Any]:
          to_sid, to_name,
          tags_csv, tag_ids_json, attachments_json,
          tx_index, created_by,
-         currency_code, native_amount) = row
+         currency_code, native_amount, exclude_from_stats, exclude_from_budget) = row
         item: dict[str, Any] = {
             "syncId": sync_id,
             "type": tx_type,
             "amount": amount,
             "happenedAt": _to_iso_utc(happened_at),
+            "excludeFromStats": bool(exclude_from_stats),
+            "excludeFromBudget": bool(exclude_from_budget),
         }
         if note is not None:
             item["note"] = note
@@ -208,12 +212,13 @@ def build(db: Session, ledger: Ledger) -> dict[str, Any]:
         UserCategoryProjection.icon_cloud_file_id,
         UserCategoryProjection.icon_cloud_sha256,
         UserCategoryProjection.parent_name,
+        UserCategoryProjection.parent_sync_id,
     ).where(UserCategoryProjection.user_id == user_id).order_by(
         UserCategoryProjection.sort_order.asc(),
         UserCategoryProjection.name.asc(),
     )
     for (sid, name, kind, level, sort_order, icon, icon_type,
-         custom_icon, icon_fid, icon_sha, parent) in db.execute(cat_stmt).all():
+         custom_icon, icon_fid, icon_sha, parent, parent_id) in db.execute(cat_stmt).all():
         cat: dict[str, Any] = {"syncId": sid, "name": name or ""}
         if kind:
             cat["kind"] = kind
@@ -233,6 +238,8 @@ def build(db: Session, ledger: Ledger) -> dict[str, Any]:
             cat["iconCloudSha256"] = icon_sha
         if parent:
             cat["parentName"] = parent
+        if parent_id:
+            cat["parentSyncId"] = parent_id
         categories.append(cat)
 
     # Tags —— user-global per-user。
@@ -299,6 +306,19 @@ def latest_change_id(db: Session, ledger_id: str) -> int:
     return int(
         db.scalar(
             select(func.max(SyncChange.change_id)).where(SyncChange.ledger_id == ledger_id)
+        )
+        or 0
+    )
+
+
+def latest_user_change_id(db: Session, user_id: str) -> int:
+    """Snapshot 中账户、分类、标签的 owner user-global 版本。"""
+    return int(
+        db.scalar(
+            select(func.max(SyncChange.change_id)).where(
+                SyncChange.scope == "user",
+                SyncChange.user_id == user_id,
+            )
         )
         or 0
     )

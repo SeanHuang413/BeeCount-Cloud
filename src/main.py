@@ -75,6 +75,12 @@ app = FastAPI(
 def public_version() -> dict:
     return {"name": _beecount_cloud_name, "version": _beecount_cloud_version}
 
+
+@app.get(f"{settings.api_prefix}/web-config")
+def public_web_config() -> dict:
+    """仅公开 Web 展示开关，不暴露实例密钥或其它配置。"""
+    return {"project_partnerships_enabled": get_settings().project_partnerships_enabled}
+
 app.state.ws_manager = WSConnectionManager()
 install_request_middleware(app)
 register_exception_handlers(app)
@@ -187,6 +193,38 @@ app.include_router(invites_router.router, prefix=settings.api_prefix, tags=["inv
 app.include_router(members_router.router, prefix=settings.api_prefix, tags=["members"])
 app.include_router(shared_resources_router.router, prefix=settings.api_prefix, tags=["shared-resources"])
 app.include_router(member_stats_router.router, prefix=settings.api_prefix, tags=["member-stats"])
+
+
+# ============================================================================
+# RAG docs index refresh — a packaged index always remains usable; this task
+# merely checks whether BeeCount-Website published a newer validated pair.
+# ============================================================================
+
+
+@app.on_event("startup")
+async def _start_rag_index_refresh() -> None:  # noqa: B008
+    import asyncio
+
+    from .services.ai.docs_refresh import get_docs_refresh_service
+
+    service = get_docs_refresh_service()  # also selects a persisted cache at boot
+    interval = settings.rag_index_refresh_interval_seconds
+    if interval <= 0:
+        return
+
+    async def _loop() -> None:
+        while True:
+            await service.refresh()
+            await asyncio.sleep(interval)
+
+    app.state.rag_index_refresh_task = asyncio.create_task(_loop())
+
+
+@app.on_event("shutdown")
+async def _stop_rag_index_refresh() -> None:  # noqa: B008
+    task = getattr(app.state, "rag_index_refresh_task", None)
+    if task is not None and not task.done():
+        task.cancel()
 
 _static_dir = Path(settings.web_static_dir)
 

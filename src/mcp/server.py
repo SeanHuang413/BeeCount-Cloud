@@ -1,4 +1,4 @@
-"""BeeCount Cloud MCP server — 注册所有 18 个 tool,导出 ASGI app。
+"""BeeCount Cloud MCP server — 注册所有 19 个 tool,导出 ASGI app。
 
 设计:.docs/mcp-server-design.md。
 
@@ -20,8 +20,9 @@ from __future__ import annotations
 import asyncio
 import logging
 import time
+from collections.abc import Awaitable, Callable
 from datetime import datetime, timezone
-from typing import Any, Awaitable, Callable
+from typing import Any
 
 from mcp.server.fastmcp import Context, FastMCP
 from mcp.server.fastmcp.server import StreamableHTTPASGIApp
@@ -36,6 +37,7 @@ from .auth import (
     get_mcp_user_from_context,
     require_mcp_scope,
 )
+from .schemas import BatchTransactionItem
 from .tools import read_tools, write_tools
 
 logger = logging.getLogger(__name__)
@@ -48,7 +50,7 @@ logger = logging.getLogger(__name__)
 _ARG_SUMMARY_MAX_TOTAL = 200
 _ARG_VALUE_MAX_LEN = 30
 # 自由文本类 / 隐私敏感 / 大块数据,做 summary 时**整字段跳过**
-_ARG_SKIP_FIELDS = {"note", "text"}
+_ARG_SKIP_FIELDS = {"note", "text", "content_base64", "file_name"}
 
 
 def _summarize_args(kwargs: dict[str, Any]) -> str | None:
@@ -335,8 +337,34 @@ async def search(ctx: Context, q: str, limit: int = 20) -> list[dict[str, Any]]:
 
 
 # ============================================================================
-# Write tools — 7 个,mcp:write scope
+# Write tools — 8 个,mcp:write scope
 # ============================================================================
+
+
+@mcp.tool()
+async def upload_attachment(
+    ctx: Context,
+    file_name: str,
+    content_base64: str,
+    ledger_id: str | None = None,
+    mime_type: str | None = None,
+) -> dict[str, Any]:
+    """Upload a receipt/file to a ledger and return its file_id and SHA256.
+
+    The client reads the user's local file and sends standard Base64 bytes
+    (without a data URL prefix). A remote Cloud cannot read client file paths.
+    Prefer small receipt images; the configured attachment upload size limit
+    applies. Same bytes in the same ledger reuse the existing file_id.
+    If multiple ledgers exist, supply ledger_id. Uploading does not create a
+    transaction: pass the returned file_id to create/update_transaction's
+    ordered attachments list, using the same ledger.
+    """
+    kw = dict(file_name=file_name, content_base64=content_base64,
+              ledger_id=ledger_id, mime_type=mime_type)
+    return await _logged_call(
+        ctx, name="upload_attachment", scope=SCOPE_MCP_WRITE, kwargs=kw,
+        body=lambda user: write_tools.upload_attachment(user, **kw),
+    )
 
 
 @mcp.tool()
@@ -351,6 +379,8 @@ async def create_transaction(
     tags: list[str] | None = None,
     ledger_id: str | None = None,
     currency: str | None = None,
+    time_zone: str | None = None,
+    attachments: list[str] | None = None,
 ) -> dict[str, Any]:
     """Create a new transaction.
 
@@ -359,7 +389,12 @@ async def create_transaction(
         tx_type: 'expense' (default), 'income', or 'transfer'.
         category: Existing category name (server rejects unknown names).
         account: Existing account name. For transfers this is the from-account.
-        happened_at: ISO date or datetime. Defaults to now.
+        happened_at: ISO date or datetime. Defaults to now. Preserve the source
+            UTC offset; never append Z to a local CSV time. Offset-free values
+            use Cloud SCHEDULER_TIMEZONE, then TZ; without either, time_zone is required.
+        time_zone: Source IANA timezone (e.g. Asia/Shanghai), used only when
+            Cloud has no timezone configured and happened_at has no offset.
+            For a source in a different timezone, provide timestamps with offsets.
         note: Optional memo.
         tags: Optional list of tag names.
         ledger_id: Optional; uses active ledger if omitted.
@@ -367,11 +402,15 @@ async def create_transaction(
             foreign currency. Omit to follow the account's currency, or the
             ledger's base currency when no account is given. The server converts
             to the ledger base at current rates and stores both amounts.
+        attachments: Ordered file_id list returned by upload_attachment.
+            Files must belong to this ledger; do not pass local paths or URLs.
+            Omit for no attachments. Repeated IDs are rejected.
     """
     kw = dict(
         amount=amount, tx_type=tx_type, category=category, account=account,
         happened_at=happened_at, note=note, tags=tags, ledger_id=ledger_id,
-        currency=currency,
+        currency=currency, time_zone=time_zone,
+        attachments=attachments,
     )
     return await _logged_call(
         ctx, name="create_transaction", scope=SCOPE_MCP_WRITE, kwargs=kw,
@@ -382,8 +421,9 @@ async def create_transaction(
 @mcp.tool()
 async def create_transactions(
     ctx: Context,
-    transactions: list[dict[str, Any]],
+    transactions: list[BatchTransactionItem],
     ledger_id: str | None = None,
+    time_zone: str | None = None,
 ) -> dict[str, Any]:
     """Create many transactions at once — use this for bulk imports.
 
@@ -400,8 +440,18 @@ async def create_transactions(
         ledger_id: Optional. If omitted and you have multiple ledgers, the tool
             refuses to guess and returns the candidate list — re-call with an id.
             Max 200 transactions per call; split larger imports across calls.
+        time_zone: Source IANA timezone for offset-free CSV dates/times, used
+            only if Cloud has neither SCHEDULER_TIMEZONE nor TZ configured.
+            Preserve explicit offsets; NEVER relabel local CSV times as Z/UTC.
+            Cloud timezone has priority for offset-free values. For a different
+            source timezone, include each timestamp's actual offset. A missing
+            timezone or ambiguous DST time rejects the batch before any writes.
     """
-    kw = dict(transactions=transactions, ledger_id=ledger_id)
+    kw = dict(
+        transactions=[item.model_dump() for item in transactions],
+        ledger_id=ledger_id,
+        time_zone=time_zone,
+    )
     return await _logged_call(
         ctx, name="create_transactions", scope=SCOPE_MCP_WRITE, kwargs=kw,
         body=lambda user: write_tools.create_transactions(user, **kw),
@@ -419,11 +469,24 @@ async def update_transaction(
     happened_at: str | None = None,
     note: str | None = None,
     tags: list[str] | None = None,
+    time_zone: str | None = None,
+    attachments: list[str] | None = None,
 ) -> dict[str, Any]:
-    """Patch an existing transaction. Only the fields you pass are changed."""
+    """Patch an existing transaction. Only the fields you pass are changed.
+
+    happened_at preserves explicit UTC offsets. Offset-free dates/times use
+    Cloud SCHEDULER_TIMEZONE, then TZ, then the optional source IANA time_zone.
+    Never append Z to local time; ask for the source timezone if none is known.
+    attachments: Omit (or null) to preserve existing files. An ordered file_id
+    list replaces all attachments; [] removes all. To append, read the current
+    attachments with get_transaction and include their cloudFileIds first.
+    All files must have been uploaded to this transaction's ledger.
+    """
     kw = dict(
         sync_id=sync_id, amount=amount, tx_type=tx_type, category=category,
         account=account, happened_at=happened_at, note=note, tags=tags,
+        time_zone=time_zone,
+        attachments=attachments,
     )
     return await _logged_call(
         ctx, name="update_transaction", scope=SCOPE_MCP_WRITE, kwargs=kw,

@@ -253,6 +253,7 @@ export type ReadCategory = {
   icon_cloud_file_id?: string | null
   icon_cloud_sha256?: string | null
   parent_name: string | null
+  parent_sync_id?: string | null
   last_change_id: number
   ledger_id?: string | null
   ledger_name?: string | null
@@ -450,6 +451,24 @@ export type AdminHealth = {
   time: string
 }
 
+export type RagIndexLanguageStatus = {
+  build_time: string | null
+  chunk_count: number
+  dim: number
+}
+
+export type RagIndexStatus = {
+  source: string
+  corpus_hash: string | null
+  embedding_model: string | null
+  languages: Record<string, RagIndexLanguageStatus>
+  last_checked_at: string | null
+  last_updated_at: string | null
+  last_error: string | null
+  remote_corpus_hash: string | null
+  is_latest: boolean | null
+}
+
 // ────────── 数据清理(替代旧 IntegrityScan)──────────
 
 export type DataCleanupOrphanType =
@@ -621,6 +640,7 @@ export type CategoryPayload = {
   icon_cloud_file_id?: string | null
   icon_cloud_sha256?: string | null
   parent_name?: string | null
+  parent_sync_id?: string | null
 }
 
 export type TagPayload = {
