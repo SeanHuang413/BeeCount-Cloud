@@ -183,26 +183,29 @@ export function AvatarDropdown({
           <MenuButton icon={WalletCards} active={currentSection === 'sean-assets'} onClick={() => navigateAndClose('sean-assets')}>
             {t('nav.seanAssets')}
           </MenuButton>
-          <MenuButton icon={PiggyBank} active={currentSection === 'sean-spend-insights'} onClick={() => navigateAndClose('sean-spend-insights')}>
-            {t('nav.seanSpendInsights')}
-          </MenuButton>
-          <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-reports'} onClick={() => navigateAndClose('sean-reports')}>
-            {t('nav.seanReports')}
-          </MenuButton>
-          <MenuButton icon={CalendarRange} active={currentSection === 'sean-monthly-comparison'} onClick={() => navigateAndClose('sean-monthly-comparison')}>
-            {t('nav.seanMonthlyComparison')}
-          </MenuButton>
-          <MenuButton icon={TrendingUp} active={currentSection === 'sean-asset-trends'} onClick={() => navigateAndClose('sean-asset-trends')}>
-            {t('nav.seanAssetTrends')}
-          </MenuButton>
           <MenuButton icon={Scale} active={currentSection === 'sean-actual-spend'} onClick={() => navigateAndClose('sean-actual-spend')}>
             {t('nav.seanActualSpend')}
           </MenuButton>
           <MenuButton icon={CalendarClock} active={currentSection === 'sean-cashflow-calendar'} onClick={() => navigateAndClose('sean-cashflow-calendar')}>
             {t('nav.seanCashflowCalendar')}
           </MenuButton>
+          <MenuButton icon={CalendarRange} active={currentSection === 'sean-monthly-comparison'} onClick={() => navigateAndClose('sean-monthly-comparison')}>
+            {t('nav.seanMonthlyComparison')}
+          </MenuButton>
           <MenuButton icon={ShieldAlert} active={currentSection === 'sean-anomaly-detection'} onClick={() => navigateAndClose('sean-anomaly-detection')}>
             {t('nav.seanAnomalyDetection')}
+          </MenuButton>
+          <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-category-trends'} onClick={() => navigateAndClose('sean-category-trends')}>
+            {t('nav.seanCategoryTrends')}
+          </MenuButton>
+          <MenuButton icon={PiggyBank} active={currentSection === 'sean-spend-insights'} onClick={() => navigateAndClose('sean-spend-insights')}>
+            {t('nav.seanSpendInsights')}
+          </MenuButton>
+          <MenuButton icon={ChartNoAxesCombined} active={currentSection === 'sean-reports'} onClick={() => navigateAndClose('sean-reports')}>
+            {t('nav.seanReports')}
+          </MenuButton>
+          <MenuButton icon={TrendingUp} active={currentSection === 'sean-asset-trends'} onClick={() => navigateAndClose('sean-asset-trends')}>
+            {t('nav.seanAssetTrends')}
           </MenuButton>
           <MenuButton icon={ListChecks} active={currentSection === 'sean-account-reconciliation'} onClick={() => navigateAndClose('sean-account-reconciliation')}>
             {t('nav.seanAccountReconciliation')}

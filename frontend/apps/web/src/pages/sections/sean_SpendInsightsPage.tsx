@@ -1,14 +1,12 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useSeanReportData } from './sean_shared/useSeanReportData'
+import { SeanReportScope } from './sean_shared/SeanReportScope'
+import { useState } from 'react'
 
-import { fetchWorkspaceTransactions, type WorkspaceTransaction } from '@beecount/api-client'
 import { SeanSpendInsightsPanel, type SeanSpendInsightPeriod } from '@beecount/web-features'
 
 import { useAuth } from '../../context/AuthContext'
 import { useLedgers } from '../../context/LedgersContext'
-import { useSyncRefresh } from '../../context/SyncSocketContext'
 
-const PAGE_SIZE = 500
-const MAX_PAGES = 20
 
 function currentMonth(): string { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}` }
 function dateRangeFor(period: SeanSpendInsightPeriod, selectedMonth: string): { dateFrom?: string; dateTo?: string } {
@@ -33,28 +31,10 @@ function dateRangeFor(period: SeanSpendInsightPeriod, selectedMonth: string): { 
 export function SeanSpendInsightsPage() {
   const { token } = useAuth()
   const { activeLedgerId, currency } = useLedgers()
-  const [transactions, setTransactions] = useState<WorkspaceTransaction[]>([])
   const [period, setPeriod] = useState<SeanSpendInsightPeriod>('month')
   const [selectedMonth, setSelectedMonth] = useState(currentMonth)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
 
-  const load = useCallback(async () => {
-    if (!activeLedgerId) { setTransactions([]); return }
-    setLoading(true); setError(false)
-    try {
-      const rows: WorkspaceTransaction[] = []
-      const range = dateRangeFor(period, selectedMonth)
-      for (let page = 0; page < MAX_PAGES; page += 1) {
-        const response = await fetchWorkspaceTransactions(token, { ledgerId: activeLedgerId, ...range, limit: PAGE_SIZE, offset: page * PAGE_SIZE })
-        rows.push(...response.items)
-        if (rows.length >= response.total || response.items.length < PAGE_SIZE) break
-      }
-      setTransactions(rows)
-    } catch { setTransactions([]); setError(true) } finally { setLoading(false) }
-  }, [token, activeLedgerId, period, selectedMonth])
-
-  useEffect(() => { void load() }, [load])
-  useSyncRefresh(() => { void load() })
-  return <SeanSpendInsightsPanel transactions={transactions} currency={currency} period={period} onPeriodChange={setPeriod} selectedMonth={selectedMonth} onSelectedMonthChange={setSelectedMonth} loading={loading} error={error} onRefresh={() => void load()} />
+  const { transactions, loading, error, load, metadata, scopeKey } = useSeanReportData({ token, ledgerId: activeLedgerId, currency, periodKey: `${period}:${selectedMonth}`, range: () => dateRangeFor(period, selectedMonth) })
+  if (!activeLedgerId) return <div className="mx-auto max-w-[1440px] py-10 text-sm text-muted-foreground">请选择账本后查看此功能。</div>
+  return <div className="mx-auto max-w-[1440px]"><SeanReportScope metadata={metadata}/><SeanSpendInsightsPanel key={scopeKey} transactions={transactions} currency={currency} period={period} onPeriodChange={setPeriod} selectedMonth={selectedMonth} onSelectedMonthChange={setSelectedMonth} loading={loading} error={error} onRefresh={() => void load()} /></div>
 }

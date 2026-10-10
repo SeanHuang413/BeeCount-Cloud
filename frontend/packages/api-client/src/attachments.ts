@@ -44,6 +44,19 @@ export async function uploadAttachment(
   return res.json()
 }
 
+/** Categories are user-global; their images must not belong to an active ledger. */
+export async function uploadCategoryIcon(token: string, file: File): Promise<AttachmentUploadOut> {
+  const body = new FormData()
+  body.append('file', file)
+  const res = await fetch(`${API_BASE}/attachments/category-icons/upload`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+    body
+  })
+  if (!res.ok) throw await extractApiError(res)
+  return res.json()
+}
+
 export async function downloadAttachment(
   token: string,
   fileId: string

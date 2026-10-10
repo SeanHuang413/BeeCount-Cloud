@@ -8,7 +8,7 @@ import {
   fetchWorkspaceTags,
   updateCategory,
   updateTransaction,
-  uploadAttachment,
+  uploadCategoryIcon,
   type AttachmentRef,
   type WorkspaceAccount,
   type WorkspaceCategory,
@@ -467,10 +467,8 @@ export function GlobalEditDialogs() {
       onEdit={() => undefined}
       onDelete={() => undefined}
       onUploadIcon={async (file) => {
-        const ledgerId = editCatLedgerId.trim()
-        if (!ledgerId) return null
         try {
-          const out = await uploadAttachment(token, { ledger_id: ledgerId, file })
+          const out = await uploadCategoryIcon(token, file)
           return { fileId: out.file_id, sha256: out.sha256 }
         } catch (err) {
           notifyError(err)

@@ -1,15 +1,13 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useSeanReportData } from './sean_shared/useSeanReportData'
+import { SeanReportScope } from './sean_shared/SeanReportScope'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { fetchWorkspaceCategories, fetchWorkspaceTransactions, type WorkspaceCategory, type WorkspaceTransaction } from '@beecount/api-client'
 import { SeanReportCenterPanel } from '@beecount/web-features'
 
 import { useAuth } from '../../context/AuthContext'
 import { useLedgers } from '../../context/LedgersContext'
-import { useSyncRefresh } from '../../context/SyncSocketContext'
 
-const PAGE_SIZE = 500
-const MAX_PAGES = 20
 export type SeanReportPeriod = 'month' | 'last-month' | 'three-months' | 'six-months' | 'twelve-months' | 'custom-month' | 'all'
 
 function currentMonth(): string { const now = new Date(); return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}` }
@@ -38,28 +36,9 @@ export function SeanReportsPage() {
   const navigate = useNavigate()
   const { token } = useAuth()
   const { activeLedgerId, currency } = useLedgers()
-  const [transactions, setTransactions] = useState<WorkspaceTransaction[]>([])
-  const [categories, setCategories] = useState<WorkspaceCategory[]>([])
   const [period, setPeriod] = useState<SeanReportPeriod>('month')
   const [selectedMonth, setSelectedMonth] = useState(currentMonth)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const load = useCallback(async () => {
-    if (!activeLedgerId) { setTransactions([]); setCategories([]); return }
-    setLoading(true); setError(false)
-    try {
-      const range = dateRangeFor(period, selectedMonth)
-      const rows: WorkspaceTransaction[] = []
-      for (let page = 0; page < MAX_PAGES; page += 1) {
-        const response = await fetchWorkspaceTransactions(token, { ledgerId: activeLedgerId, ...range, limit: PAGE_SIZE, offset: page * PAGE_SIZE })
-        rows.push(...response.items)
-        if (rows.length >= response.total || response.items.length < PAGE_SIZE) break
-      }
-      setCategories(await fetchWorkspaceCategories(token, { limit: PAGE_SIZE }))
-      setTransactions(rows)
-    } catch { setTransactions([]); setCategories([]); setError(true) } finally { setLoading(false) }
-  }, [token, activeLedgerId, period, selectedMonth])
-  useEffect(() => { void load() }, [load])
-  useSyncRefresh(() => { void load() })
-  return <SeanReportCenterPanel transactions={transactions} categories={categories} currency={currency} period={period} onPeriodChange={setPeriod} selectedMonth={selectedMonth} onSelectedMonthChange={setSelectedMonth} loading={loading} error={error} onRefresh={() => void load()} onOpenTransactions={(query) => navigate(`/app/transactions${query ? `?q=${encodeURIComponent(query)}` : ''}`)} />
+  const { transactions, categories, loading, error, load, metadata, scopeKey } = useSeanReportData({ token, ledgerId: activeLedgerId, currency, periodKey: `${period}:${selectedMonth}`, range: () => dateRangeFor(period, selectedMonth), categories: true })
+  if (!activeLedgerId) return <div className="mx-auto max-w-[1440px] py-10 text-sm text-muted-foreground">请选择账本后查看此功能。</div>
+  return <div className="mx-auto max-w-[1440px]"><SeanReportScope metadata={metadata}/><SeanReportCenterPanel key={scopeKey} transactions={transactions} categories={categories} currency={currency} period={period} onPeriodChange={setPeriod} selectedMonth={selectedMonth} onSelectedMonthChange={setSelectedMonth} loading={loading} error={error} onRefresh={() => void load()} onOpenTransactions={(query) => navigate(`/app/transactions${query ? `?q=${encodeURIComponent(query)}` : ''}`)} /></div>
 }

@@ -1,4 +1,5 @@
 import type { WorkspaceAccount, WorkspaceTransaction } from '@beecount/api-client'
+import { localReportDay } from '../sean_shared/reportData'
 
 export type CashflowForecastEvent = {
   id: string
@@ -8,6 +9,7 @@ export type CashflowForecastEvent = {
   kind: 'income' | 'expense' | 'credit-card'
   source: 'history' | 'credit-card'
   detail: string
+  evidence?: Array<{ id: string; date: string; amount: number }>
 }
 
 export type CashflowForecast = {
@@ -19,6 +21,7 @@ export type CashflowForecast = {
   expectedIncome: number
   expectedExpense: number
   ignoredCurrencies: string[]
+  omittedGroups: number
 }
 
 const LIQUID_TYPES = new Set(['cash', 'bank_card', 'alipay', 'wechat'])
@@ -83,30 +86,41 @@ export function buildCashflowForecast(
 
   for (const tx of transactions) {
     if (tx.tx_type === 'transfer' || tx.exclude_from_stats) continue
+    const date = new Date(tx.happened_at)
+    if (!Number.isFinite(date.getTime()) || date > now || !Number.isFinite(amountOf(tx)) || amountOf(tx) <= 0) continue
     const txCurrency = (tx.currency_code || base).toUpperCase()
     if (txCurrency !== base) { ignoredCurrencies.add(txCurrency); continue }
     const title = (tx.note || tx.category_name || '').trim()
     if (!title) continue
     const key = `${tx.tx_type}:${title.toLocaleLowerCase()}`
-    groups.set(key, [...(groups.get(key) || []), tx])
+    const group = groups.get(key)
+    if (group) group.push(tx)
+    else groups.set(key, [tx])
   }
 
   const events: CashflowForecastEvent[] = []
+  let omittedGroups = 0
   for (const [key, rows] of groups) {
     const monthly = new Map<string, WorkspaceTransaction>()
+    let ambiguous = false
     for (const row of rows.sort((a, b) => a.happened_at.localeCompare(b.happened_at))) {
-      monthly.set(row.happened_at.slice(0, 7), row)
+      const month = localReportDay(row.happened_at).slice(0, 7)
+      if (monthly.has(month)) ambiguous = true
+      monthly.set(month, row)
     }
+    if (ambiguous) { omittedGroups++; continue }
     const samples = [...monthly.values()].filter((row) => new Date(row.happened_at) <= now).slice(-6)
     if (samples.length < 3) continue
-    const sampleMonths = samples.map((row) => monthIndex(row.happened_at))
+    const sampleMonths = samples.map((row) => monthIndex(localReportDay(row.happened_at)))
     const currentMonth = now.getFullYear() * 12 + now.getMonth() + 1
     if (currentMonth - sampleMonths[sampleMonths.length - 1] > 2) continue
-    if (sampleMonths.slice(1).some((value, index) => value - sampleMonths[index] > 2)) continue
+    if (sampleMonths.slice(1).some((value, index) => value - sampleMonths[index] !== 1)) { omittedGroups++; continue }
     const amounts = samples.map(amountOf).filter((value) => value > 0)
     const typical = median(amounts)
-    if (!typical || Math.max(...amounts) / Math.min(...amounts) > 1.25) continue
-    const day = Math.round(median(samples.map((row) => new Date(row.happened_at).getDate())))
+    if (!typical || Math.max(...amounts) / Math.min(...amounts) > 1.25) { omittedGroups++; continue }
+    const sampleDays = samples.map((row) => new Date(row.happened_at).getDate())
+    if (Math.max(...sampleDays) - Math.min(...sampleDays) > 7) { omittedGroups++; continue }
+    const day = Math.round(median(sampleDays))
     const latestSample = samples[samples.length - 1]
     const title = (latestSample.note || latestSample.category_name || '周期交易').trim()
     for (const date of nextMonthlyDates(day, now, days)) {
@@ -115,6 +129,7 @@ export function buildCashflowForecast(
         id: `history:${key}:${localDate(date)}`,
         date: localDate(date), title, amount: typical, kind, source: 'history',
         detail: `根据最近 ${samples.length} 个月的稳定记录推测`,
+        evidence: samples.map((row) => ({ id: row.id, date: localReportDay(row.happened_at), amount: amountOf(row) })),
       })
     }
   }
@@ -144,13 +159,19 @@ export function buildCashflowForecast(
   let lowestBalanceDate: string | null = null
   let expectedIncome = 0
   let expectedExpense = 0
+  const dailyChanges = new Map<string, number>()
   for (const event of events) {
-    if (event.kind === 'income') { running += event.amount; expectedIncome += event.amount }
-    else { running -= event.amount; expectedExpense += event.amount }
-    if (running < lowestBalance) { lowestBalance = running; lowestBalanceDate = event.date }
+    const change = event.kind === 'income' ? event.amount : -event.amount
+    dailyChanges.set(event.date, (dailyChanges.get(event.date) ?? 0) + change)
+    if (event.kind === 'income') expectedIncome += event.amount
+    else expectedExpense += event.amount
+  }
+  for (const [date, change] of dailyChanges) {
+    running += change
+    if (running < lowestBalance) { lowestBalance = running; lowestBalanceDate = date }
   }
   return {
     events, openingBalance, projectedBalance: running, lowestBalance, lowestBalanceDate,
-    expectedIncome, expectedExpense, ignoredCurrencies: [...ignoredCurrencies].sort(),
+    expectedIncome, expectedExpense, ignoredCurrencies: [...ignoredCurrencies].sort(), omittedGroups,
   }
 }

@@ -7,7 +7,7 @@ import {
   fetchWorkspaceTags,
   fetchWorkspaceTransactions,
   updateCategory,
-  uploadAttachment,
+  uploadCategoryIcon,
   type ReadCategory,
   type WorkspaceCategory,
   type WorkspaceTag,
@@ -224,12 +224,8 @@ export function CategoriesPage() {
           setPendingDelete({ id: ws.id, name: ws.name })
         }}
         onUploadIcon={async (file) => {
-          if (!activeLedgerId) {
-            toast.error(t('accounts.error.ledgerRequired'), t('notice.error'))
-            return null
-          }
           try {
-            const out = await uploadAttachment(token, { ledger_id: activeLedgerId, file })
+            const out = await uploadCategoryIcon(token, file)
             return { fileId: out.file_id, sha256: out.sha256 }
           } catch (err) {
             notifyError(err)

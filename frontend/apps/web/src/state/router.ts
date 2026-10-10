@@ -31,6 +31,7 @@ export const APP_SECTIONS: AppSection[] = [
   'sean-spend-insights',
   'sean-reports',
   'sean-monthly-comparison',
+  'sean-category-trends',
   'sean-asset-trends',
   'sean-assets',
   'sean-actual-spend',
@@ -104,6 +105,8 @@ function parseRootSection(parts: string[]): AppSection {
       return 'sean-reports'
     case 'sean-monthly-comparison':
       return 'sean-monthly-comparison'
+    case 'sean-category-trends':
+      return 'sean-category-trends'
     case 'sean-asset-trends':
       return 'sean-asset-trends'
     case 'sean-assets':
@@ -208,6 +211,7 @@ export function parseRoute(pathname: string): AppRoute {
     parts[1] === 'spend-insights' ||
     parts[1] === 'sean-reports' ||
     parts[1] === 'sean-monthly-comparison' ||
+    parts[1] === 'sean-category-trends' ||
     parts[1] === 'sean-asset-trends'
     || parts[1] === 'sean-assets'
     || parts[1] === 'sean-actual-spend'
@@ -256,6 +260,8 @@ export function routePath(route: AppRoute): string {
       return '/app/sean-reports'
     case 'sean-monthly-comparison':
       return '/app/sean-monthly-comparison'
+    case 'sean-category-trends':
+      return '/app/sean-category-trends'
     case 'sean-asset-trends':
       return '/app/sean-asset-trends'
     case 'sean-assets':

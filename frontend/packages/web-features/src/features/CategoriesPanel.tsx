@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
 
 import {
   Button,
@@ -28,6 +28,10 @@ import { getIconGroupsByKind, type CategoryIconItem } from '../lib/categoryIconG
 import { useSingleFlight } from '../lib/singleFlight'
 import type { CategoryForm } from '../forms'
 import { categoryParent, groupCategories } from '../lib/categoryHierarchy'
+import { SeanCategoryPresetGrid } from './sean_category-icons/SeanCategoryPresetGrid'
+import { categoryPresetFile } from './sean_category-icons/presetFile'
+import type { CategoryIconPreset } from './sean_category-icons/catalog'
+import { presetPreviewSource, type PresetPalette } from './sean_category-icons/presetColors'
 
 type CategoryKind = 'expense' | 'income' | 'transfer'
 
@@ -443,6 +447,9 @@ function IconPickerDialog({
   currentIcon,
   onClose,
   onSelect,
+  onSelectPreset,
+  busy,
+  initialLibrary,
 }: {
   open: boolean
   /** 当前编辑的分类类型,决定 picker 显示支出还是收入图标分组 */
@@ -450,11 +457,16 @@ function IconPickerDialog({
   currentIcon: string | null | undefined
   onClose: () => void
   onSelect: (icon: string) => void
+  onSelectPreset: (preset: CategoryIconPreset, palette?: PresetPalette) => Promise<void>
+  busy: boolean
+  initialLibrary: 'material' | 'presets'
 }) {
   const t = useT()
   const groups = getIconGroupsByKind(kind)
   const [activeGroupIdx, setActiveGroupIdx] = useState(0)
   const [query, setQuery] = useState('')
+  const [library, setLibrary] = useState<'material' | 'presets'>('material')
+  useEffect(() => { if (open) setLibrary(initialLibrary) }, [open, initialLibrary])
 
   useEffect(() => {
     if (!open) {
@@ -522,20 +534,24 @@ function IconPickerDialog({
   }
 
   return (
-    <Dialog open={open} onOpenChange={(next) => { if (!next) onClose() }}>
+    <Dialog open={open} onOpenChange={(next) => { if (!next && !busy) onClose() }}>
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle>{t('categories.iconPicker.title')}</DialogTitle>
         </DialogHeader>
         <div className="space-y-3">
+          <div className="flex gap-2">
+            <Button variant={library === 'material' ? 'default' : 'outline'} disabled={busy} onClick={() => setLibrary('material')}>{t('categories.iconType.material')}</Button>
+            <Button variant={library === 'presets' ? 'default' : 'outline'} disabled={busy} onClick={() => setLibrary('presets')}>{t('categories.presets.title')}</Button>
+          </div>
           <Input
-            placeholder={t('categories.iconPicker.search')}
+            placeholder={t(library === 'presets' ? 'categories.presets.search' : 'categories.iconPicker.search')}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
 
           {/* group tabs:搜索时隐藏,搜索结果优先 */}
-          {!isSearching ? (
+          {library === 'material' && !isSearching ? (
             <div className="flex flex-wrap gap-1.5">
               {groups.map((group, idx) => {
                 const active = idx === activeGroupIdx
@@ -558,7 +574,7 @@ function IconPickerDialog({
           ) : null}
 
           <div className="max-h-[55vh] overflow-y-auto">
-            {visibleIcons.length === 0 ? (
+            {library === 'presets' ? <SeanCategoryPresetGrid query={query} kind={kind} disabled={busy} onSelect={onSelectPreset} /> : visibleIcons.length === 0 ? (
               <div className="py-8 text-center text-xs text-muted-foreground">
                 {t('categories.iconPicker.empty')}
               </div>
@@ -570,7 +586,7 @@ function IconPickerDialog({
           </div>
         </div>
         <DialogFooter>
-          <Button variant="outline" onClick={onClose}>
+          <Button variant="outline" disabled={busy} onClick={onClose}>
             {t('dialog.cancel')}
           </Button>
         </DialogFooter>
@@ -648,8 +664,36 @@ export function CategoriesPanel({
     else setInternalOpen(next)
   }
   const [iconPickerOpen, setIconPickerOpen] = useState(false)
+  const [iconPickerLibrary, setIconPickerLibrary] = useState<'material' | 'presets'>('material')
   const [parentPickerOpen, setParentPickerOpen] = useState(false)
   const [duplicateError, setDuplicateError] = useState<string | null>(null)
+  const [presetBusy, setPresetBusy] = useState(false)
+  const [presetPreview, setPresetPreview] = useState<{ fileId: string; src: string } | null>(null)
+  const currentForm = useRef(form)
+  currentForm.current = form
+  const currentOpen = useRef(open)
+  currentOpen.current = open
+  const mounted = useRef(true)
+  useEffect(() => { mounted.current = true; return () => { mounted.current = false } }, [])
+  const selectPreset = async (preset: CategoryIconPreset, palette?: PresetPalette) => {
+    if (!onUploadIcon || presetBusy) return
+    const originalForm = form
+    setPresetBusy(true)
+    try {
+      const file = await categoryPresetFile(preset, palette)
+      const previewSrc = await presetPreviewSource(preset, palette)
+      if (!mounted.current || !currentOpen.current || currentForm.current !== originalForm) return
+      const uploaded = await onUploadIcon(file)
+      if (!uploaded) throw new Error('Preset upload failed')
+      if (!mounted.current || !currentOpen.current || currentForm.current !== originalForm) return
+      setPresetPreview({ fileId: uploaded.fileId, src: previewSrc })
+      onFormChange({ ...originalForm, icon: 'category', icon_type: 'custom', custom_icon_path: '',
+        icon_cloud_file_id: uploaded.fileId, icon_cloud_sha256: uploaded.sha256 })
+      setIconPickerOpen(false)
+    } finally {
+      if (mounted.current) setPresetBusy(false)
+    }
+  }
   // #450 同款:保存请求返回前的连点会重复创建 —— 单飞守卫 + 按钮禁用。
   const { saving, guard } = useSingleFlight()
 
@@ -705,7 +749,7 @@ export function CategoriesPanel({
       icon={icon}
       iconType={iconType}
       iconCloudFileId={iconCloudFileId}
-      iconPreviewUrlByFileId={iconPreviewUrlByFileId}
+      iconPreviewUrlByFileId={presetPreview ? { ...iconPreviewUrlByFileId, [presetPreview.fileId]: presetPreview.src } : iconPreviewUrlByFileId}
       size={iconType === 'custom' ? customSize ?? 20 : 20}
       imageFit="contain"
       className="text-primary"
@@ -914,6 +958,7 @@ export function CategoriesPanel({
             </div>
 
             {/* 图标:material 走网格选择器,custom 走文件上传 */}
+            {onUploadIcon ? <Button type="button" variant="outline" disabled={presetBusy} onClick={() => { setIconPickerLibrary('presets'); setIconPickerOpen(true) }}>{t('categories.presets.choose')}</Button> : null}
             <div className="space-y-1">
               <Label>{t('categories.placeholder.iconType')}</Label>
               <Select
@@ -935,7 +980,7 @@ export function CategoriesPanel({
                 <Label>{t('categories.placeholder.icon')}</Label>
                 <button
                   type="button"
-                  onClick={() => setIconPickerOpen(true)}
+                  onClick={() => { setIconPickerLibrary('material'); setIconPickerOpen(true) }}
                   className="flex h-10 w-full items-center gap-2 rounded-md border border-input bg-muted px-3 py-2 text-left text-sm shadow-sm transition-colors hover:bg-accent/40"
                 >
                   <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15">
@@ -1025,7 +1070,7 @@ export function CategoriesPanel({
               {t('dialog.cancel')}
             </Button>
             <Button
-              disabled={!canManage || saving}
+              disabled={!canManage || saving || presetBusy}
               onClick={() => void guard(handleSave)}
             >
               {form.editingId ? t('categories.button.update') : t('categories.button.create')}
@@ -1039,7 +1084,10 @@ export function CategoriesPanel({
         kind={form.kind}
         currentIcon={form.icon}
         onClose={() => setIconPickerOpen(false)}
-        onSelect={(icon) => onFormChange({ ...form, icon, icon_type: 'material' })}
+        onSelect={(icon) => onFormChange({ ...form, icon, icon_type: 'material', custom_icon_path: '', icon_cloud_file_id: '', icon_cloud_sha256: '' })}
+        onSelectPreset={selectPreset}
+        busy={presetBusy}
+        initialLibrary={iconPickerLibrary}
       />
 
       {/* 父级分类 picker —— 跟 transaction 表单选交易分类共用同一个 dialog 组件,

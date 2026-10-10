@@ -3,6 +3,11 @@ import { describe, expect, it } from 'vitest'
 import { parseRoute, routePath } from './router'
 
 describe('router path mapping', () => {
+  it('round-trips the category spending trends route', () => {
+    const route = { kind: 'app' as const, ledgerId: '', section: 'sean-category-trends' as const }
+    expect(routePath(route)).toBe('/app/sean-category-trends')
+    expect(parseRoute(routePath(route))).toEqual(route)
+  })
   it('parses login path', () => {
     expect(parseRoute('/login')).toEqual({ kind: 'login' })
     expect(parseRoute('/')).toEqual({ kind: 'login' })

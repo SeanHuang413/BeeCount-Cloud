@@ -7,6 +7,24 @@ const tx = (id, month, amount, type = 'expense') => ({
 })
 
 describe('buildCashflowForecast', () => {
+  it('computes daily closing pressure without inventing an intraday event order', () => {
+    const rows = ['2026-05', '2026-06', '2026-07'].flatMap((month, i) => [tx(`e${i}`, month, 150), tx(`i${i}`, month, 100, 'income')])
+    const accounts = [{ id: 'cash', account_type: 'cash', currency: 'CNY', balance: 100 }]
+    const result = buildCashflowForecast(rows, accounts, 'CNY', 30, new Date(2026, 7, 1))
+    expect(result.lowestBalance).toBe(50)
+    expect(result.projectedBalance).toBe(50)
+  })
+  it('does not collapse several same-name monthly payments into one prediction', () => {
+    const rows = [tx('1', '2026-05', 100), tx('2', '2026-06', 100), tx('3', '2026-07', 100), tx('4', '2026-07', 100)]
+    const result = buildCashflowForecast(rows, [], 'CNY', 30, new Date(2026, 7, 1))
+    expect(result.events).toEqual([])
+    expect(result.omittedGroups).toBe(1)
+  })
+  it('shows source evidence and does not let future rows replace historical samples', () => {
+    const rows = [tx('1', '2026-05', 100), tx('2', '2026-06', 100), tx('3', '2026-07', 100), tx('future', '2027-01', 9000)]
+    const result = buildCashflowForecast(rows, [], 'CNY', 30, new Date(2026, 7, 1))
+    expect(result.events[0].evidence.map((row) => row.id)).toEqual(['1', '2', '3'])
+  })
   it('only forecasts stable recurring rows and includes a due credit card', () => {
     const transactions = [tx('1', '2026-05', 3000), tx('2', '2026-06', 3050), tx('3', '2026-07', 3000)]
     const accounts = [

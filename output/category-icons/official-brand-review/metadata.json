@@ -1,0 +1,1053 @@
+{
+  "淘宝": {
+    "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
+  },
+  "天猫": [
+    {
+      "trackName": "天猫 - 好品牌，好价格，上天猫",
+      "artistName": "浙江天猫网络有限公司",
+      "sellerName": "Zhejiang tmall Network Co., Ltd",
+      "trackId": 518966501,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A9%E7%8C%AB-%E5%A5%BD%E5%93%81%E7%89%8C-%E5%A5%BD%E4%BB%B7%E6%A0%BC-%E4%B8%8A%E5%A4%A9%E7%8C%AB/id518966501?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/37/6a/85376a36-e8bc-ff41-419d-2e887ccac7e8/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "京东-又好又便宜",
+      "artistName": "Beijing Jingdong Century Trading Co., Ltd.",
+      "sellerName": "Beijing Jingdong Century Trading Co., Ltd.",
+      "trackId": 414245413,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C-%E5%8F%88%E5%A5%BD%E5%8F%88%E4%BE%BF%E5%AE%9C/id414245413?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e6/37/e7/e637e7c9-bea1-b9fc-2b80-04edb021083d/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.jd.com"
+    },
+    {
+      "trackName": "天猫精灵",
+      "artistName": "浙江猫精人工智能科技有限公司",
+      "sellerName": "Zhejiang Maojing Artificial Intelligence Technology Co., Ltd",
+      "trackId": 1158753204,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A9%E7%8C%AB%E7%B2%BE%E7%81%B5/id1158753204?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/cb/ad/b8/cbadb822-1119-6589-a509-2e724f9204aa/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "淘宝-万能的淘宝！",
+      "artistName": "浙江淘宝网络有限公司",
+      "sellerName": "Zhejiang Taobao Network Co.,Ltd",
+      "trackId": 387682726,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B7%98%E5%AE%9D-%E4%B8%87%E8%83%BD%E7%9A%84%E6%B7%98%E5%AE%9D/id387682726?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/85/57/c28557ee-1e79-505d-87f7-a534e48ff2fd/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "京东": [
+    {
+      "trackName": "京东-又好又便宜",
+      "artistName": "Beijing Jingdong Century Trading Co., Ltd.",
+      "sellerName": "Beijing Jingdong Century Trading Co., Ltd.",
+      "trackId": 414245413,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C-%E5%8F%88%E5%A5%BD%E5%8F%88%E4%BE%BF%E5%AE%9C/id414245413?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e6/37/e7/e637e7c9-bea1-b9fc-2b80-04edb021083d/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.jd.com"
+    },
+    {
+      "trackName": "京东秒送骑士-兼职众包配送平台",
+      "artistName": "达疆网络科技(上海)有限公司",
+      "sellerName": "Dada Glory Network Technology Co., Ltd.",
+      "trackId": 987425499,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C%E7%A7%92%E9%80%81%E9%AA%91%E5%A3%AB-%E5%85%BC%E8%81%8C%E4%BC%97%E5%8C%85%E9%85%8D%E9%80%81%E5%B9%B3%E5%8F%B0/id987425499?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6a/d2/d6/6ad2d667-3950-3cea-33e5-a8acdafbb884/AppIcon-jd-0-0-1x_U007ephone-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.imdada.cn"
+    },
+    {
+      "trackName": "京东外卖-更快更便宜",
+      "artistName": "JD",
+      "sellerName": "BEIJING JINGDONG 360 DU E-COMMERCE LTD.",
+      "trackId": 6752605146,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C%E5%A4%96%E5%8D%96-%E6%9B%B4%E5%BF%AB%E6%9B%B4%E4%BE%BF%E5%AE%9C/id6752605146?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/56/e1/1956e1b6-1d44-8e4f-6829-f929ea4c81b1/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.jddj.com/#/homeWaimai"
+    },
+    {
+      "trackName": "京东金融-黄金基金理财借贷保险一站式平台",
+      "artistName": "Beijing Jingdong Financial Technology Holdings Co., Ltd.",
+      "sellerName": "Beijing Jingdong Financial Technology Holdings Co., Ltd",
+      "trackId": 895682747,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C%E9%87%91%E8%9E%8D-%E9%BB%84%E9%87%91%E5%9F%BA%E9%87%91%E7%90%86%E8%B4%A2%E5%80%9F%E8%B4%B7%E4%BF%9D%E9%99%A9%E4%B8%80%E7%AB%99%E5%BC%8F%E5%B9%B3%E5%8F%B0/id895682747?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7d/74/af/7d74af96-af89-ae14-cbf5-5bbd89859ab7/AppIcon-0-1x_U007epad-0-1-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "拼多多": [
+    {
+      "trackName": "拼多多 - 多多买菜，百亿补贴",
+      "artistName": "上海寻梦信息技术有限公司",
+      "sellerName": "Shanghai Xunmeng Information Technology Co., Ltd.",
+      "trackId": 1044283059,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8B%BC%E5%A4%9A%E5%A4%9A-%E5%A4%9A%E5%A4%9A%E4%B9%B0%E8%8F%9C-%E7%99%BE%E4%BA%BF%E8%A1%A5%E8%B4%B4/id1044283059?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2b/8d/11/2b8d11cc-2553-fbb7-0b84-458132f00c5a/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "小红书 - 你的生活兴趣社区",
+      "artistName": "Xingin",
+      "sellerName": "Xingin Information Technology (Shanghai) Co., Ltd",
+      "trackId": 741292507,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%BA%A2%E4%B9%A6-%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%B4%E8%B6%A3%E7%A4%BE%E5%8C%BA/id741292507?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/62/b2/1962b20d-5dfa-b136-3b05-eb1a51a17e82/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.xiaohongshu.com/protocols/about"
+    },
+    {
+      "trackName": "淘宝-万能的淘宝！",
+      "artistName": "浙江淘宝网络有限公司",
+      "sellerName": "Zhejiang Taobao Network Co.,Ltd",
+      "trackId": 387682726,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B7%98%E5%AE%9D-%E4%B8%87%E8%83%BD%E7%9A%84%E6%B7%98%E5%AE%9D/id387682726?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/85/57/c28557ee-1e79-505d-87f7-a534e48ff2fd/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "拼多多商家版",
+      "artistName": "上海寻梦信息技术有限公司",
+      "sellerName": "Shanghai Xunmeng Information Technology Co., Ltd.",
+      "trackId": 1229469444,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8B%BC%E5%A4%9A%E5%A4%9A%E5%95%86%E5%AE%B6%E7%89%88/id1229469444?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4d/2a/a8/4d2aa8f8-94ef-6303-dce8-ed4450674748/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "抖音商城": [
+    {
+      "trackName": "抖音商城-下单返积分、退货包运费",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 1485191072,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3%E5%95%86%E5%9F%8E-%E4%B8%8B%E5%8D%95%E8%BF%94%E7%A7%AF%E5%88%86-%E9%80%80%E8%B4%A7%E5%8C%85%E8%BF%90%E8%B4%B9/id1485191072?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3c/de/10/3cde1090-9646-53ec-a173-d4d0072a5c91/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "抖音",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 1142110895,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3/id1142110895?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/10/a6/b910a676-a3ee-42b6-3c82-e824bd391aca/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "抖音极速版",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 1477031443,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3%E6%9E%81%E9%80%9F%E7%89%88/id1477031443?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ab/2a/44/ab2a44f0-366f-5877-b66f-3491118bf370/AppIcon_Lite-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "抖省省 - 抖音官方团购平台",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 6756863766,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E7%9C%81%E7%9C%81-%E6%8A%96%E9%9F%B3%E5%AE%98%E6%96%B9%E5%9B%A2%E8%B4%AD%E5%B9%B3%E5%8F%B0/id6756863766?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ea/46/0d/ea460d02-f212-071d-41ad-243c0dd204f3/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "快手": [
+    {
+      "trackName": "快手",
+      "artistName": "Beijing Kwai Technology Co., Ltd.",
+      "sellerName": "Beijing Kwai Technology Co., Ltd.",
+      "trackId": 440948110,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%BF%AB%E6%89%8B/id440948110?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/52/45/88/524588cc-ba64-a9ec-393a-b6718a85ab03/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://m.ssl.kuaishou.com/app/home/hot?openFrom=AppleStore_wap"
+    },
+    {
+      "trackName": "快手极速版",
+      "artistName": "华艺汇龙",
+      "sellerName": "Beijing Huayi Huilong Network Technology Co., Ltd.",
+      "trackId": 1472502819,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%BF%AB%E6%89%8B%E6%9E%81%E9%80%9F%E7%89%88/id1472502819?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/07/36/23/073623eb-2180-ea2b-89c8-acd30a94c28c/AppIconNebula-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "抖音",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 1142110895,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3/id1142110895?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/10/a6/b910a676-a3ee-42b6-3c82-e824bd391aca/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "唯品会": [
+    {
+      "trackName": "唯品会",
+      "artistName": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+      "sellerName": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+      "trackId": 417200582,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%94%AF%E5%93%81%E4%BC%9A/id417200582?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/8d/66/858d6671-0924-a5eb-cca5-22a21e703955/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "得物 - 得到美好事物",
+      "artistName": "Shanghai Dewu Information Group Co., Ltd.",
+      "sellerName": "Shanghai Dewu Information Group Co., Ltd.",
+      "trackId": 1012871328,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%BE%97%E7%89%A9-%E5%BE%97%E5%88%B0%E7%BE%8E%E5%A5%BD%E4%BA%8B%E7%89%A9/id1012871328?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/12/83/80/1283806c-94ac-0bdb-0f88-4ff01d829f69/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "京东-又好又便宜",
+      "artistName": "Beijing Jingdong Century Trading Co., Ltd.",
+      "sellerName": "Beijing Jingdong Century Trading Co., Ltd.",
+      "trackId": 414245413,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C-%E5%8F%88%E5%A5%BD%E5%8F%88%E4%BE%BF%E5%AE%9C/id414245413?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e6/37/e7/e637e7c9-bea1-b9fc-2b80-04edb021083d/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.jd.com"
+    },
+    {
+      "trackName": "天猫 - 好品牌，好价格，上天猫",
+      "artistName": "浙江天猫网络有限公司",
+      "sellerName": "Zhejiang tmall Network Co., Ltd",
+      "trackId": 518966501,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A9%E7%8C%AB-%E5%A5%BD%E5%93%81%E7%89%8C-%E5%A5%BD%E4%BB%B7%E6%A0%BC-%E4%B8%8A%E5%A4%A9%E7%8C%AB/id518966501?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/37/6a/85376a36-e8bc-ff41-419d-2e887ccac7e8/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "苏宁易购": [
+    {
+      "trackName": "苏宁易购",
+      "artistName": "Suning Commerce Group Co.,Ltd.",
+      "sellerName": "Suning Commerce Group Co.,Ltd.",
+      "trackId": 424598114,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E8%8B%8F%E5%AE%81%E6%98%93%E8%B4%AD/id424598114?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/82/90/6a/82906a44-d09c-432e-0d9a-61ea6c567b57/AppIcon-1-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "星图金融—原苏宁金融",
+      "artistName": "Shanghai STAR ATLAS Financial Services Group Co., Ltd.",
+      "sellerName": "Shanghai STAR ATLAS Financial Services Group Co., Ltd.",
+      "trackId": 609358564,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%98%9F%E5%9B%BE%E9%87%91%E8%9E%8D-%E5%8E%9F%E8%8B%8F%E5%AE%81%E9%87%91%E8%9E%8D/id609358564?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2f/09/25/2f0925ab-2b68-07f2-3b6a-e0864a6047d6/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://jinrong.suning.com/"
+    },
+    {
+      "trackName": "唯品会",
+      "artistName": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+      "sellerName": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+      "trackId": 417200582,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%94%AF%E5%93%81%E4%BC%9A/id417200582?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/8d/66/858d6671-0924-a5eb-cca5-22a21e703955/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "天猫 - 好品牌，好价格，上天猫",
+      "artistName": "浙江天猫网络有限公司",
+      "sellerName": "Zhejiang tmall Network Co., Ltd",
+      "trackId": 518966501,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A9%E7%8C%AB-%E5%A5%BD%E5%93%81%E7%89%8C-%E5%A5%BD%E4%BB%B7%E6%A0%BC-%E4%B8%8A%E5%A4%A9%E7%8C%AB/id518966501?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/37/6a/85376a36-e8bc-ff41-419d-2e887ccac7e8/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "小米商城": [
+    {
+      "trackName": "小米商城",
+      "artistName": "Beijing Xiaomi Co., Ltd",
+      "sellerName": "Beijing Xiaomi Co., Ltd",
+      "trackId": 1024958046,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8E/id1024958046?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/52/aa/e5/52aae52c-a0f6-2762-1bcf-8e3ec4da3e7b/AppIcon-0-1x_U007emarketing-0-6-0-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "http://mi.com"
+    },
+    {
+      "trackName": "米家",
+      "artistName": "Beijing Xiaomi Co., Ltd",
+      "sellerName": "Beijing Xiaomi Co., Ltd",
+      "trackId": 957323480,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%B1%B3%E5%AE%B6/id957323480?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/2b/d1/28/2bd128e2-37b1-5666-ff6d-94e7dccf28ff/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://mi.com"
+    },
+    {
+      "trackName": "小米有品",
+      "artistName": "Beijing Xiaomi Co., Ltd",
+      "sellerName": "Beijing Xiaomi Co., Ltd",
+      "trackId": 1212182562,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%B1%B3%E6%9C%89%E5%93%81/id1212182562?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/48/f4/9b/48f49b76-4e24-40a2-5dfb-8c618e4863a8/AppIcon-1x_U007emarketing-0-6-0-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://youpin.mi.com"
+    },
+    {
+      "trackName": "小米汽车",
+      "artistName": "Xiaomi EV Technology Co., Ltd.",
+      "sellerName": "Xiaomi EV Technology Co., Ltd.",
+      "trackId": 6473663234,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%B1%B3%E6%B1%BD%E8%BD%A6/id6473663234?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/7a/e4/1c/7ae41cee-ef6f-634d-6efb-14131e2dccc6/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "得物": [
+    {
+      "trackName": "得物 - 得到美好事物",
+      "artistName": "Shanghai Dewu Information Group Co., Ltd.",
+      "sellerName": "Shanghai Dewu Information Group Co., Ltd.",
+      "trackId": 1012871328,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%BE%97%E7%89%A9-%E5%BE%97%E5%88%B0%E7%BE%8E%E5%A5%BD%E4%BA%8B%E7%89%A9/id1012871328?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/12/83/80/1283806c-94ac-0bdb-0f88-4ff01d829f69/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "抖音",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 1142110895,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3/id1142110895?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/10/a6/b910a676-a3ee-42b6-3c82-e824bd391aca/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "识货-购物之前要识货",
+      "artistName": "Shanghai Shizhi Information Technology Co., Ltd.",
+      "sellerName": "Shanghai Shizhi Information Technology Co., Ltd.",
+      "trackId": 875177200,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E8%AF%86%E8%B4%A7-%E8%B4%AD%E7%89%A9%E4%B9%8B%E5%89%8D%E8%A6%81%E8%AF%86%E8%B4%A7/id875177200?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ec/ca/7d/ecca7d17-830b-798b-9d23-5143287c747e/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://m.shihuo.cn/app/download"
+    },
+    {
+      "trackName": "小红书 - 你的生活兴趣社区",
+      "artistName": "Xingin",
+      "sellerName": "Xingin Information Technology (Shanghai) Co., Ltd",
+      "trackId": 741292507,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%BA%A2%E4%B9%A6-%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%B4%E8%B6%A3%E7%A4%BE%E5%8C%BA/id741292507?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/62/b2/1962b20d-5dfa-b136-3b05-eb1a51a17e82/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.xiaohongshu.com/protocols/about"
+    }
+  ],
+  "闲鱼": [
+    {
+      "trackName": "闲鱼 - 上闲鱼，赚一笔 !",
+      "artistName": "浙江阿里巴巴闲鱼网络科技有限公司",
+      "sellerName": "Zhejiang Alibaba Xianyu Network Technology Co., Ltd.",
+      "trackId": 510909506,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%97%B2%E9%B1%BC-%E4%B8%8A%E9%97%B2%E9%B1%BC-%E8%B5%9A%E4%B8%80%E7%AC%94/id510909506?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a7/7d/97/a77d970b-9da7-9154-56ab-46f114ea7736/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://goofish.com/"
+    },
+    {
+      "trackName": "转转-二手官方验",
+      "artistName": "Zhuanzhuan Co.,Ltd.",
+      "sellerName": "Zhuanzhuan Co.,Ltd.",
+      "trackId": 1002355194,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E8%BD%AC%E8%BD%AC-%E4%BA%8C%E6%89%8B%E5%AE%98%E6%96%B9%E9%AA%8C/id1002355194?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/0e/a6/dc/0ea6dcb7-d1ec-6998-276f-82a3227fb23f/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "小红书 - 你的生活兴趣社区",
+      "artistName": "Xingin",
+      "sellerName": "Xingin Information Technology (Shanghai) Co., Ltd",
+      "trackId": 741292507,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%BA%A2%E4%B9%A6-%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%B4%E8%B6%A3%E7%A4%BE%E5%8C%BA/id741292507?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/62/b2/1962b20d-5dfa-b136-3b05-eb1a51a17e82/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.xiaohongshu.com/protocols/about"
+    },
+    {
+      "trackName": "拼多多 - 多多买菜，百亿补贴",
+      "artistName": "上海寻梦信息技术有限公司",
+      "sellerName": "Shanghai Xunmeng Information Technology Co., Ltd.",
+      "trackId": 1044283059,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8B%BC%E5%A4%9A%E5%A4%9A-%E5%A4%9A%E5%A4%9A%E4%B9%B0%E8%8F%9C-%E7%99%BE%E4%BA%BF%E8%A1%A5%E8%B4%B4/id1044283059?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2b/8d/11/2b8d11cc-2553-fbb7-0b84-458132f00c5a/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "网易严选": [
+    {
+      "trackName": "网易严选 - 严选好物，用心生活",
+      "artistName": "网易自营电商",
+      "sellerName": "Hangzhou Netease Miaode Technology Co., Ltd.",
+      "trackId": 1065178761,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%BD%91%E6%98%93%E4%B8%A5%E9%80%89-%E4%B8%A5%E9%80%89%E5%A5%BD%E7%89%A9-%E7%94%A8%E5%BF%83%E7%94%9F%E6%B4%BB/id1065178761?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/68/01/1f6801fa-504c-fbe0-c14e-8f46b8245de2/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "小米有品",
+      "artistName": "Beijing Xiaomi Co., Ltd",
+      "sellerName": "Beijing Xiaomi Co., Ltd",
+      "trackId": 1212182562,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%B1%B3%E6%9C%89%E5%93%81/id1212182562?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/48/f4/9b/48f49b76-4e24-40a2-5dfb-8c618e4863a8/AppIcon-1x_U007emarketing-0-6-0-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://youpin.mi.com"
+    },
+    {
+      "trackName": "IKEA 宜家家居",
+      "artistName": "Inter IKEA Systems B.V.",
+      "sellerName": "Inter IKEA Systems B.V.",
+      "trackId": 1487448370,
+      "trackViewUrl": "https://apps.apple.com/cn/app/ikea-%E5%AE%9C%E5%AE%B6%E5%AE%B6%E5%B1%85/id1487448370?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/fe/50/74/fe50745c-8855-cad2-b5ea-d04edbe9c11e/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.ikea.cn/"
+    },
+    {
+      "trackName": "唯品会",
+      "artistName": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+      "sellerName": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+      "trackId": 417200582,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%94%AF%E5%93%81%E4%BC%9A/id417200582?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/8d/66/858d6671-0924-a5eb-cca5-22a21e703955/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "山姆会员商店": [
+    {
+      "trackName": "山姆会员商店",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 818237113,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/id818237113?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/6b/c3/d76bc307-e74e-a126-39a4-6494adead0b0/AppIcon-1x_U007emarketing-0-5-0-85-220-0.jpeg/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "麦德龙",
+      "artistName": "上海麦德龙商贸有限公司",
+      "sellerName": "Shanghai MDL Commerce & Trading Co., Ltd.",
+      "trackId": 1540021694,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%BA%A6%E5%BE%B7%E9%BE%99/id1540021694?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/93/d0/a7/93d0a7dc-24bc-628e-ccfc-75c74e0cabd7/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.mcg-retail.com"
+    },
+    {
+      "trackName": "抖音",
+      "artistName": "Beijing Douyin Technology Co., Ltd.",
+      "sellerName": "Beijing Douyin Technology Co., Ltd.",
+      "trackId": 1142110895,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3/id1142110895?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b9/10/a6/b910a676-a3ee-42b6-3c82-e824bd391aca/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "沃尔玛": [
+    {
+      "trackName": "沃尔玛",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 6737541723,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B2%83%E5%B0%94%E7%8E%9B/id6737541723?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e2/69/28/e2692875-38f7-1687-1ea1-02394d335505/AppIcon-0-0-1x_U007ephone-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "山姆会员商店",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 818237113,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/id818237113?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/6b/c3/d76bc307-e74e-a126-39a4-6494adead0b0/AppIcon-1x_U007emarketing-0-5-0-85-220-0.jpeg/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    }
+  ],
+  "盒马": [
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "山姆会员商店",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 818237113,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/id818237113?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/6b/c3/d76bc307-e74e-a126-39a4-6494adead0b0/AppIcon-1x_U007emarketing-0-5-0-85-220-0.jpeg/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马驾到",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1601786675,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC%E9%A9%BE%E5%88%B0/id1601786675?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f0/a7/f6/f0a7f625-decf-cffb-d755-36b53e562a1f/AppIcon-0-0-1x_U007emarketing-0-6-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "叮咚买菜——品质之爱",
+      "artistName": "Shanghai 100 meters Network Technology Co., Ltd.",
+      "sellerName": "Shanghai 100 meters  Network Technology Co., Ltd.",
+      "trackId": 768082524,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%8F%AE%E5%92%9A%E4%B9%B0%E8%8F%9C-%E5%93%81%E8%B4%A8%E4%B9%8B%E7%88%B1/id768082524?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5b/6e/d0/5b6ed0fe-ee4c-50a5-2222-8cd54b270c01/AppIcon-0-0-1x_U007emarketing-0-6-0-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.100.me/"
+    }
+  ],
+  "朴朴超市": [
+    {
+      "trackName": "朴朴超市-30分钟快送",
+      "artistName": "福州朴朴电子商务有限公司",
+      "sellerName": "Fuzhou Pupu E-Commerce Co., Ltd",
+      "trackId": 1144025167,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%9C%B4%E6%9C%B4%E8%B6%85%E5%B8%82-30%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%81/id1144025167?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b3/16/68/b31668b0-7405-22ee-b4fe-05879de6024b/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "小象超市",
+      "artistName": "Beijing Baobao Eat Better Food and Dining Management Co., Ltd.",
+      "sellerName": "Beijing Baobao Eat Better Food and Dining Management Co., Ltd.",
+      "trackId": 1444411068,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E8%B1%A1%E8%B6%85%E5%B8%82/id1444411068?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4e/ad/1c/4ead1c5c-ffc8-cf39-af19-bc3c67c73be9/AppIcon-0-0-1x_U007emarketing-0-3-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "淘宝闪购-点外卖更优惠",
+      "artistName": "Shanghai Rajax Information Technology Co., Ltd.",
+      "sellerName": "Shanghai Rajax Information Technology Co., Ltd.",
+      "trackId": 507161324,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B7%98%E5%AE%9D%E9%97%AA%E8%B4%AD-%E7%82%B9%E5%A4%96%E5%8D%96%E6%9B%B4%E4%BC%98%E6%83%A0/id507161324?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bf/1a/8a/bf1a8ade-77a0-d667-d7d8-c590343de98a/AppIcon_new-0-1x_U007epad-0-1-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.ele.me/support/about/contact"
+    }
+  ],
+  "永辉超市": [
+    {
+      "trackName": "永辉线上超市",
+      "artistName": "永辉云创科技有限公司",
+      "sellerName": "Yong Hui Yun Chuang Science and Technology Co., Ltd.",
+      "trackId": 1061504496,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B0%B8%E8%BE%89%E7%BA%BF%E4%B8%8A%E8%B6%85%E5%B8%82/id1061504496?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/4d/55/704d55f5-7d63-bef9-e546-7a3ea8de1c1d/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "多点-最快30分钟新鲜到家优选好物特卖商城",
+      "artistName": "多点新鲜(北京)电子商务有限公司",
+      "sellerName": "Dmall Beijing E-Commerce Co. Ltd.",
+      "trackId": 1002314698,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%9A%E7%82%B9-%E6%9C%80%E5%BF%AB30%E5%88%86%E9%92%9F%E6%96%B0%E9%B2%9C%E5%88%B0%E5%AE%B6%E4%BC%98%E9%80%89%E5%A5%BD%E7%89%A9%E7%89%B9%E5%8D%96%E5%95%86%E5%9F%8E/id1002314698?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e8/ba/92/e8ba92e1-3ea7-4ab7-c1c5-74f0b146e67e/AppIcon-0-0-1x_U007emarketing-0-5-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "淘宝闪购-点外卖更优惠",
+      "artistName": "Shanghai Rajax Information Technology Co., Ltd.",
+      "sellerName": "Shanghai Rajax Information Technology Co., Ltd.",
+      "trackId": 507161324,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B7%98%E5%AE%9D%E9%97%AA%E8%B4%AD-%E7%82%B9%E5%A4%96%E5%8D%96%E6%9B%B4%E4%BC%98%E6%83%A0/id507161324?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/bf/1a/8a/bf1a8ade-77a0-d667-d7d8-c590343de98a/AppIcon_new-0-1x_U007epad-0-1-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.ele.me/support/about/contact"
+    }
+  ],
+  "大润发": [
+    {
+      "trackName": "大润发优鲜 - 爱生活逛大润发",
+      "artistName": "上海润国信息技术有限公司",
+      "sellerName": "Shanghai Runguo Information Technology Co.,Ltd",
+      "trackId": 1204634317,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A7%E6%B6%A6%E5%8F%91%E4%BC%98%E9%B2%9C-%E7%88%B1%E7%94%9F%E6%B4%BB%E9%80%9B%E5%A4%A7%E6%B6%A6%E5%8F%91/id1204634317?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0f/83/71/0f837172-dd33-ea54-757f-702c272638df/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "大润发e路发",
+      "artistName": "上海润国信息技术有限公司",
+      "sellerName": "Shanghai Runguo Information Technology Co.,Ltd",
+      "trackId": 1204633015,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A7%E6%B6%A6%E5%8F%91e%E8%B7%AF%E5%8F%91/id1204633015?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e2/25/12/e22512fa-7b96-495f-0360-dd7a1e0b0d6a/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "永辉线上超市",
+      "artistName": "永辉云创科技有限公司",
+      "sellerName": "Yong Hui Yun Chuang Science and Technology Co., Ltd.",
+      "trackId": 1061504496,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B0%B8%E8%BE%89%E7%BA%BF%E4%B8%8A%E8%B6%85%E5%B8%82/id1061504496?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/4d/55/704d55f5-7d63-bef9-e546-7a3ea8de1c1d/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "华润万家": [
+    {
+      "trackName": "华润万家",
+      "artistName": "深圳市华润万家电子商务有限公司",
+      "sellerName": "Shenzhen Huarun Wanjia Electronic Commerc Co., Ltd.",
+      "trackId": 1445796613,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%8D%8E%E6%B6%A6%E4%B8%87%E5%AE%B6/id1445796613?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/ae/0d/acae0da9-035a-6806-254c-ad7bb706c336/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.ewj.com"
+    },
+    {
+      "trackName": "麦德龙",
+      "artistName": "上海麦德龙商贸有限公司",
+      "sellerName": "Shanghai MDL Commerce & Trading Co., Ltd.",
+      "trackId": 1540021694,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%BA%A6%E5%BE%B7%E9%BE%99/id1540021694?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/93/d0/a7/93d0a7dc-24bc-628e-ccfc-75c74e0cabd7/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.mcg-retail.com"
+    },
+    {
+      "trackName": "华润通",
+      "artistName": "华润网络(深圳)有限公司",
+      "sellerName": "China Resources Networks ( Shenzhen) Co., Ltd",
+      "trackId": 1175972491,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%8D%8E%E6%B6%A6%E9%80%9A/id1175972491?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/b9/3c/03/b93c03ac-663a-9e55-4b44-11e44dddf40e/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "永辉线上超市",
+      "artistName": "永辉云创科技有限公司",
+      "sellerName": "Yong Hui Yun Chuang Science and Technology Co., Ltd.",
+      "trackId": 1061504496,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B0%B8%E8%BE%89%E7%BA%BF%E4%B8%8A%E8%B6%85%E5%B8%82/id1061504496?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/4d/55/704d55f5-7d63-bef9-e546-7a3ea8de1c1d/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "天虹": [
+    {
+      "trackName": "天虹官方APP",
+      "artistName": "Rainbow Department Store Co., Ltd.",
+      "sellerName": "Rainbow Department Store Co., Ltd.",
+      "trackId": 959900028,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A9%E8%99%B9%E5%AE%98%E6%96%B9app/id959900028?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0b/e5/c2/0be5c2de-f09c-e03e-733b-d3d0c989a53f/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.rainbow.cn"
+    },
+    {
+      "trackName": "小红书 - 你的生活兴趣社区",
+      "artistName": "Xingin",
+      "sellerName": "Xingin Information Technology (Shanghai) Co., Ltd",
+      "trackId": 741292507,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%BA%A2%E4%B9%A6-%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%B4%E8%B6%A3%E7%A4%BE%E5%8C%BA/id741292507?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/62/b2/1962b20d-5dfa-b136-3b05-eb1a51a17e82/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.xiaohongshu.com/protocols/about"
+    },
+    {
+      "trackName": "天虹TMS",
+      "artistName": "Rainbow Department Store Co., Ltd.",
+      "sellerName": "Rainbow Department Store Co., Ltd.",
+      "trackId": 1466047362,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A9%E8%99%B9tms/id1466047362?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/fa/69/fa/fa69fac1-df99-2c7d-d1a9-f4fdd72bc075/AppIcon-0-0-1x_U007emarketing-0-8-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "华润万家",
+      "artistName": "深圳市华润万家电子商务有限公司",
+      "sellerName": "Shenzhen Huarun Wanjia Electronic Commerc Co., Ltd.",
+      "trackId": 1445796613,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%8D%8E%E6%B6%A6%E4%B8%87%E5%AE%B6/id1445796613?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/ae/0d/acae0da9-035a-6806-254c-ad7bb706c336/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.ewj.com"
+    }
+  ],
+  "麦德龙": [
+    {
+      "trackName": "麦德龙",
+      "artistName": "上海麦德龙商贸有限公司",
+      "sellerName": "Shanghai MDL Commerce & Trading Co., Ltd.",
+      "trackId": 1540021694,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%BA%A6%E5%BE%B7%E9%BE%99/id1540021694?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/93/d0/a7/93d0a7dc-24bc-628e-ccfc-75c74e0cabd7/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.mcg-retail.com"
+    },
+    {
+      "trackName": "山姆会员商店",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 818237113,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/id818237113?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/6b/c3/d76bc307-e74e-a126-39a4-6494adead0b0/AppIcon-1x_U007emarketing-0-5-0-85-220-0.jpeg/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "沃尔玛",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 6737541723,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B2%83%E5%B0%94%E7%8E%9B/id6737541723?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e2/69/28/e2692875-38f7-1687-1ea1-02394d335505/AppIcon-0-0-1x_U007ephone-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "开市客": [
+    {
+      "trackName": "开市客",
+      "artistName": "Costco",
+      "sellerName": "Costco (China) Investment Co., Ltd.",
+      "trackId": 1457942022,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%BC%80%E5%B8%82%E5%AE%A2/id1457942022?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f5/81/9c/f5819c81-3ecd-eeb1-92b1-6f7424aac2d4/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "麦德龙",
+      "artistName": "上海麦德龙商贸有限公司",
+      "sellerName": "Shanghai MDL Commerce & Trading Co., Ltd.",
+      "trackId": 1540021694,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%BA%A6%E5%BE%B7%E9%BE%99/id1540021694?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/93/d0/a7/93d0a7dc-24bc-628e-ccfc-75c74e0cabd7/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.mcg-retail.com"
+    },
+    {
+      "trackName": "小红书 - 你的生活兴趣社区",
+      "artistName": "Xingin",
+      "sellerName": "Xingin Information Technology (Shanghai) Co., Ltd",
+      "trackId": 741292507,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%BA%A2%E4%B9%A6-%E4%BD%A0%E7%9A%84%E7%94%9F%E6%B4%BB%E5%85%B4%E8%B6%A3%E7%A4%BE%E5%8C%BA/id741292507?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/19/62/b2/1962b20d-5dfa-b136-3b05-eb1a51a17e82/AppIcon-0-0-1x_U007epad-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.xiaohongshu.com/protocols/about"
+    },
+    {
+      "trackName": "叮咚买菜——品质之爱",
+      "artistName": "Shanghai 100 meters Network Technology Co., Ltd.",
+      "sellerName": "Shanghai 100 meters  Network Technology Co., Ltd.",
+      "trackId": 768082524,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%8F%AE%E5%92%9A%E4%B9%B0%E8%8F%9C-%E5%93%81%E8%B4%A8%E4%B9%8B%E7%88%B1/id768082524?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/5b/6e/d0/5b6ed0fe-ee4c-50a5-2222-8cd54b270c01/AppIcon-0-0-1x_U007emarketing-0-6-0-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.100.me/"
+    }
+  ],
+  "胖东来": [
+    {
+      "trackName": "山姆会员商店",
+      "artistName": "沃尔玛(中国)投资有限公司",
+      "sellerName": "Walmart (China) Holding Co.,Ltd",
+      "trackId": 818237113,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/id818237113?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/6b/c3/d76bc307-e74e-a126-39a4-6494adead0b0/AppIcon-1x_U007emarketing-0-5-0-85-220-0.jpeg/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "麦德龙",
+      "artistName": "上海麦德龙商贸有限公司",
+      "sellerName": "Shanghai MDL Commerce & Trading Co., Ltd.",
+      "trackId": 1540021694,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%BA%A6%E5%BE%B7%E9%BE%99/id1540021694?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/93/d0/a7/93d0a7dc-24bc-628e-ccfc-75c74e0cabd7/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.mcg-retail.com"
+    }
+  ],
+  "家乐福": [
+    {
+      "trackName": "Carrefour & sa carte Club",
+      "artistName": "Carrefour",
+      "sellerName": "Carrefour Organisation et Systemes Groupe",
+      "trackId": 378305156,
+      "trackViewUrl": "https://apps.apple.com/cn/app/carrefour-sa-carte-club/id378305156?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1e/f2/6d/1ef26d4a-4c7a-1773-db02-327e7d2bc63c/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "MAF Carrefour Online Shopping",
+      "artistName": "MAF HYPERMARKETS (AL SHANDAGHA BR)",
+      "sellerName": "MAF HYPERMARKETS L.L.C (AL SHANDAGHA BR)",
+      "trackId": 626805470,
+      "trackViewUrl": "https://apps.apple.com/cn/app/maf-carrefour-online-shopping/id626805470?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/c1/46/acc14665-d0a7-509c-f8e0-56841064e589/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.carrefouruae.com/"
+    },
+    {
+      "trackName": "大润发优鲜 - 爱生活逛大润发",
+      "artistName": "上海润国信息技术有限公司",
+      "sellerName": "Shanghai Runguo Information Technology Co.,Ltd",
+      "trackId": 1204634317,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%A7%E6%B6%A6%E5%8F%91%E4%BC%98%E9%B2%9C-%E7%88%B1%E7%94%9F%E6%B4%BB%E9%80%9B%E5%A4%A7%E6%B6%A6%E5%8F%91/id1204634317?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0f/83/71/0f837172-dd33-ea54-757f-702c272638df/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "百佳": [
+    {
+      "trackName": "百佳会议",
+      "artistName": "百佳会议",
+      "sellerName": "Gansu now enterprise service network technology Co., LTD",
+      "trackId": 6738489971,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%99%BE%E4%BD%B3%E4%BC%9A%E8%AE%AE/id6738489971?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/02/6a/52/026a5297-b614-c8cc-bbcc-3d1e236743d6/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://best-meeting.cn"
+    },
+    {
+      "trackName": "PNS eShop",
+      "artistName": "AS Watson & Company, Limited",
+      "sellerName": "AS Watson & Company, Limited",
+      "trackId": 840837558,
+      "trackViewUrl": "https://apps.apple.com/cn/app/pns-eshop/id840837558?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3d/2a/b8/3d2ab8ed-1cba-d7c2-b437-484ed3b7fafb/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.pns.hk/en/"
+    },
+    {
+      "trackName": "惠康網店",
+      "artistName": "The Dairy Farm Company, Limited",
+      "sellerName": "The Dairy Farm Company, Limited",
+      "trackId": 6473398628,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%83%A0%E5%BA%B7%E7%B6%B2%E5%BA%97/id6473398628?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/69/24/19/69241992-5ed9-44f2-0394-c8b628a4a188/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://www.wellcome.com.hk/"
+    },
+    {
+      "trackName": "HKTVmall – 網上購物",
+      "artistName": "Hong Kong Technology Venture Company Limited",
+      "sellerName": "Hong Kong Technology Venture Company Limited",
+      "trackId": 910398738,
+      "trackViewUrl": "https://apps.apple.com/cn/app/hktvmall-%E7%B6%B2%E4%B8%8A%E8%B3%BC%E7%89%A9/id910398738?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/6f/ab/df/6fabdf54-6a96-34a9-0d77-425730dcd6e4/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "嘉荣": [
+    {
+      "trackName": "多点-最快30分钟新鲜到家优选好物特卖商城",
+      "artistName": "多点新鲜(北京)电子商务有限公司",
+      "sellerName": "Dmall Beijing E-Commerce Co. Ltd.",
+      "trackId": 1002314698,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%A4%9A%E7%82%B9-%E6%9C%80%E5%BF%AB30%E5%88%86%E9%92%9F%E6%96%B0%E9%B2%9C%E5%88%B0%E5%AE%B6%E4%BC%98%E9%80%89%E5%A5%BD%E7%89%A9%E7%89%B9%E5%8D%96%E5%95%86%E5%9F%8E/id1002314698?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e8/ba/92/e8ba92e1-3ea7-4ab7-c1c5-74f0b146e67e/AppIcon-0-0-1x_U007emarketing-0-5-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "永辉线上超市",
+      "artistName": "永辉云创科技有限公司",
+      "sellerName": "Yong Hui Yun Chuang Science and Technology Co., Ltd.",
+      "trackId": 1061504496,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B0%B8%E8%BE%89%E7%BA%BF%E4%B8%8A%E8%B6%85%E5%B8%82/id1061504496?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/4d/55/704d55f5-7d63-bef9-e546-7a3ea8de1c1d/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "盒马 - 鲜美生活",
+      "artistName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "sellerName": "Shanghai Heli Network Technical Service Co., Ltd.",
+      "trackId": 1063183999,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://www.freshhema.com/"
+    },
+    {
+      "trackName": "京东到家-24小时门店可送",
+      "artistName": "JD",
+      "sellerName": "BEIJING JINGDONG 360 DU E-COMMERCE LTD.",
+      "trackId": 954995415,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C%E5%88%B0%E5%AE%B6-24%E5%B0%8F%E6%97%B6%E9%97%A8%E5%BA%97%E5%8F%AF%E9%80%81/id954995415?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a7/35/92/a7359247-0ef2-6446-4f14-51b59437ec5f/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.jd.com"
+    }
+  ],
+  "罗森": [
+    {
+      "trackName": "LAWSON108 Member Station",
+      "artistName": "buzzebees co., ltd.",
+      "sellerName": "IConcepts Co., Ltd.",
+      "trackId": 1528142069,
+      "trackViewUrl": "https://apps.apple.com/cn/app/lawson108-member-station/id1528142069?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/f5/59/58/f55958ba-71dd-8216-e0dc-1dfe19175320/AppIcon-0-0-1x_U007ephone-0-1-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "ローチケ電子チケット",
+      "artistName": "Lawson Entertainment, Inc.",
+      "sellerName": "Lawson Entertainment, Inc.",
+      "trackId": 1175974437,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E3%83%AD%E3%83%BC%E3%83%81%E3%82%B1%E9%9B%BB%E5%AD%90%E3%83%81%E3%82%B1%E3%83%83%E3%83%88/id1175974437?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e5/2a/18/e52a18a3-df61-dacd-7acd-1b2bd2a69164/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": "https://l-tike.com/"
+    },
+    {
+      "trackName": "全家便利店-会员福利社",
+      "artistName": "Shanghai Familymart Co., Ltd.",
+      "sellerName": "Shanghai Familymart Co., Ltd.",
+      "trackId": 1518966002,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%85%A8%E5%AE%B6%E4%BE%BF%E5%88%A9%E5%BA%97-%E4%BC%9A%E5%91%98%E7%A6%8F%E5%88%A9%E7%A4%BE/id1518966002?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/84/0a/4f/840a4fb7-0222-949e-eb28-7a7799952146/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "全家": [
+    {
+      "trackName": "全家便利店-会员福利社",
+      "artistName": "Shanghai Familymart Co., Ltd.",
+      "sellerName": "Shanghai Familymart Co., Ltd.",
+      "trackId": 1518966002,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%85%A8%E5%AE%B6%E4%BE%BF%E5%88%A9%E5%BA%97-%E4%BC%9A%E5%91%98%E7%A6%8F%E5%88%A9%E7%A4%BE/id1518966002?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/84/0a/4f/840a4fb7-0222-949e-eb28-7a7799952146/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "ファミマネットワークプリント",
+      "artistName": "FamilyMart Co.,Ltd.",
+      "sellerName": "FamilyMart Co.,Ltd.",
+      "trackId": 1454750155,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E3%83%95%E3%82%A1%E3%83%9F%E3%83%9E%E3%83%8D%E3%83%83%E3%83%88%E3%83%AF%E3%83%BC%E3%82%AF%E3%83%97%E3%83%AA%E3%83%B3%E3%83%88/id1454750155?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c3/24/10/c32410fb-bdd2-32cc-eb21-dbe5579649e1/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "FamilyMart VietNam",
+      "artistName": "FAMILYMART VIETNAM JOINT STOCK COMPANY",
+      "sellerName": "FAMILYMART VIETNAM JOINT STOCK COMPANY",
+      "trackId": 1435763343,
+      "trackViewUrl": "https://apps.apple.com/cn/app/familymart-vietnam/id1435763343?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e3/1f/3c/e31f3c1e-b703-8fa4-09e5-4debe075865a/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "7-Eleven": [
+    {
+      "trackName": "7-ELEVEN",
+      "artistName": "President Chain Store Corporation",
+      "sellerName": "PRESIDENT CHAIN STORE CORPORATION",
+      "trackId": 403756560,
+      "trackViewUrl": "https://apps.apple.com/cn/app/7-eleven/id403756560?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/40/00/cc/4000cc08-9c8a-6c4a-e259-b4c00087b382/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "http://www.7-11.com.tw/"
+    },
+    {
+      "trackName": "7-Eleven Norge",
+      "artistName": "Reitan Convenience",
+      "sellerName": "Reitan Convenience Norway AS",
+      "trackId": 369141456,
+      "trackViewUrl": "https://apps.apple.com/cn/app/7-eleven-norge/id369141456?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ca/4c/22/ca4c225e-76ca-53f1-511c-390795a2ff6b/AppIcon-0-0-1x_U007emarketing-0-11-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": "https://7-eleven.no/"
+    },
+    {
+      "trackName": "7-Eleven HK",
+      "artistName": "The Dairy Farm Company, Limited",
+      "sellerName": "The Dairy Farm Company, Limited",
+      "trackId": 6680157469,
+      "trackViewUrl": "https://apps.apple.com/cn/app/7-eleven-hk/id6680157469?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a7/80/6b/a7806bbf-f2c5-dc4c-bb0f-ebd6c0c7f16a/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "7-Eleven Multicopy",
+      "artistName": "FUJIFILM Business Innovation Corp.",
+      "sellerName": "FUJIFILM Business Innovation Corp.",
+      "trackId": 1562641276,
+      "trackViewUrl": "https://apps.apple.com/cn/app/7-eleven-multicopy/id1562641276?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/23/2b/15/232b1528-09dc-93d4-da22-d5e36a797ef8/AppIcon-0-1x_U007epad-0-6-0-85-220-0.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ],
+  "美宜佳": [
+    {
+      "trackName": "美宜佳办公(旧)",
+      "artistName": "东莞市糖酒集团美宜佳便利店有限公司",
+      "sellerName": "Dongguan Sugar & Liquor Group Meiyijia Convenience Store Co., Ltd.",
+      "trackId": 1089122720,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E7%BE%8E%E5%AE%9C%E4%BD%B3%E5%8A%9E%E5%85%AC-%E6%97%A7/id1089122720?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a8/bc/7e/a8bc7e50-8a5d-2c58-4521-dcf22f053cc5/AppIcon-0-0-1x_U007emarketing-0-5-0-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "门店经营宝",
+      "artistName": "东莞市糖酒集团美宜佳便利店有限公司",
+      "sellerName": "Dongguan Sugar & Liquor Group Meiyijia Convenience Store Co., Ltd.",
+      "trackId": 1121853639,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E9%97%A8%E5%BA%97%E7%BB%8F%E8%90%A5%E5%AE%9D/id1121853639?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/cc/c2/70ccc2e0-32af-223d-5f10-9a7d957be1c3/AppIcon-0-0-1x_U007emarketing-0-5-0-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "小象超市",
+      "artistName": "Beijing Baobao Eat Better Food and Dining Management Co., Ltd.",
+      "sellerName": "Beijing Baobao Eat Better Food and Dining Management Co., Ltd.",
+      "trackId": 1444411068,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E5%B0%8F%E8%B1%A1%E8%B6%85%E5%B8%82/id1444411068?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/4e/ad/1c/4ead1c5c-ffc8-cf39-af19-bc3c67c73be9/AppIcon-0-0-1x_U007emarketing-0-3-0-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    },
+    {
+      "trackName": "永辉线上超市",
+      "artistName": "永辉云创科技有限公司",
+      "sellerName": "Yong Hui Yun Chuang Science and Technology Co., Ltd.",
+      "trackId": 1061504496,
+      "trackViewUrl": "https://apps.apple.com/cn/app/%E6%B0%B8%E8%BE%89%E7%BA%BF%E4%B8%8A%E8%B6%85%E5%B8%82/id1061504496?uo=4",
+      "artworkUrl512": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/4d/55/704d55f5-7d63-bef9-e546-7a3ea8de1c1d/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.jpg",
+      "sellerUrl": null
+    }
+  ]
+}

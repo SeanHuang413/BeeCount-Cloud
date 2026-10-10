@@ -20,6 +20,7 @@ export type AppSection =
   | 'sean-spend-insights'
   | 'sean-reports'
   | 'sean-monthly-comparison'
+  | 'sean-category-trends'
   | 'sean-asset-trends'
   | 'sean-assets'
   | 'sean-actual-spend'

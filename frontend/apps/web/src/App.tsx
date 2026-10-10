@@ -77,6 +77,9 @@ const SeanReportsPage = lazy(() =>
 const SeanMonthlyComparisonPage = lazy(() =>
   import('./pages/sections/sean_MonthlyComparisonPage').then((m) => ({ default: m.SeanMonthlyComparisonPage })),
 )
+const SeanCategoryTrendsPage = lazy(() =>
+  import('./pages/sections/sean_CategoryTrendsPage').then((m) => ({ default: m.SeanCategoryTrendsPage })),
+)
 const SeanAssetTrendsPage = lazy(() =>
   import('./pages/sections/sean_AssetTrendsPage').then((m) => ({ default: m.SeanAssetTrendsPage })),
 )
@@ -254,6 +257,10 @@ function AppRoutes() {
         <Route
           path="sean-monthly-comparison"
           element={<Suspense fallback={<RouteFallback />}><SeanMonthlyComparisonPage /></Suspense>}
+        />
+        <Route
+          path="sean-category-trends"
+          element={<Suspense fallback={<RouteFallback />}><SeanCategoryTrendsPage /></Suspense>}
         />
         <Route
           path="sean-asset-trends"

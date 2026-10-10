@@ -4,6 +4,14 @@ import { analyzeTransferFlows } from './analyzeTransferFlows'
 const transfer = (id, from, to, amount) => ({ id, tx_type: 'transfer', from_account_name: from, to_account_name: to, amount, happened_at: `2026-08-${id.padStart(2, '0')}T00:00:00Z` })
 
 describe('transfer flow report', () => {
+  it('uses saved ledger amounts when presenting a report in a specified currency', () => {
+    const report = analyzeTransferFlows([
+      { ...transfer('05', 'A', 'B', 100), currency_code: 'USD', native_amount: 720 },
+      { ...transfer('06', 'A', 'B', 100), currency_code: 'USD' },
+    ], 'CNY')
+    expect(report.total).toBe(720)
+    expect(report.count).toBe(1)
+  })
   it('aggregates internal paths without income or expense semantics', () => {
     const report = analyzeTransferFlows([transfer('01', '银行卡', '支付宝', 100), transfer('02', '银行卡', '支付宝', 50), { ...transfer('03', '支付宝', '现金', 20), exclude_from_stats: true }, { ...transfer('04', '银行卡', '支付宝', 999), tx_type: 'expense' }])
     expect(report.total).toBe(170); expect(report.count).toBe(3)

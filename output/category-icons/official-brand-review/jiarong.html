@@ -1,0 +1,187 @@
+<!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1"><meta name=renderer content=webkit><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><link rel=icon href=/favicon_jri.ico><meta name=description content=嘉荣成立于1992年，经过三十余年的发展，形成了以零售为核心产业，集供应链、投资管理、教育服务等多产业并举发展的大型集团企业。以“共同创造高品质生活”为使命，通过高品质的产品与服务，致力“成为美好生活的领航者”。><meta name=keywords content=嘉荣集团,嘉荣超市,广东嘉荣,广东嘉荣超市,广东嘉荣超市有限公司,SPAR,超市，零售行业><meta property=og:title content=嘉荣集团><meta property=og:description content=嘉荣成立于1992年，经过三十余年的发展，形成了以零售为核心产业，集供应链、投资管理、教育服务等多产业并举发展的大型集团企业。以“共同创造高品质生活”为使命，通过高品质的产品与服务，致力“成为美好生活的领航者”。><meta property=og:image content=portal/img/logo_400x200.png><meta name=twitter:title content=嘉荣集团><meta name=twitter:description content=嘉荣成立于1992年，经过三十余年的发展，形成了以零售为核心产业，集供应链、投资管理、教育服务等多产业并举发展的大型集团企业。以“共同创造高品质生活”为使命，通过高品质的产品与服务，致力“成为美好生活的领航者”。><meta name=twitter:image content=portal/img/logo_400x200.png><title>嘉荣集团</title><style>html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .chromeframe {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+    }
+
+    #loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999999;
+    }
+
+    #loader {
+      display: block;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -webkit-animation: spin 2s linear infinite;
+      -ms-animation: spin 2s linear infinite;
+      -moz-animation: spin 2s linear infinite;
+      -o-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+      z-index: 1001;
+    }
+
+    #loader:before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -webkit-animation: spin 3s linear infinite;
+      -moz-animation: spin 3s linear infinite;
+      -o-animation: spin 3s linear infinite;
+      -ms-animation: spin 3s linear infinite;
+      animation: spin 3s linear infinite;
+    }
+
+    #loader:after {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: 15px;
+      bottom: 15px;
+      border-radius: 50%;
+      border: 3px solid transparent;
+      border-top-color: #FFF;
+      -moz-animation: spin 1.5s linear infinite;
+      -o-animation: spin 1.5s linear infinite;
+      -ms-animation: spin 1.5s linear infinite;
+      -webkit-animation: spin 1.5s linear infinite;
+      animation: spin 1.5s linear infinite;
+    }
+
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+
+    #loader-wrapper .loader-section {
+      position: fixed;
+      top: 0;
+      width: 51%;
+      height: 100%;
+      background: #7171C6;
+      z-index: 1000;
+      -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+      transform: translateX(0);
+    }
+
+    #loader-wrapper .loader-section.section-left {
+      left: 0;
+    }
+
+    #loader-wrapper .loader-section.section-right {
+      right: 0;
+    }
+
+
+    .loaded #loader-wrapper .loader-section.section-left {
+      -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+      transform: translateX(-100%);
+      -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+
+    .loaded #loader-wrapper .loader-section.section-right {
+      -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+      transform: translateX(100%);
+      -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+      transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+    }
+
+    .loaded #loader {
+      opacity: 0;
+      -webkit-transition: all 0.3s ease-out;
+      transition: all 0.3s ease-out;
+    }
+
+    .loaded #loader-wrapper {
+      visibility: hidden;
+      -webkit-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+      transform: translateY(-100%);
+      -webkit-transition: all 0.3s 1s ease-out;
+      transition: all 0.3s 1s ease-out;
+    }
+
+    .no-js #loader-wrapper {
+      display: none;
+    }
+
+    .no-js h1 {
+      color: #222222;
+    }
+
+    #loader-wrapper .load_title {
+      font-family: 'Open Sans';
+      color: #FFF;
+      font-size: 19px;
+      width: 100%;
+      text-align: center;
+      z-index: 9999999999999;
+      position: absolute;
+      top: 60%;
+      opacity: 1;
+      line-height: 30px;
+    }
+
+    #loader-wrapper .load_title span {
+      font-weight: normal;
+      font-style: italic;
+      font-size: 13px;
+      color: #FFF;
+      opacity: 0.5;
+    }</style><link href=/static/css/chunk-libs.c7676c2e.css rel=stylesheet><link href=/static/css/app.26c822c0.css rel=stylesheet></head><body><div id=app></div><script>(function(c){function e(e){for(var u,a,f=e[0],t=e[1],k=e[2],r=0,o=[];r<f.length;r++)a=f[r],Object.prototype.hasOwnProperty.call(h,a)&&h[a]&&o.push(h[a][0]),h[a]=0;for(u in t)Object.prototype.hasOwnProperty.call(t,u)&&(c[u]=t[u]);b&&b(e);while(o.length)o.shift()();return d.push.apply(d,k||[]),n()}function n(){for(var c,e=0;e<d.length;e++){for(var n=d[e],u=!0,a=1;a<n.length;a++){var f=n[a];0!==h[f]&&(u=!1)}u&&(d.splice(e--,1),c=t(t.s=n[0]))}return c}var u={},a={runtime:0},h={runtime:0},d=[];function f(c){return t.p+"static/js/"+({}[c]||c)+"."+{"chunk-03a1d754":"073d716b","chunk-11e66653":"890bdcdb","chunk-adde61aa":"22d82030","chunk-19385ef9":"2d30df01","chunk-260ef2ca":"a1c4e4ce","chunk-6c8c5a04":"49a1ae38","chunk-74a2128a":"afec7a0c","chunk-10c765d5":"d24c47d1","chunk-5a485af6":"22555d19","chunk-2727631f":"7f9cf048","chunk-2d0ddb8e":"85740a9c","chunk-2c21e194":"b8095976","chunk-2d0e2366":"3191a169","chunk-5faaf24d":"7621357c","chunk-2d0f012d":"1c740512","chunk-3bb0b92e":"1c9df7f4","chunk-03964c8e":"8ea3a3dd","chunk-093118e5":"2f548cc8","chunk-439f5522":"5cf5894a","chunk-4501c223":"c6bc345e","chunk-9a923de0":"246235a8","chunk-fed76bfa":"ba99526f","chunk-0b6407b1":"b82e2720","chunk-1e5d4450":"dd6ea95f","chunk-20ad00ad":"d69ed5ad","chunk-039a84c6":"fec5fc36","chunk-0661fc8e":"0c63a11b","chunk-21bb06d9":"347e8818","chunk-33228081":"6b315605","chunk-34545dc2":"1a9113c9","chunk-4d114ee1":"bdeb75a9","chunk-4f944f4e":"8994cef8","chunk-50128019":"5154e94a","chunk-50ad6db5":"27818bfb","chunk-6bdb9f4c":"096abd27","chunk-716d2890":"f4696984","chunk-f621914c":"e7caa616","chunk-2b899520":"73068b29","chunk-2d6f7d0a":"c0119db4","chunk-3e3a460a":"f858e222","chunk-89d1acec":"9d3145df","chunk-a23330b0":"0dd3e0e2","chunk-af223c90":"1eeb51b7","chunk-32fdf463":"73793a17","chunk-3c5e4180":"84c830b4","chunk-5996f5a4":"a284ae5f","chunk-5b07f08a":"a4da9936","chunk-e8cd4b64":"8896b4a7","chunk-68702101":"86dcc12e","chunk-8ee3fc10":"d127646a","chunk-d131c548":"8e95f423","chunk-d19c1a98":"f86bfd29","chunk-e648d5fe":"e6c9c02d","chunk-fde730d6":"8ce62844"}[c]+".js"}function t(e){if(u[e])return u[e].exports;var n=u[e]={i:e,l:!1,exports:{}};return c[e].call(n.exports,n,n.exports,t),n.l=!0,n.exports}t.e=function(c){var e=[],n={"chunk-03a1d754":1,"chunk-19385ef9":1,"chunk-260ef2ca":1,"chunk-6c8c5a04":1,"chunk-74a2128a":1,"chunk-10c765d5":1,"chunk-5a485af6":1,"chunk-2c21e194":1,"chunk-5faaf24d":1,"chunk-3bb0b92e":1,"chunk-093118e5":1,"chunk-439f5522":1,"chunk-4501c223":1,"chunk-9a923de0":1,"chunk-fed76bfa":1,"chunk-0b6407b1":1,"chunk-1e5d4450":1,"chunk-20ad00ad":1,"chunk-039a84c6":1,"chunk-0661fc8e":1,"chunk-21bb06d9":1,"chunk-33228081":1,"chunk-34545dc2":1,"chunk-4d114ee1":1,"chunk-4f944f4e":1,"chunk-50128019":1,"chunk-50ad6db5":1,"chunk-6bdb9f4c":1,"chunk-716d2890":1,"chunk-f621914c":1,"chunk-2b899520":1,"chunk-2d6f7d0a":1,"chunk-3e3a460a":1,"chunk-89d1acec":1,"chunk-a23330b0":1,"chunk-af223c90":1,"chunk-32fdf463":1,"chunk-3c5e4180":1,"chunk-5996f5a4":1,"chunk-5b07f08a":1,"chunk-e8cd4b64":1,"chunk-d131c548":1,"chunk-e648d5fe":1,"chunk-fde730d6":1};a[c]?e.push(a[c]):0!==a[c]&&n[c]&&e.push(a[c]=new Promise((function(e,n){for(var u="static/css/"+({}[c]||c)+"."+{"chunk-03a1d754":"43675049","chunk-11e66653":"31d6cfe0","chunk-adde61aa":"31d6cfe0","chunk-19385ef9":"43675049","chunk-260ef2ca":"04dbfc0a","chunk-6c8c5a04":"43675049","chunk-74a2128a":"71a233fb","chunk-10c765d5":"43675049","chunk-5a485af6":"43675049","chunk-2727631f":"31d6cfe0","chunk-2d0ddb8e":"31d6cfe0","chunk-2c21e194":"699e46b3","chunk-2d0e2366":"31d6cfe0","chunk-5faaf24d":"af108f5b","chunk-2d0f012d":"31d6cfe0","chunk-3bb0b92e":"89b6e6b3","chunk-03964c8e":"31d6cfe0","chunk-093118e5":"43675049","chunk-439f5522":"43675049","chunk-4501c223":"43675049","chunk-9a923de0":"43675049","chunk-fed76bfa":"43675049","chunk-0b6407b1":"5a5f8d5a","chunk-1e5d4450":"43675049","chunk-20ad00ad":"43675049","chunk-039a84c6":"43675049","chunk-0661fc8e":"43675049","chunk-21bb06d9":"43675049","chunk-33228081":"43675049","chunk-34545dc2":"43675049","chunk-4d114ee1":"43675049","chunk-4f944f4e":"43675049","chunk-50128019":"43675049","chunk-50ad6db5":"43675049","chunk-6bdb9f4c":"43675049","chunk-716d2890":"43675049","chunk-f621914c":"68cc18de","chunk-2b899520":"43675049","chunk-2d6f7d0a":"43675049","chunk-3e3a460a":"43675049","chunk-89d1acec":"00f3c8c0","chunk-a23330b0":"43675049","chunk-af223c90":"43675049","chunk-32fdf463":"43675049","chunk-3c5e4180":"5a5f8d5a","chunk-5996f5a4":"43675049","chunk-5b07f08a":"43675049","chunk-e8cd4b64":"43675049","chunk-68702101":"31d6cfe0","chunk-8ee3fc10":"31d6cfe0","chunk-d131c548":"b5bdb2c6","chunk-d19c1a98":"31d6cfe0","chunk-e648d5fe":"265d9d9a","chunk-fde730d6":"43675049"}[c]+".css",h=t.p+u,d=document.getElementsByTagName("link"),f=0;f<d.length;f++){var k=d[f],r=k.getAttribute("data-href")||k.getAttribute("href");if("stylesheet"===k.rel&&(r===u||r===h))return e()}var o=document.getElementsByTagName("style");for(f=0;f<o.length;f++){k=o[f],r=k.getAttribute("data-href");if(r===u||r===h)return e()}var b=document.createElement("link");b.rel="stylesheet",b.type="text/css",b.onload=e,b.onerror=function(e){var u=e&&e.target&&e.target.src||h,d=new Error("Loading CSS chunk "+c+" failed.\n("+u+")");d.code="CSS_CHUNK_LOAD_FAILED",d.request=u,delete a[c],b.parentNode.removeChild(b),n(d)},b.href=h;var i=document.getElementsByTagName("head")[0];i.appendChild(b)})).then((function(){a[c]=0})));var u=h[c];if(0!==u)if(u)e.push(u[2]);else{var d=new Promise((function(e,n){u=h[c]=[e,n]}));e.push(u[2]=d);var k,r=document.createElement("script");r.charset="utf-8",r.timeout=120,t.nc&&r.setAttribute("nonce",t.nc),r.src=f(c);var o=new Error;k=function(e){r.onerror=r.onload=null,clearTimeout(b);var n=h[c];if(0!==n){if(n){var u=e&&("load"===e.type?"missing":e.type),a=e&&e.target&&e.target.src;o.message="Loading chunk "+c+" failed.\n("+u+": "+a+")",o.name="ChunkLoadError",o.type=u,o.request=a,n[1](o)}h[c]=void 0}};var b=setTimeout((function(){k({type:"timeout",target:r})}),12e4);r.onerror=r.onload=k,document.head.appendChild(r)}return Promise.all(e)},t.m=c,t.c=u,t.d=function(c,e,n){t.o(c,e)||Object.defineProperty(c,e,{enumerable:!0,get:n})},t.r=function(c){"undefined"!==typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(c,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(c,"__esModule",{value:!0})},t.t=function(c,e){if(1&e&&(c=t(c)),8&e)return c;if(4&e&&"object"===typeof c&&c&&c.__esModule)return c;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:c}),2&e&&"string"!=typeof c)for(var u in c)t.d(n,u,function(e){return c[e]}.bind(null,u));return n},t.n=function(c){var e=c&&c.__esModule?function(){return c["default"]}:function(){return c};return t.d(e,"a",e),e},t.o=function(c,e){return Object.prototype.hasOwnProperty.call(c,e)},t.p="/",t.oe=function(c){throw c};var k=window["webpackJsonp"]=window["webpackJsonp"]||[],r=k.push.bind(k);k.push=e,k=k.slice();for(var o=0;o<k.length;o++)e(k[o]);var b=r;n()})([]);</script><script src=/static/js/chunk-elementUI.c4a2d3e7.js></script><script src=/static/js/chunk-libs.7c3fa892.js></script><script src=/static/js/app.5d8f91c4.js></script></body></html>

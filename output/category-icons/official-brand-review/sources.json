@@ -1,0 +1,290 @@
+[
+  {
+    "id": "merchant-taobao",
+    "source": "https://apps.apple.com/cn/app/%E6%B7%98%E5%AE%9D-%E4%B8%87%E8%83%BD%E7%9A%84%E6%B7%98%E5%AE%9D/id387682726?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/c2/85/57/c28557ee-1e79-505d-87f7-a534e48ff2fd/AppIcon-0-0-1x_U007emarketing-0-10-0-85-220.png/512x512bb.jpg",
+    "publisher": "Zhejiang Taobao Network Co.,Ltd",
+    "appName": "淘宝-万能的淘宝！",
+    "sha256": "b6e45fb802b82e18aebebc24f6f0411111cef18d49e55cc67b986fa472351b95",
+    "downloaded": "2026-10-10",
+    "file": "merchant-taobao.jpg"
+  },
+  {
+    "id": "merchant-tmall",
+    "source": "https://apps.apple.com/cn/app/%E5%A4%A9%E7%8C%AB-%E5%A5%BD%E5%93%81%E7%89%8C-%E5%A5%BD%E4%BB%B7%E6%A0%BC-%E4%B8%8A%E5%A4%A9%E7%8C%AB/id518966501?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/37/6a/85376a36-e8bc-ff41-419d-2e887ccac7e8/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Zhejiang tmall Network Co., Ltd",
+    "appName": "天猫 - 好品牌，好价格，上天猫",
+    "sha256": "fb3acf923f8877fed9c18317388a447e13fff7d4a90104b5795127d078c81f99",
+    "downloaded": "2026-10-10",
+    "file": "merchant-tmall.jpg"
+  },
+  {
+    "id": "merchant-jd",
+    "source": "https://apps.apple.com/cn/app/%E4%BA%AC%E4%B8%9C-%E5%8F%88%E5%A5%BD%E5%8F%88%E4%BE%BF%E5%AE%9C/id414245413?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/e6/37/e7/e637e7c9-bea1-b9fc-2b80-04edb021083d/AppIcon-0-0-1x_U007epad-0-1-0-0-85-220.png/512x512bb.jpg",
+    "publisher": "Beijing Jingdong Century Trading Co., Ltd.",
+    "appName": "京东-又好又便宜",
+    "sha256": "1f8561aab24f5611a9c4335e02e9dc163de15346945553476172c11e57d32214",
+    "downloaded": "2026-10-10",
+    "file": "merchant-jd.jpg"
+  },
+  {
+    "id": "merchant-pinduoduo",
+    "source": "https://apps.apple.com/cn/app/%E6%8B%BC%E5%A4%9A%E5%A4%9A-%E5%A4%9A%E5%A4%9A%E4%B9%B0%E8%8F%9C-%E7%99%BE%E4%BA%BF%E8%A1%A5%E8%B4%B4/id1044283059?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/2b/8d/11/2b8d11cc-2553-fbb7-0b84-458132f00c5a/AppIcon-1x_U007emarketing-0-8-0-0-85-220-0.png/512x512bb.jpg",
+    "publisher": "Shanghai Xunmeng Information Technology Co., Ltd.",
+    "appName": "拼多多 - 多多买菜，百亿补贴",
+    "sha256": "97bc8ec6b559001dfa315ed5341e38beef05e5e344dbcfc2c8cb9e60e379c6ee",
+    "downloaded": "2026-10-10",
+    "file": "merchant-pinduoduo.jpg"
+  },
+  {
+    "id": "merchant-douyin-shop",
+    "source": "https://apps.apple.com/cn/app/%E6%8A%96%E9%9F%B3%E5%95%86%E5%9F%8E-%E4%B8%8B%E5%8D%95%E8%BF%94%E7%A7%AF%E5%88%86-%E9%80%80%E8%B4%A7%E5%8C%85%E8%BF%90%E8%B4%B9/id1485191072?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/3c/de/10/3cde1090-9646-53ec-a173-d4d0072a5c91/AppIcon-0-0-1x_U007emarketing-0-7-0-85-220.png/512x512bb.jpg",
+    "publisher": "Beijing Douyin Technology Co., Ltd.",
+    "appName": "抖音商城-下单返积分、退货包运费",
+    "sha256": "2b99e9aec4aa748a563a8ca268e411678afe7d423c71a2bacc7ffd910a83a3e0",
+    "downloaded": "2026-10-10",
+    "file": "merchant-douyin-shop.jpg"
+  },
+  {
+    "id": "merchant-kuaishou-shop",
+    "source": "https://apps.apple.com/cn/app/%E5%BF%AB%E6%89%8B/id440948110?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/52/45/88/524588cc-ba64-a9ec-393a-b6718a85ab03/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Beijing Kwai Technology Co., Ltd.",
+    "appName": "快手",
+    "sha256": "1e592d9c92feb18b992173e4c864e5f9afecdcfd6c25e8ce525c612d4c97e781",
+    "downloaded": "2026-10-10",
+    "file": "merchant-kuaishou-shop.jpg"
+  },
+  {
+    "id": "merchant-vipshop",
+    "source": "https://apps.apple.com/cn/app/%E5%94%AF%E5%93%81%E4%BC%9A/id417200582?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/85/8d/66/858d6671-0924-a5eb-cca5-22a21e703955/AppIcon-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Guangzhou Vipshop E-Commerce Co.,Ltd.",
+    "appName": "唯品会",
+    "sha256": "32b77a29f69849c11b5d10b4cd90b3ac5798dbf752734b1087820ddbe5fbe5bb",
+    "downloaded": "2026-10-10",
+    "file": "merchant-vipshop.jpg"
+  },
+  {
+    "id": "merchant-suning",
+    "source": "https://apps.apple.com/cn/app/%E8%8B%8F%E5%AE%81%E6%98%93%E8%B4%AD/id424598114?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/82/90/6a/82906a44-d09c-432e-0d9a-61ea6c567b57/AppIcon-1-0-0-1x_U007emarketing-0-8-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Suning Commerce Group Co.,Ltd.",
+    "appName": "苏宁易购",
+    "sha256": "77727a8a3e30e44d5eb03188fe9eb40d41bb3cdbfe92ec20b48e17c043262946",
+    "downloaded": "2026-10-10",
+    "file": "merchant-suning.jpg"
+  },
+  {
+    "id": "merchant-mi-shop",
+    "source": "https://apps.apple.com/cn/app/%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8E/id1024958046?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/52/aa/e5/52aae52c-a0f6-2762-1bcf-8e3ec4da3e7b/AppIcon-0-1x_U007emarketing-0-6-0-0-85-220-0.png/512x512bb.jpg",
+    "publisher": "Beijing Xiaomi Co., Ltd",
+    "appName": "小米商城",
+    "sha256": "f1fab4416d829b675231fff1ff170f38c5e661f19440b702afc4a0faafcace4b",
+    "downloaded": "2026-10-10",
+    "file": "merchant-mi-shop.jpg"
+  },
+  {
+    "id": "merchant-dewu",
+    "source": "https://apps.apple.com/cn/app/%E5%BE%97%E7%89%A9-%E5%BE%97%E5%88%B0%E7%BE%8E%E5%A5%BD%E4%BA%8B%E7%89%A9/id1012871328?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/12/83/80/1283806c-94ac-0bdb-0f88-4ff01d829f69/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+    "publisher": "Shanghai Dewu Information Group Co., Ltd.",
+    "appName": "得物 - 得到美好事物",
+    "sha256": "77871408316486b3557c020ff5bd578ab24c87088427303c32b735078cb571f8",
+    "downloaded": "2026-10-10",
+    "file": "merchant-dewu.jpg"
+  },
+  {
+    "id": "merchant-xianyu",
+    "source": "https://apps.apple.com/cn/app/%E9%97%B2%E9%B1%BC-%E4%B8%8A%E9%97%B2%E9%B1%BC-%E8%B5%9A%E4%B8%80%E7%AC%94/id510909506?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/a7/7d/97/a77d970b-9da7-9154-56ab-46f114ea7736/AppIcon-0-0-1x_U007epad-0-1-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Zhejiang Alibaba Xianyu Network Technology Co., Ltd.",
+    "appName": "闲鱼 - 上闲鱼，赚一笔 !",
+    "sha256": "3fa56dd42780d284be2da86da906b6ec4c0ff0dfe765117315257cfd3911352e",
+    "downloaded": "2026-10-10",
+    "file": "merchant-xianyu.jpg"
+  },
+  {
+    "id": "merchant-yanxuan",
+    "source": "https://apps.apple.com/cn/app/%E7%BD%91%E6%98%93%E4%B8%A5%E9%80%89-%E4%B8%A5%E9%80%89%E5%A5%BD%E7%89%A9-%E7%94%A8%E5%BF%83%E7%94%9F%E6%B4%BB/id1065178761?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1f/68/01/1f6801fa-504c-fbe0-c14e-8f46b8245de2/AppIcon-1x_U007emarketing-0-8-0-85-220-0.png/512x512bb.jpg",
+    "publisher": "Hangzhou Netease Miaode Technology Co., Ltd.",
+    "appName": "网易严选 - 严选好物，用心生活",
+    "sha256": "5869db838e6ae1fcd2306cd02601f76d69a6828e592cb83cfc538601ce5746d0",
+    "downloaded": "2026-10-10",
+    "file": "merchant-yanxuan.jpg"
+  },
+  {
+    "id": "merchant-sams",
+    "source": "https://apps.apple.com/cn/app/%E5%B1%B1%E5%A7%86%E4%BC%9A%E5%91%98%E5%95%86%E5%BA%97/id818237113?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d7/6b/c3/d76bc307-e74e-a126-39a4-6494adead0b0/AppIcon-1x_U007emarketing-0-5-0-85-220-0.jpeg/512x512bb.jpg",
+    "publisher": "Walmart (China) Holding Co.,Ltd",
+    "appName": "山姆会员商店",
+    "sha256": "4a3674b6a42326c2b99b95b8775da7f9f1684c0f51cb2b108af60bccf0c2db1d",
+    "downloaded": "2026-10-10",
+    "file": "merchant-sams.jpg"
+  },
+  {
+    "id": "merchant-walmart",
+    "source": "https://apps.apple.com/cn/app/%E6%B2%83%E5%B0%94%E7%8E%9B/id6737541723?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/e2/69/28/e2692875-38f7-1687-1ea1-02394d335505/AppIcon-0-0-1x_U007ephone-0-11-0-85-220.png/512x512bb.jpg",
+    "publisher": "Walmart (China) Holding Co.,Ltd",
+    "appName": "沃尔玛",
+    "sha256": "b134671b2813b37ad884d621cb8b05ccb0ab707fd3d3a22c46240f324425a050",
+    "downloaded": "2026-10-10",
+    "file": "merchant-walmart.jpg"
+  },
+  {
+    "id": "merchant-hema",
+    "source": "https://apps.apple.com/cn/app/%E7%9B%92%E9%A9%AC-%E9%B2%9C%E7%BE%8E%E7%94%9F%E6%B4%BB/id1063183999?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/66/e5/5b/66e55b98-134a-4501-e05c-3edf9034c635/AppIcon-0-1x_U007emarketing-0-8-0-sRGB-85-220-0.png/512x512bb.jpg",
+    "publisher": "Shanghai Heli Network Technical Service Co., Ltd.",
+    "appName": "盒马 - 鲜美生活",
+    "sha256": "dc7d94bd3207f843b667bd9e19e1e51df122ab362552e21c6619c14706e93b1d",
+    "downloaded": "2026-10-10",
+    "file": "merchant-hema.jpg"
+  },
+  {
+    "id": "merchant-pupu",
+    "source": "https://apps.apple.com/cn/app/%E6%9C%B4%E6%9C%B4%E8%B6%85%E5%B8%82-30%E5%88%86%E9%92%9F%E5%BF%AB%E9%80%81/id1144025167?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b3/16/68/b31668b0-7405-22ee-b4fe-05879de6024b/AppIcon-0-0-1x_U007ephone-0-1-0-85-220.png/512x512bb.jpg",
+    "publisher": "Fuzhou Pupu E-Commerce Co., Ltd",
+    "appName": "朴朴超市-30分钟快送",
+    "sha256": "b6b7ed45096d7fa9ecd763f6f4866356c27cc5272860323e4fc1336470c64f88",
+    "downloaded": "2026-10-10",
+    "file": "merchant-pupu.jpg"
+  },
+  {
+    "id": "merchant-yonghui",
+    "source": "https://apps.apple.com/cn/app/%E6%B0%B8%E8%BE%89%E7%BA%BF%E4%B8%8A%E8%B6%85%E5%B8%82/id1061504496?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/70/4d/55/704d55f5-7d63-bef9-e546-7a3ea8de1c1d/AppIcon-0-0-1x_U007emarketing-0-6-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Yong Hui Yun Chuang Science and Technology Co., Ltd.",
+    "appName": "永辉线上超市",
+    "sha256": "d27fbb18fb81e7f5e009af488b1598acb6e68f8b90b6ef142194f9dcdb8ec890",
+    "downloaded": "2026-10-10",
+    "file": "merchant-yonghui.jpg"
+  },
+  {
+    "id": "merchant-rtmart",
+    "source": "https://apps.apple.com/cn/app/%E5%A4%A7%E6%B6%A6%E5%8F%91%E4%BC%98%E9%B2%9C-%E7%88%B1%E7%94%9F%E6%B4%BB%E9%80%9B%E5%A4%A7%E6%B6%A6%E5%8F%91/id1204634317?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0f/83/71/0f837172-dd33-ea54-757f-702c272638df/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+    "publisher": "Shanghai Runguo Information Technology Co.,Ltd",
+    "appName": "大润发优鲜 - 爱生活逛大润发",
+    "sha256": "104c6b5e422de7991e9eb74fad8c45a115695e4a8c2b509ef9ac738c7a1a8b18",
+    "downloaded": "2026-10-10",
+    "file": "merchant-rtmart.jpg"
+  },
+  {
+    "id": "merchant-vanguard",
+    "source": "https://apps.apple.com/cn/app/%E5%8D%8E%E6%B6%A6%E4%B8%87%E5%AE%B6/id1445796613?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/ac/ae/0d/acae0da9-035a-6806-254c-ad7bb706c336/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+    "publisher": "Shenzhen Huarun Wanjia Electronic Commerc Co., Ltd.",
+    "appName": "华润万家",
+    "sha256": "1c4d691bf9bf236c78f22e96c0510ff2ecb08d462adb48f9890c37df3329446c",
+    "downloaded": "2026-10-10",
+    "file": "merchant-vanguard.jpg"
+  },
+  {
+    "id": "merchant-rainbow",
+    "source": "https://apps.apple.com/cn/app/%E5%A4%A9%E8%99%B9%E5%AE%98%E6%96%B9app/id959900028?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/0b/e5/c2/0be5c2de-f09c-e03e-733b-d3d0c989a53f/AppIcon-0-0-1x_U007ephone-0-1-85-220.png/512x512bb.jpg",
+    "publisher": "Rainbow Department Store Co., Ltd.",
+    "appName": "天虹官方APP",
+    "sha256": "771f41bf519b510d6159ac4b0389a64ee9a0515c23a5963960d19b1343af6a27",
+    "downloaded": "2026-10-10",
+    "file": "merchant-rainbow.jpg"
+  },
+  {
+    "id": "merchant-metro-store",
+    "source": "https://apps.apple.com/cn/app/%E9%BA%A6%E5%BE%B7%E9%BE%99/id1540021694?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/93/d0/a7/93d0a7dc-24bc-628e-ccfc-75c74e0cabd7/AppIcon-0-0-1x_U007emarketing-0-5-85-220.png/512x512bb.jpg",
+    "publisher": "Shanghai MDL Commerce & Trading Co., Ltd.",
+    "appName": "麦德龙",
+    "sha256": "a5801283fd2f941b6813cd28d394e1091fc74dfd14a18a6d1ab126602606082c",
+    "downloaded": "2026-10-10",
+    "file": "merchant-metro-store.jpg"
+  },
+  {
+    "id": "merchant-costco",
+    "source": "https://apps.apple.com/cn/app/%E5%BC%80%E5%B8%82%E5%AE%A2/id1457942022?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/f5/81/9c/f5819c81-3ecd-eeb1-92b1-6f7424aac2d4/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+    "publisher": "Costco (China) Investment Co., Ltd.",
+    "appName": "开市客",
+    "sha256": "6904b5dfd60a4a629c79fbe64637a4027a9d69ca324a0c7a691d1190db2bc1bd",
+    "downloaded": "2026-10-10",
+    "file": "merchant-costco.jpg"
+  },
+  {
+    "id": "merchant-carrefour",
+    "source": "https://apps.apple.com/cn/app/carrefour-sa-carte-club/id378305156?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/1e/f2/6d/1ef26d4a-4c7a-1773-db02-327e7d2bc63c/AppIcon-0-0-1x_U007epad-0-1-0-85-220.png/512x512bb.jpg",
+    "publisher": "Carrefour Organisation et Systemes Groupe",
+    "appName": "Carrefour & sa carte Club",
+    "sha256": "743249344fe7fbcc517cf7bbaa722d05fc504615ef73b828ff9c8bb695410680",
+    "downloaded": "2026-10-10",
+    "file": "merchant-carrefour.jpg"
+  },
+  {
+    "id": "merchant-parknshop",
+    "source": "https://apps.apple.com/cn/app/pns-eshop/id840837558?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/3d/2a/b8/3d2ab8ed-1cba-d7c2-b437-484ed3b7fafb/AppIcon-1x_U007emarketing-0-11-0-85-220-0.png/512x512bb.jpg",
+    "publisher": "AS Watson & Company, Limited",
+    "appName": "PNS eShop",
+    "sha256": "84791e8f59f3f407d69fe874354638519d862d8d3fcf8ca34bc1ec1554b4a7ff",
+    "downloaded": "2026-10-10",
+    "file": "merchant-parknshop.jpg"
+  },
+  {
+    "id": "merchant-familymart",
+    "source": "https://apps.apple.com/cn/app/%E5%85%A8%E5%AE%B6%E4%BE%BF%E5%88%A9%E5%BA%97-%E4%BC%9A%E5%91%98%E7%A6%8F%E5%88%A9%E7%A4%BE/id1518966002?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/84/0a/4f/840a4fb7-0222-949e-eb28-7a7799952146/AppIcon-0-0-1x_U007emarketing-0-6-0-85-220.png/512x512bb.jpg",
+    "publisher": "Shanghai Familymart Co., Ltd.",
+    "appName": "全家便利店-会员福利社",
+    "sha256": "8624f936d13d87fe085345da4aa0077aa5285cc629dd23cb3b02547440cc3220",
+    "downloaded": "2026-10-10",
+    "file": "merchant-familymart.jpg"
+  },
+  {
+    "id": "merchant-seven-eleven",
+    "source": "https://apps.apple.com/cn/app/7-eleven/id403756560?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/40/00/cc/4000cc08-9c8a-6c4a-e259-b4c00087b382/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/512x512bb.jpg",
+    "publisher": "PRESIDENT CHAIN STORE CORPORATION",
+    "appName": "7-ELEVEN",
+    "sha256": "fd01c50b911b321b852136446a8e3b8e5d5133704f1d26b14d471cb7b2b68457",
+    "downloaded": "2026-10-10",
+    "file": "merchant-seven-eleven.jpg"
+  },
+  {
+    "id": "merchant-meiyijia",
+    "source": "https://apps.apple.com/cn/app/%E7%BE%8E%E5%AE%9C%E4%BD%B3%E5%8A%9E%E5%85%AC-%E6%97%A7/id1089122720?uo=4",
+    "assetUrl": "https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/a8/bc/7e/a8bc7e50-8a5d-2c58-4521-dcf22f053cc5/AppIcon-0-0-1x_U007emarketing-0-5-0-0-sRGB-85-220.png/512x512bb.jpg",
+    "publisher": "Dongguan Sugar & Liquor Group Meiyijia Convenience Store Co., Ltd.",
+    "appName": "美宜佳办公(旧)",
+    "sha256": "be4938e3364937a2d5dae765954d73322da2e0142327e533ada57c986cf515fd",
+    "downloaded": "2026-10-10",
+    "file": "merchant-meiyijia.jpg"
+  },
+  {
+    "id": "merchant-lawson",
+    "source": "https://www.chinalawson.com.cn/",
+    "assetUrl": "https://www.chinalawson.com.cn/apple-touch-icon.png?v=lawson-logo-20260903",
+    "publisher": "Official brand website",
+    "sha256": "9b168ae2988703a89548e7c329810268aef0ccfd468bf0108c552b41f78bdb9b",
+    "downloaded": "2026-10-10",
+    "file": "merchant-lawson.png"
+  },
+  {
+    "id": "merchant-jiarong",
+    "source": "https://www.jiarong.cn/",
+    "assetUrl": "https://www.jiarong.cn/static/img/jr_logo.0319cc28.png",
+    "publisher": "Official brand website",
+    "sha256": "26676e346af4ae4a07305a96a90b18b964f37fd484b3f110bfad701a616b546e",
+    "downloaded": "2026-10-10",
+    "file": "merchant-jiarong.png"
+  }
+]

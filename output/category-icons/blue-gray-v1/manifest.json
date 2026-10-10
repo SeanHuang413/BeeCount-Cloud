@@ -1,0 +1,1234 @@
+{
+  "version": "blue-gray-v1",
+  "application_status": "not_applied",
+  "style": {
+    "outline": "#496A88",
+    "fill": "#C7DAE8",
+    "background": "transparent",
+    "display_sizes": [
+      34,
+      40,
+      42
+    ]
+  },
+  "assets": [
+    {
+      "id": "receipt",
+      "label": "幸福报销",
+      "subject": "receipt with small checkmark",
+      "file": "icons/receipt.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/receipt.png"
+    },
+    {
+      "id": "devices",
+      "label": "数码产品",
+      "subject": "tablet and small headphones",
+      "file": "icons/devices.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/devices.png"
+    },
+    {
+      "id": "wealth",
+      "label": "财富自由",
+      "subject": "wallet with a small coin",
+      "file": "icons/wealth.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/wealth.png"
+    },
+    {
+      "id": "home",
+      "label": "悦见誉府",
+      "subject": "simple house with window and chimney",
+      "file": "icons/home.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/home.png"
+    },
+    {
+      "id": "car",
+      "label": "车辆管理",
+      "subject": "compact car viewed from front",
+      "file": "icons/car.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/car.png"
+    },
+    {
+      "id": "cashback",
+      "label": "奇迹再现",
+      "subject": "discount ticket with small returning arrow, represents cashback and discounts",
+      "file": "icons/cashback.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/cashback.png"
+    },
+    {
+      "id": "shopping",
+      "label": "精品购物",
+      "subject": "shopping bag",
+      "file": "icons/shopping.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/shopping.png"
+    },
+    {
+      "id": "game",
+      "label": "休闲娱乐",
+      "subject": "game controller",
+      "file": "icons/game.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/game.svg"
+    },
+    {
+      "id": "food",
+      "label": "乐享美食",
+      "subject": "rice bowl with chopsticks",
+      "file": "icons/food.png",
+      "status": "ready",
+      "sourceKind": "png",
+      "builtInFile": "assets/food.png"
+    },
+    {
+      "id": "transfer",
+      "label": "红包转账",
+      "subject": "two horizontal opposing arrows between two small wallets",
+      "file": "icons/transfer.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/transfer.svg"
+    },
+    {
+      "id": "bus",
+      "label": "行车交通",
+      "subject": "city bus viewed from front",
+      "file": "icons/bus.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/bus.svg"
+    },
+    {
+      "id": "child",
+      "label": "投资小朋友",
+      "subject": "friendly child face with small heart",
+      "file": "icons/child.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/child.svg"
+    },
+    {
+      "id": "payment",
+      "label": "沙井老店",
+      "subject": "credit card and outgoing payment arrow, represents making payments for someone",
+      "file": "icons/payment.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/payment.svg"
+    },
+    {
+      "id": "book",
+      "label": "知识付费",
+      "subject": "open book",
+      "file": "icons/book.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/book.svg"
+    },
+    {
+      "id": "gift",
+      "label": "人情来往",
+      "subject": "wrapped gift box with ribbon",
+      "file": "icons/gift.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/gift.svg"
+    },
+    {
+      "id": "phone",
+      "label": "话费网费",
+      "subject": "smartphone with small wireless signal",
+      "file": "icons/phone.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/phone.svg"
+    },
+    {
+      "id": "medical",
+      "label": "医疗服务",
+      "subject": "medical kit with plus symbol",
+      "file": "icons/medical.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/medical.svg"
+    },
+    {
+      "id": "company-reimbursement",
+      "label": "公司报销",
+      "subject": "receipt with checkmark and small briefcase",
+      "file": "icons/company-reimbursement.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/company-reimbursement.svg"
+    },
+    {
+      "id": "family-reimbursement",
+      "label": "家庭报销",
+      "subject": "receipt with checkmark and small home",
+      "file": "icons/family-reimbursement.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/family-reimbursement.svg"
+    },
+    {
+      "id": "balance",
+      "label": "更正余额",
+      "subject": "small balance scale with circular adjustment arrow",
+      "file": "icons/balance.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/balance.svg"
+    },
+    {
+      "id": "salary",
+      "label": "金鹅下蛋",
+      "subject": "briefcase and coin, represents employment salary",
+      "file": "icons/salary.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/salary.svg"
+    },
+    {
+      "id": "envelope",
+      "label": "幸福红包",
+      "subject": "simple gift envelope with round seal, keep blue-gray colors",
+      "file": "icons/envelope.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/envelope.svg"
+    },
+    {
+      "id": "property",
+      "label": "幸福物业",
+      "subject": "apartment building with small gear",
+      "file": "icons/property.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/property.svg"
+    },
+    {
+      "id": "electricity",
+      "label": "深圳供电",
+      "subject": "electrical plug with lightning bolt",
+      "file": "icons/electricity.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/electricity.svg"
+    },
+    {
+      "id": "gas",
+      "label": "天然气",
+      "subject": "simple rounded gas flame",
+      "file": "icons/gas.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/gas.svg"
+    },
+    {
+      "id": "moving",
+      "label": "幸福搬家",
+      "subject": "moving box with small carrying handles",
+      "file": "icons/moving.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/moving.svg"
+    },
+    {
+      "id": "renovation",
+      "label": "幸福装修",
+      "subject": "paint roller",
+      "file": "icons/renovation.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/renovation.svg"
+    },
+    {
+      "id": "furniture",
+      "label": "幸福软装",
+      "subject": "cozy armchair",
+      "file": "icons/furniture.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/furniture.svg"
+    },
+    {
+      "id": "deposit",
+      "label": "幸福押金",
+      "subject": "small lock on coin stack, represents refundable security deposit",
+      "file": "icons/deposit.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/deposit.svg"
+    },
+    {
+      "id": "fuel",
+      "label": "幸福加油",
+      "subject": "fuel station pump",
+      "file": "icons/fuel.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/fuel.svg"
+    },
+    {
+      "id": "parking",
+      "label": "幸福停车",
+      "subject": "car beneath simple parking shelter, no letters",
+      "file": "icons/parking.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/parking.svg"
+    },
+    {
+      "id": "toll",
+      "label": "幸福高速",
+      "subject": "highway with simple toll barrier",
+      "file": "icons/toll.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/toll.svg"
+    },
+    {
+      "id": "maintenance",
+      "label": "幸福保养",
+      "subject": "car with small oil drop",
+      "file": "icons/maintenance.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/maintenance.svg"
+    },
+    {
+      "id": "repair",
+      "label": "幸福维修",
+      "subject": "crossed wrench and screwdriver",
+      "file": "icons/repair.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/repair.svg"
+    },
+    {
+      "id": "liquor-trade",
+      "label": "i茅台",
+      "subject": "generic liquor bottle and two curved exchange arrows, buying and selling, no brand",
+      "file": "icons/liquor-trade.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/liquor-trade.svg"
+    },
+    {
+      "id": "supermarket",
+      "label": "超市购物",
+      "subject": "shopping cart with a small grocery bag",
+      "file": "icons/supermarket.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/supermarket.svg"
+    },
+    {
+      "id": "parcel",
+      "label": "电商购物",
+      "subject": "sealed delivery parcel with small shopping bag symbol",
+      "file": "icons/parcel.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/parcel.svg"
+    },
+    {
+      "id": "liquor",
+      "label": "酒水",
+      "subject": "generic wine bottle and small drinking glass",
+      "file": "icons/liquor.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/liquor.svg"
+    },
+    {
+      "id": "union-shopping",
+      "label": "幸福工会",
+      "subject": "shopping bag with two small linked human silhouettes",
+      "file": "icons/union-shopping.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/union-shopping.svg"
+    },
+    {
+      "id": "vacation",
+      "label": "幸福度假",
+      "subject": "palm tree and sun",
+      "file": "icons/vacation.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/vacation.svg"
+    },
+    {
+      "id": "haircut",
+      "label": "幸福理发",
+      "subject": "scissors and comb",
+      "file": "icons/haircut.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/haircut.svg"
+    },
+    {
+      "id": "gathering",
+      "label": "幸福聚餐",
+      "subject": "two small plates and glasses arranged for shared dining",
+      "file": "icons/gathering.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/gathering.svg"
+    },
+    {
+      "id": "music",
+      "label": "QQ音乐",
+      "subject": "headphones with music note",
+      "file": "icons/music.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/music.svg"
+    },
+    {
+      "id": "film",
+      "label": "爱奇艺电影",
+      "subject": "movie clapperboard with small play triangle",
+      "file": "icons/film.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/film.svg"
+    },
+    {
+      "id": "groceries",
+      "label": "幸福买菜",
+      "subject": "grocery basket with leafy vegetable",
+      "file": "icons/groceries.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/groceries.svg"
+    },
+    {
+      "id": "breakfast",
+      "label": "幸福早餐",
+      "subject": "toast with fried egg",
+      "file": "icons/breakfast.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/breakfast.svg"
+    },
+    {
+      "id": "lunch",
+      "label": "幸福午餐",
+      "subject": "lunch plate with fork and small sun",
+      "file": "icons/lunch.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/lunch.svg"
+    },
+    {
+      "id": "dinner",
+      "label": "幸福晚餐",
+      "subject": "dinner plate with fork and crescent moon",
+      "file": "icons/dinner.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/dinner.svg"
+    },
+    {
+      "id": "drink",
+      "label": "幸福饮料",
+      "subject": "simple beverage bottle",
+      "file": "icons/drink.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/drink.svg"
+    },
+    {
+      "id": "milk-tea",
+      "label": "奶茶",
+      "subject": "takeaway bubble tea cup with wide straw and a few tapioca pearls",
+      "file": "icons/milk-tea.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/milk-tea.svg"
+    },
+    {
+      "id": "snack",
+      "label": "幸福零食",
+      "subject": "small cookie and snack bag",
+      "file": "icons/snack.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/snack.svg"
+    },
+    {
+      "id": "fruit",
+      "label": "水果零食",
+      "subject": "apple and banana",
+      "file": "icons/fruit.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/fruit.svg"
+    },
+    {
+      "id": "repayment",
+      "label": "还分期",
+      "subject": "credit card with returning arrow and three small dots representing installments",
+      "file": "icons/repayment.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/repayment.svg"
+    },
+    {
+      "id": "metro",
+      "label": "幸福地铁",
+      "subject": "metro train front inside simple tunnel arch",
+      "file": "icons/metro.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/metro.svg"
+    },
+    {
+      "id": "bike",
+      "label": "幸福骑行",
+      "subject": "simple bicycle",
+      "file": "icons/bike.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/bike.svg"
+    },
+    {
+      "id": "charging",
+      "label": "幸福充电",
+      "subject": "generic charging plug and small battery, no vehicle assumption",
+      "file": "icons/charging.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/charging.svg"
+    },
+    {
+      "id": "dha",
+      "label": "DHA",
+      "subject": "small supplement bottle with single capsule, no lettering",
+      "file": "icons/dha.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/dha.svg"
+    },
+    {
+      "id": "school-lunch",
+      "label": "学校午餐费",
+      "subject": "school lunchbox with spoon",
+      "file": "icons/school-lunch.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/school-lunch.svg"
+    },
+    {
+      "id": "reading",
+      "label": "微信读书",
+      "subject": "open book with small bookmark",
+      "file": "icons/reading.svg",
+      "status": "ready",
+      "sourceKind": "svg",
+      "builtInFile": "assets/reading.svg"
+    }
+  ],
+  "categories": [
+    {
+      "parent": "幸福报销",
+      "name": "幸福报销",
+      "level": 1,
+      "icon": "receipt",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "幸福报销",
+      "name": "公司报销",
+      "level": 2,
+      "icon": "company-reimbursement",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "幸福报销",
+      "name": "家庭报销",
+      "level": 2,
+      "icon": "family-reimbursement",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "数码产品",
+      "name": "数码产品",
+      "level": 1,
+      "icon": "devices",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "数码产品",
+      "name": "其他电子",
+      "level": 2,
+      "icon": "devices",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "财富自由",
+      "name": "财富自由",
+      "level": 1,
+      "icon": "wealth",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "财富自由",
+      "name": "更正余额",
+      "level": 2,
+      "icon": "balance",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "财富自由",
+      "name": "金鹅下蛋",
+      "level": 2,
+      "icon": "salary",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "财富自由",
+      "name": "幸福红包",
+      "level": 2,
+      "icon": "envelope",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "悦见誉府",
+      "level": 1,
+      "icon": "home",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "幸福物业",
+      "level": 2,
+      "icon": "property",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "深圳供电",
+      "level": 2,
+      "icon": "electricity",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "天然气",
+      "level": 2,
+      "icon": "gas",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "幸福搬家",
+      "level": 2,
+      "icon": "moving",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "幸福装修",
+      "level": 2,
+      "icon": "renovation",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "幸福房租",
+      "level": 2,
+      "icon": "home",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "幸福软装",
+      "level": 2,
+      "icon": "furniture",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "悦见誉府",
+      "name": "幸福押金",
+      "level": 2,
+      "icon": "deposit",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "车辆管理",
+      "name": "车辆管理",
+      "level": 1,
+      "icon": "car",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "车辆管理",
+      "name": "幸福加油",
+      "level": 2,
+      "icon": "fuel",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "车辆管理",
+      "name": "幸福停车",
+      "level": 2,
+      "icon": "parking",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "车辆管理",
+      "name": "幸福高速",
+      "level": 2,
+      "icon": "toll",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "车辆管理",
+      "name": "幸福保养",
+      "level": 2,
+      "icon": "maintenance",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "车辆管理",
+      "name": "幸福维修",
+      "level": 2,
+      "icon": "repair",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "奇迹再现",
+      "name": "奇迹再现",
+      "level": 1,
+      "icon": "cashback",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "奇迹再现",
+      "name": "其他收入",
+      "level": 2,
+      "icon": "wealth",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "奇迹再现",
+      "name": "微信立减金",
+      "level": 2,
+      "icon": "cashback",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "奇迹再现",
+      "name": "i茅台",
+      "level": 2,
+      "icon": "liquor-trade",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "奇迹再现",
+      "name": "信用卡立减",
+      "level": 2,
+      "icon": "cashback",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "奇迹再现",
+      "name": "还款优惠",
+      "level": 2,
+      "icon": "cashback",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "精品购物",
+      "level": 1,
+      "icon": "shopping",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "精品购物",
+      "name": "朴朴",
+      "level": 2,
+      "icon": "supermarket",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "淘宝购物",
+      "level": 2,
+      "icon": "parcel",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "山姆超市",
+      "level": 2,
+      "icon": "supermarket",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "酒水",
+      "level": 2,
+      "icon": "liquor",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "幸福工会",
+      "level": 2,
+      "icon": "union-shopping",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "天然气-2",
+      "level": 2,
+      "icon": "gas",
+      "kind": null,
+      "category_id": null,
+      "historical": true
+    },
+    {
+      "parent": "精品购物",
+      "name": "京东电商",
+      "level": 2,
+      "icon": "parcel",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "精品购物",
+      "name": "沃尔玛超市",
+      "level": 2,
+      "icon": "supermarket",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "休闲娱乐",
+      "level": 1,
+      "icon": "game",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "幸福度假",
+      "level": 2,
+      "icon": "vacation",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "幸福理发",
+      "level": 2,
+      "icon": "haircut",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "幸福聚餐",
+      "level": 2,
+      "icon": "gathering",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "QQ音乐",
+      "level": 2,
+      "icon": "music",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "娱乐游戏",
+      "level": 2,
+      "icon": "game",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "休闲娱乐",
+      "name": "爱奇艺电影",
+      "level": 2,
+      "icon": "film",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "乐享美食",
+      "level": 1,
+      "icon": "food",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "乐享美食",
+      "name": "幸福买菜",
+      "level": 2,
+      "icon": "groceries",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "幸福早餐",
+      "level": 2,
+      "icon": "breakfast",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "幸福午餐",
+      "level": 2,
+      "icon": "lunch",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "幸福晚餐",
+      "level": 2,
+      "icon": "dinner",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "幸福饮料",
+      "level": 2,
+      "icon": "drink",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "奶茶",
+      "level": 2,
+      "icon": "milk-tea",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "幸福零食",
+      "level": 2,
+      "icon": "snack",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "乐享美食",
+      "name": "水果零食",
+      "level": 2,
+      "icon": "fruit",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "红包转账",
+      "name": "红包转账",
+      "level": 1,
+      "icon": "transfer",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "红包转账",
+      "name": "更正余额",
+      "level": 2,
+      "icon": "balance",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "红包转账",
+      "name": "幸福转账",
+      "level": 2,
+      "icon": "transfer",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "红包转账",
+      "name": "还分期",
+      "level": 2,
+      "icon": "repayment",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "行车交通",
+      "name": "行车交通",
+      "level": 1,
+      "icon": "bus",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "行车交通",
+      "name": "幸福公交",
+      "level": 2,
+      "icon": "bus",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "行车交通",
+      "name": "幸福地铁",
+      "level": 2,
+      "icon": "metro",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "行车交通",
+      "name": "幸福骑行",
+      "level": 2,
+      "icon": "bike",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "行车交通",
+      "name": "幸福充电",
+      "level": 2,
+      "icon": "charging",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "投资小朋友",
+      "name": "投资小朋友",
+      "level": 1,
+      "icon": "child",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "投资小朋友",
+      "name": "DHA",
+      "level": 2,
+      "icon": "dha",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "投资小朋友",
+      "name": "学校午餐费",
+      "level": 2,
+      "icon": "school-lunch",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "沙井老店",
+      "name": "沙井老店",
+      "level": 1,
+      "icon": "payment",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "知识付费",
+      "name": "知识付费",
+      "level": 1,
+      "icon": "book",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "知识付费",
+      "name": "书籍",
+      "level": 2,
+      "icon": "book",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "知识付费",
+      "name": "微信读书",
+      "level": 2,
+      "icon": "reading",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "人情来往",
+      "name": "人情来往",
+      "level": 1,
+      "icon": "gift",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "人情来往",
+      "name": "幸福节日",
+      "level": 2,
+      "icon": "gift",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "话费网费",
+      "name": "话费网费",
+      "level": 1,
+      "icon": "phone",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "话费网费",
+      "name": "电信",
+      "level": 2,
+      "icon": "phone",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "话费网费",
+      "name": "移动",
+      "level": 2,
+      "icon": "phone",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    },
+    {
+      "parent": "医疗服务",
+      "name": "医疗服务",
+      "level": 1,
+      "icon": "medical",
+      "kind": null,
+      "category_id": null
+    },
+    {
+      "parent": "医疗服务",
+      "name": "人民医院",
+      "level": 2,
+      "icon": "medical",
+      "kind": null,
+      "category_id": null,
+      "historical": false
+    }
+  ]
+}

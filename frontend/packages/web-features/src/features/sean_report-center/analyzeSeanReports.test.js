@@ -10,6 +10,10 @@ const tx = (overrides) => ({
 })
 
 describe('analyzeSeanReports', () => {
+  it('groups weeks by local Monday rather than a UTC calendar day', () => {
+    const happenedAt = new Date(2026, 7, 3, 0, 5).toISOString()
+    expect(analyzeSeanReports([tx({ happened_at: happenedAt })]).weeks[0].weekStart).toBe('2026-08-03')
+  })
   it('keeps transfers and statistics-excluded records out of reports', () => {
     const data = analyzeSeanReports([
       tx({ amount: 30 }), tx({ amount: 40 }), tx({ amount: 50 }),

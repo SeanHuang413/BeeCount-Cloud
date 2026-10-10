@@ -1,11 +1,11 @@
-import { useCallback, useEffect, useState } from 'react'
+import { readReportAccounts } from './sean_shared/readReportData'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import {
   fetchExchangeRateOverrides,
   fetchExchangeRates,
   fetchNetWorthHistory,
-  fetchWorkspaceAccounts,
   type ExchangeRateOverride,
   type ExchangeRatesResponse,
   type NetWorthHistory,
@@ -26,44 +26,49 @@ export function SeanAssetsPage() {
   const [rates, setRates] = useState<ExchangeRatesResponse | null>(null)
   const [overrides, setOverrides] = useState<ExchangeRateOverride[]>([])
   const [loading, setLoading] = useState(false)
+  const generation = useRef(0)
+  const [accountTruncated, setAccountTruncated] = useState(false)
   const [error, setError] = useState(false)
 
   const load = useCallback(async () => {
+    const request = ++generation.current
+    const current = () => request === generation.current
+    setAccounts([]); setHistory(null); setRates(null); setOverrides([]); setAccountTruncated(false)
     setLoading(true)
     setError(false)
     try {
       const [accountRows, historyRows] = await Promise.all([
-        fetchWorkspaceAccounts(token, { limit: 500 }),
+        readReportAccounts(token, current),
         fetchNetWorthHistory(token, { tzOffsetMinutes: -new Date().getTimezoneOffset() }).catch(() => null),
       ])
-      setAccounts(accountRows)
-      setHistory(historyRows)
-      if (baseCurrency && new Set(accountRows.map((row) => (row.currency || 'CNY').toUpperCase())).size > 1) {
-        const [rateRows, overrideRows] = await Promise.all([
+      if (!current() || !accountRows) return
+      let rateRows: ExchangeRatesResponse | null = null
+      let overrideRows: ExchangeRateOverride[] = []
+      if (baseCurrency && accountRows.items.some((row) => (row.currency || 'CNY').toUpperCase() !== baseCurrency.toUpperCase())) {
+        ;[rateRows, overrideRows] = await Promise.all([
           fetchExchangeRates(token, baseCurrency).catch(() => null),
           fetchExchangeRateOverrides(token).catch(() => []),
         ])
-        setRates(rateRows)
-        setOverrides(overrideRows)
-      } else {
-        setRates(null)
-        setOverrides([])
       }
+      if (!current()) return
+      setAccounts(accountRows.items); setAccountTruncated(accountRows.truncated)
+      setHistory(historyRows); setRates(rateRows); setOverrides(overrideRows)
     } catch {
+      if (!current()) return
       setAccounts([])
       setHistory(null)
       setRates(null)
       setOverrides([])
       setError(true)
     } finally {
-      setLoading(false)
+      if (current()) setLoading(false)
     }
   }, [token, baseCurrency])
 
-  useEffect(() => { void load() }, [load])
+  useEffect(() => { void load(); return () => { generation.current++ } }, [load])
   useSyncRefresh(() => { void load() })
 
-  return <SeanAssetsCenterPanel
+  return <div className="mx-auto max-w-[1440px]">{accountTruncated ? <p className="mb-4 text-sm text-expense">账户达到 10,000 条读取上限，资产总览可能不完整。</p> : null}<SeanAssetsCenterPanel
     accounts={accounts}
     history={history}
     baseCurrency={baseCurrency}
@@ -74,5 +79,5 @@ export function SeanAssetsPage() {
     onRefresh={() => void load()}
     onOpenAccount={(account) => dispatchOpenDetailAccount(account as WorkspaceAccount, { defaultScope: 'all' })}
     onManageAccounts={() => navigate('/app/accounts')}
-  />
+  /></div>
 }

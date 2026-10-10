@@ -1,3 +1,4 @@
+import { localReportDay } from '../sean_shared/reportData'
 import type { WorkspaceTransaction } from '@beecount/api-client'
 
 export type SeanReportRow = { name: string; count: number; expense: number; income: number; balance: number }
@@ -28,7 +29,7 @@ function weekStart(value: string): string {
   if (!Number.isFinite(date.getTime())) return ''
   const day = date.getDay() || 7
   date.setDate(date.getDate() - day + 1)
-  return date.toISOString().slice(0, 10)
+  return localReportDay(date)
 }
 
 function addRow(target: Map<string, SeanReportRow>, name: string, tx: WorkspaceTransaction, amount: number): void {

@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { localReportDay } from '../sean_shared/reportData'
+import { useEffect, useState } from 'react'
 import type { ReadBudget, WorkspaceCategory, WorkspaceTransaction } from '@beecount/api-client'
 import {
   Card, CardContent, CardDescription, CardHeader, CardTitle, Dialog, DialogContent,
   DialogDescription, DialogHeader, DialogTitle,
 } from '@beecount/ui'
 import { ReceiptText } from 'lucide-react'
-import { analyzeBudgetReimbursement, type BudgetReimbursementRow } from './analyzeBudgetReimbursement'
+import { analyzeBudgetReimbursement, hasOverlappingBudgetExpenses, type BudgetReimbursementRow } from './analyzeBudgetReimbursement'
 
 type Props = { budgets: ReadBudget[]; categories: WorkspaceCategory[]; transactions: WorkspaceTransaction[]; currency: string }
 type Detail = { row: BudgetReimbursementRow; kind: 'expense' | 'reimbursement' } | null
@@ -19,6 +20,8 @@ function money(value: number, currency: string): string {
 export function BudgetReimbursementCard({ budgets, categories, transactions, currency }: Props) {
   const rows = analyzeBudgetReimbursement(budgets, categories, transactions)
   const [detail, setDetail] = useState<Detail>(null)
+  const overlapping = hasOverlappingBudgetExpenses(rows)
+  useEffect(() => { setDetail(null) }, [transactions, budgets, categories])
   const totals = rows.reduce(
     (sum, row) => ({ budget: sum.budget + row.budget, expense: sum.expense + row.expense, reimbursement: sum.reimbursement + row.reimbursement, actual: sum.actual + row.actual }),
     { budget: 0, expense: 0, reimbursement: 0, actual: 0 },
@@ -26,11 +29,12 @@ export function BudgetReimbursementCard({ budgets, categories, transactions, cur
   const detailRows = detail ? (detail.kind === 'expense' ? detail.row.expenseTransactions : detail.row.reimbursementTransactions) : []
 
   return <>
+    {overlapping ? <p className="text-xs text-muted-foreground">部分父级与子级预算包含相同交易。各行可独立核对，顶部合计暂不展示，避免重复累计。</p> : null}
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">分类预算</p><p className="mt-1 font-mono text-xl font-semibold">{money(totals.budget, currency)}</p></CardContent></Card>
-      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">支出</p><p className="mt-1 font-mono text-xl font-semibold text-expense">-{money(totals.expense, currency)}</p></CardContent></Card>
-      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">报销</p><p className="mt-1 font-mono text-xl font-semibold text-income">+{money(totals.reimbursement, currency)}</p></CardContent></Card>
-      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">实际承担</p><p className="mt-1 font-mono text-xl font-semibold">{money(totals.actual, currency)}</p><p className="mt-1 text-xs text-muted-foreground">预算执行率 {totals.budget > 0 ? `${(totals.actual / totals.budget * 100).toFixed(1)}%` : '—'}</p></CardContent></Card>
+      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">分类预算</p><p className="mt-1 font-mono text-xl font-semibold">{overlapping ? '—' : money(totals.budget, currency)}</p></CardContent></Card>
+      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">支出</p><p className="mt-1 font-mono text-xl font-semibold text-expense">-{overlapping ? '—' : money(totals.expense, currency)}</p></CardContent></Card>
+      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">报销</p><p className="mt-1 font-mono text-xl font-semibold text-income">+{overlapping ? '—' : money(totals.reimbursement, currency)}</p></CardContent></Card>
+      <Card><CardContent className="p-4"><p className="text-xs text-muted-foreground">实际承担</p><p className="mt-1 font-mono text-xl font-semibold">{overlapping ? '—' : money(totals.actual, currency)}</p><p className="mt-1 text-xs text-muted-foreground">预算执行率 {!overlapping && totals.budget > 0 ? `${(totals.actual / totals.budget * 100).toFixed(1)}%` : '—'}</p></CardContent></Card>
     </div>
     <Card>
       <CardHeader>
@@ -55,7 +59,7 @@ export function BudgetReimbursementCard({ budgets, categories, transactions, cur
       <DialogContent className="max-h-[80vh] max-w-xl overflow-y-auto">
         <DialogHeader><DialogTitle>{detail ? `${detail.row.name} · ${detail.kind === 'expense' ? '支出' : '报销'}明细` : '分类明细'}</DialogTitle><DialogDescription>仅显示当前月份和当前分类口径内的交易；共享报销明细显示原始报销池。</DialogDescription></DialogHeader>
         <div className="divide-y divide-border/70">{detailRows.slice().sort((a, b) => b.happened_at.localeCompare(a.happened_at)).map((tx) =>
-          <div key={tx.id} className="flex items-center justify-between gap-3 py-3"><div className="min-w-0"><p className="truncate text-sm font-medium">{tx.note || tx.category_name || '未命名交易'}</p><p className="mt-1 text-xs text-muted-foreground">{tx.happened_at.slice(0, 10)} · {tx.category_name || '未分类'}</p></div><span className={`font-mono font-semibold ${detail?.kind === 'expense' ? 'text-expense' : 'text-income'}`}>{detail?.kind === 'expense' ? '-' : '+'}{money(amountOf(tx), currency)}</span></div>,
+          <div key={tx.id} className="flex items-center justify-between gap-3 py-3"><div className="min-w-0"><p className="truncate text-sm font-medium">{tx.note || tx.category_name || '未命名交易'}</p><p className="mt-1 text-xs text-muted-foreground">{localReportDay(tx.happened_at)} · {tx.category_name || '未分类'}</p></div><span className={`font-mono font-semibold ${detail?.kind === 'expense' ? 'text-expense' : 'text-income'}`}>{detail?.kind === 'expense' ? '-' : '+'}{money(amountOf(tx), currency)}</span></div>,
         )}{!detailRows.length ? <p className="py-8 text-center text-sm text-muted-foreground">没有符合条件的交易。</p> : null}</div>
       </DialogContent>
     </Dialog>

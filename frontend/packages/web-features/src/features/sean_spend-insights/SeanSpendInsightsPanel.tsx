@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { WorkspaceTransaction } from '@beecount/api-client'
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, useT } from '@beecount/ui'
 import { ArrowRight, CircleDollarSign, RefreshCw, SearchX, TrendingUp, WalletCards } from 'lucide-react'
@@ -40,6 +40,7 @@ export function SeanSpendInsightsPanel({ transactions, currency, period, onPerio
   const t = useT()
   const result = analyzeSeanSpendCandidates(transactions)
   const [selectedInsight, setSelectedInsight] = useState<SeanSpendInsight | null>(null)
+  useEffect(() => { setSelectedInsight(null) }, [transactions, currency])
   const totals = transactions.reduce((summary, tx) => {
     if (tx.exclude_from_stats || (tx.tx_type !== 'income' && tx.tx_type !== 'expense')) return summary
     if (tx.tx_type === 'income') summary.income += amountOf(tx)

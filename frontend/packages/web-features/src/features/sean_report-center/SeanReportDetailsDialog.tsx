@@ -1,3 +1,4 @@
+import { localReportDay } from '../sean_shared/reportData'
 import type { WorkspaceTransaction } from '@beecount/api-client'
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@beecount/ui'
 
@@ -48,7 +49,7 @@ export function SeanReportDetailsDialog({ selection, transactions, currency, onO
       <div className="divide-y divide-border/70">
         {rows.map((tx) => {
           const expense = tx.tx_type === 'expense'
-          return <div key={tx.id} className="flex items-center justify-between gap-4 py-3"><div className="min-w-0"><p className="truncate font-medium">{tx.note || tx.category_name || '未命名交易'}</p><p className="mt-1 text-xs text-muted-foreground">{tx.happened_at.slice(0, 10)}{tagsOf(tx).length ? ` · ${tagsOf(tx).join('、')}` : ''}</p></div><span className={`shrink-0 font-mono font-semibold ${expense ? 'text-expense' : 'text-income'}`}>{expense ? '-' : '+'}{money(amountOf(tx), currency)}</span></div>
+          return <div key={tx.id} className="flex items-center justify-between gap-4 py-3"><div className="min-w-0"><p className="truncate font-medium">{tx.note || tx.category_name || '未命名交易'}</p><p className="mt-1 text-xs text-muted-foreground">{localReportDay(tx.happened_at)}{tagsOf(tx).length ? ` · ${tagsOf(tx).join('、')}` : ''}</p></div><span className={`shrink-0 font-mono font-semibold ${expense ? 'text-expense' : 'text-income'}`}>{expense ? '-' : '+'}{money(amountOf(tx), currency)}</span></div>
         })}
         {!rows.length ? <p className="py-8 text-center text-sm text-muted-foreground">没有符合条件的交易。</p> : null}
       </div>
