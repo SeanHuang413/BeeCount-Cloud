@@ -63,7 +63,7 @@ function seanCurrencySummary(accounts: ReadAccount[]) {
   let liabilityTotal = 0
   for (const account of accounts) {
     const balance = accountBalance(account)
-    if (LIABILITY_TYPES.has(seanAccountType(account))) liabilityTotal -= Math.abs(balance)
+    if (LIABILITY_TYPES.has(seanAccountType(account))) liabilityTotal += balance
     else assetTotal += balance
   }
   return { assetTotal, liabilityTotal, netWorth: assetTotal + liabilityTotal }

@@ -71,6 +71,16 @@ self.addEventListener('fetch', (event) => {
   // 跨域资源(CDN 字体等)也直接走网络,sw 只管自家 origin。
   if (url.origin !== self.location.origin) return
 
+  // Vite serves source modules directly. Cached development modules can hide
+  // local changes even after a normal reload; always let Vite handle them.
+  if (
+    url.pathname.startsWith('/src/') ||
+    url.pathname.startsWith('/@vite/') ||
+    url.pathname.startsWith('/@fs/') ||
+    url.pathname.startsWith('/@id/') ||
+    url.pathname.startsWith('/node_modules/')
+  ) return
+
   // 导航请求 → 网络优先 + cache 兜底(保证 index.html 能在断网时打开)
   if (req.mode === 'navigate') {
     event.respondWith(

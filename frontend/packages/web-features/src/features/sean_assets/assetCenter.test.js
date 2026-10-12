@@ -78,14 +78,14 @@ describe('Sean asset center summary', () => {
     expect(rows[2].__sean_group_totals).toEqual([{ currency: 'CNY', value: 100 }])
   })
 
-  it('moves inferred credit cards into liabilities and treats their balance as debt', () => {
+  it('moves inferred credit cards into liabilities and preserves overpayment signs', () => {
     const result = buildSeanAssetCenterSummary([
       { ...account('工商银行储蓄卡', 'CNY', 5000), account_type: null },
       { ...account('工商银行信用卡', 'CNY', 1200), account_type: null },
     ], 'CNY', null, [])
     expect(result.assets.map((item) => item.name)).toEqual(['工商银行储蓄卡'])
     expect(result.liabilities.map((item) => item.name)).toEqual(['工商银行信用卡'])
-    expect(result.converted).toMatchObject({ assetTotal: 5000, liabilityTotal: -1200, netWorth: 3800 })
+    expect(result.converted).toMatchObject({ assetTotal: 5000, liabilityTotal: 1200, netWorth: 6200 })
   })
 
   it('prioritizes the four major banks before other card accounts', () => {
