@@ -13,6 +13,7 @@ export type AppRoute =
 export const APP_SECTIONS: AppSection[] = [
   'transactions',
   'calendar',
+  'attachments',
   'accounts',
   'categories',
   'tags',
@@ -87,6 +88,8 @@ function parseRootSection(parts: string[]): AppSection {
       return 'transactions'
     case 'calendar':
       return 'calendar'
+    case 'attachments':
+      return 'attachments'
     case 'accounts':
       return 'accounts'
     case 'categories':
@@ -146,6 +149,8 @@ function parseLegacyLedgerSection(parts: string[]): AppSection {
       return 'transactions'
     case 'calendar':
       return 'calendar'
+    case 'attachments':
+      return 'attachments'
     case 'accounts':
       return 'accounts'
     case 'categories':
@@ -203,6 +208,7 @@ export function parseRoute(pathname: string): AppRoute {
   if (
     parts[1] === 'transactions' ||
     parts[1] === 'calendar' ||
+    parts[1] === 'attachments' ||
     parts[1] === 'accounts' ||
     parts[1] === 'categories' ||
     parts[1] === 'tags' ||
@@ -242,6 +248,8 @@ export function routePath(route: AppRoute): string {
       return '/app/transactions'
     case 'calendar':
       return '/app/calendar'
+    case 'attachments':
+      return '/app/attachments'
     case 'accounts':
       return '/app/accounts'
     case 'categories':

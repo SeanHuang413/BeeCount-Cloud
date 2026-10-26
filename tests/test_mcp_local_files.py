@@ -4,6 +4,7 @@ from __future__ import annotations
 import asyncio
 import base64
 import importlib.util
+import os
 from pathlib import Path
 from types import SimpleNamespace
 
@@ -14,6 +15,15 @@ spec = importlib.util.spec_from_file_location("local_files", Path(__file__).pare
 assert spec and spec.loader
 bridge = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bridge)
+
+
+def _symlink_or_skip(link: Path, target: Path) -> None:
+    try:
+        link.symlink_to(target)
+    except OSError as exc:
+        if os.name == "nt" and exc.winerror == 1314:
+            pytest.skip("Windows requires permission to create symbolic links")
+        raise
 
 
 def test_schema_exposes_path_and_keeps_upstream_output():
@@ -31,7 +41,7 @@ def test_schema_exposes_path_and_keeps_upstream_output():
 
 
 def test_original_large_file_bytes_are_unchanged(tmp_path):
-    data = b"synthetic-receipt" * 50000  # 大于截图中的 680KB，完全不做转码/压缩。
+    data = b"synthetic-receipt\r\n\x1a\x00" * 50000  # 包含 Windows 文本模式会转换的字节。
     path = tmp_path / "小票 with spaces.png"
     path.write_bytes(data)
     name, result = bridge.read_receipt(str(path), [tmp_path])
@@ -53,13 +63,14 @@ def test_invalid_local_files_are_rejected(tmp_path, kind):
         if kind == "outside":
             p = outside
         else:
-            p.symlink_to(outside)
+            _symlink_or_skip(p, outside)
     elif kind == "relative":
         p = Path("receipt.png")
     with pytest.raises(ValueError):
         bridge.read_receipt(str(p), [allowed], max_bytes=4)
 
 
+@pytest.mark.skipif(not hasattr(os, "mkfifo"), reason="Platform does not support FIFO files")
 def test_non_regular_file_does_not_block(tmp_path):
     import os
     p = tmp_path / "receipt.png"
@@ -72,7 +83,7 @@ def test_symlink_to_allowed_file_is_supported(tmp_path):
     p = tmp_path / "actual.png"
     p.write_bytes(b"original")
     link = tmp_path / "alias.png"
-    link.symlink_to(p)
+    _symlink_or_skip(link, p)
     assert bridge.read_receipt(str(link), [tmp_path]) == ("actual.png", b"original")
 
 
