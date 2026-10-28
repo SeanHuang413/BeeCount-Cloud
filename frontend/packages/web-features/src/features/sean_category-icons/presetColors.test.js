@@ -4,11 +4,49 @@ import { categoryPresetPalette, colorPresetSvg, presetPalette, presetPreviewSour
 afterEach(() => vi.unstubAllGlobals())
 
 describe('preset income and expense palettes', () => {
+  it('preserves multicolor sources under both income and expense themes', async () => {
+    const fetchMock = vi.fn()
+    vi.stubGlobal('fetch', fetchMock)
+    const preset = { id: 'pastel-test', colorMode: 'multicolor', src: '/pastel.svg', colorSrc: '/pastel.svg', sourceKind: 'svg' }
+    for (const rgb of ['200 30 30', '30 180 80']) {
+      expect(await presetPreviewSource(preset, presetPalette(rgb))).toBe('/pastel.svg')
+    }
+    expect(fetchMock).not.toHaveBeenCalled()
+  })
   it('reads the selected type from theme variables without assuming red or green', () => {
     vi.stubGlobal('document', { documentElement: {} })
     vi.stubGlobal('getComputedStyle', () => ({ getPropertyValue: name => name === '--income-rgb' ? '120 80 240' : '30 160 200' }))
     expect(categoryPresetPalette('income').outline).toBe('rgb(120,80,240)')
+    expect(categoryPresetPalette('income').badgeKind).toBe('income')
     expect(categoryPresetPalette('expense').outline).toBe('rgb(30,160,200)')
+    expect(categoryPresetPalette('expense').badgeKind).toBe('expense')
+    expect(categoryPresetPalette('transfer')).toBeUndefined()
+  })
+  it('adds distinct income and expense badges without recoloring the illustration', async () => {
+    const original = '<svg viewBox="0 0 64 64"><path fill="#A9D3F5" stroke="#40566F" d="M10 10h20v20Z"/></svg>'
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, text: async () => original })
+    vi.stubGlobal('fetch', fetchMock)
+    const preset = { id: 'badge-test', colorMode: 'multicolor', sourceKind: 'svg', src: '/badge-test.svg', colorSrc: '/unused.svg' }
+    const palette = presetPalette('120 80 240')
+    const income = decodeURIComponent(await presetPreviewSource(preset, { ...palette, badgeKind: 'income' }))
+    const expense = decodeURIComponent(await presetPreviewSource(preset, { ...palette, badgeKind: 'expense' }))
+    for (const source of [income, expense]) {
+      expect(source).toContain(original.replace('</svg>', ''))
+      expect(source).toContain('stroke="rgb(120,80,240)"')
+      expect(source).toContain('<circle')
+    }
+    expect(income).toContain('data-preset-kind="income"')
+    expect(income).toContain('M54 50v8')
+    expect(expense).toContain('data-preset-kind="expense"')
+    expect(expense).not.toContain('M54 50v8')
+    expect(fetchMock).toHaveBeenCalledOnce()
+    expect(fetchMock).toHaveBeenCalledWith(preset.src)
+  })
+  it('keeps the kind marker when theme RGB is missing and leaves transfers unmarked', () => {
+    vi.stubGlobal('document', { documentElement: {} })
+    vi.stubGlobal('getComputedStyle', () => ({ getPropertyValue: () => '' }))
+    expect(categoryPresetPalette('income').badgeKind).toBe('income')
+    expect(categoryPresetPalette('expense').outline).toBe('rgb(64,86,111)')
     expect(categoryPresetPalette('transfer')).toBeUndefined()
   })
   it('swaps both colors without rewriting the source geometry', () => {

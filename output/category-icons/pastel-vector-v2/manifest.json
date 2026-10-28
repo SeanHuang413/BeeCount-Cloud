@@ -1,0 +1,569 @@
+{
+  "version": "pastel-vector-v2",
+  "source": "Original SVG geometry; approved imagegen style reference",
+  "palette": {
+    "ink": "#40566F",
+    "blue": "#A9D3F5",
+    "mint": "#AFE3D1",
+    "yellow": "#F8D889",
+    "peach": "#F5C0A6",
+    "coral": "#F3A29C",
+    "purple": "#C9BCEB",
+    "paper": "#F2F7FC",
+    "green": "#8CC8AC"
+  },
+  "icons": [
+    {
+      "id": "feige-wedding",
+      "label": "飞哥结婚"
+    },
+    {
+      "id": "wedding-banquet",
+      "label": "喜酒"
+    },
+    {
+      "id": "balance-adjustment",
+      "label": "平账"
+    },
+    {
+      "id": "home-living",
+      "label": "居家生活"
+    },
+    {
+      "id": "shoes",
+      "label": "鞋子"
+    },
+    {
+      "id": "everyday-clothes",
+      "label": "衣服"
+    },
+    {
+      "id": "handbag",
+      "label": "包包"
+    },
+    {
+      "id": "other-reimbursement",
+      "label": "其他报销"
+    },
+    {
+      "id": "receipt",
+      "label": "幸福报销"
+    },
+    {
+      "id": "devices",
+      "label": "数码产品"
+    },
+    {
+      "id": "wealth",
+      "label": "财富自由"
+    },
+    {
+      "id": "home",
+      "label": "悦见誉府"
+    },
+    {
+      "id": "car",
+      "label": "车辆管理"
+    },
+    {
+      "id": "cashback",
+      "label": "奇迹再现"
+    },
+    {
+      "id": "shopping",
+      "label": "精品购物"
+    },
+    {
+      "id": "game",
+      "label": "休闲娱乐"
+    },
+    {
+      "id": "food",
+      "label": "乐享美食"
+    },
+    {
+      "id": "transfer",
+      "label": "红包转账"
+    },
+    {
+      "id": "bus",
+      "label": "行车交通"
+    },
+    {
+      "id": "child",
+      "label": "投资小朋友"
+    },
+    {
+      "id": "payment",
+      "label": "沙井老店"
+    },
+    {
+      "id": "book",
+      "label": "知识付费"
+    },
+    {
+      "id": "gift",
+      "label": "人情来往"
+    },
+    {
+      "id": "phone",
+      "label": "话费网费"
+    },
+    {
+      "id": "medical",
+      "label": "医疗服务"
+    },
+    {
+      "id": "company-reimbursement",
+      "label": "公司报销"
+    },
+    {
+      "id": "family-reimbursement",
+      "label": "家庭报销"
+    },
+    {
+      "id": "balance",
+      "label": "更正余额"
+    },
+    {
+      "id": "salary",
+      "label": "金鹅下蛋"
+    },
+    {
+      "id": "envelope",
+      "label": "幸福红包"
+    },
+    {
+      "id": "property",
+      "label": "幸福物业"
+    },
+    {
+      "id": "electricity",
+      "label": "深圳供电"
+    },
+    {
+      "id": "gas",
+      "label": "天然气"
+    },
+    {
+      "id": "moving",
+      "label": "幸福搬家"
+    },
+    {
+      "id": "renovation",
+      "label": "幸福装修"
+    },
+    {
+      "id": "furniture",
+      "label": "幸福软装"
+    },
+    {
+      "id": "deposit",
+      "label": "幸福押金"
+    },
+    {
+      "id": "fuel",
+      "label": "幸福加油"
+    },
+    {
+      "id": "parking",
+      "label": "幸福停车"
+    },
+    {
+      "id": "toll",
+      "label": "幸福高速"
+    },
+    {
+      "id": "maintenance",
+      "label": "幸福保养"
+    },
+    {
+      "id": "repair",
+      "label": "幸福维修"
+    },
+    {
+      "id": "liquor-trade",
+      "label": "i茅台"
+    },
+    {
+      "id": "supermarket",
+      "label": "超市购物"
+    },
+    {
+      "id": "parcel",
+      "label": "电商购物"
+    },
+    {
+      "id": "liquor",
+      "label": "酒水"
+    },
+    {
+      "id": "union-shopping",
+      "label": "幸福工会"
+    },
+    {
+      "id": "vacation",
+      "label": "幸福度假"
+    },
+    {
+      "id": "haircut",
+      "label": "幸福理发"
+    },
+    {
+      "id": "gathering",
+      "label": "幸福聚餐"
+    },
+    {
+      "id": "music",
+      "label": "QQ音乐"
+    },
+    {
+      "id": "film",
+      "label": "爱奇艺电影"
+    },
+    {
+      "id": "groceries",
+      "label": "幸福买菜"
+    },
+    {
+      "id": "breakfast",
+      "label": "幸福早餐"
+    },
+    {
+      "id": "lunch",
+      "label": "幸福午餐"
+    },
+    {
+      "id": "dinner",
+      "label": "幸福晚餐"
+    },
+    {
+      "id": "drink",
+      "label": "幸福饮料"
+    },
+    {
+      "id": "milk-tea",
+      "label": "奶茶"
+    },
+    {
+      "id": "snack",
+      "label": "幸福零食"
+    },
+    {
+      "id": "fruit",
+      "label": "水果零食"
+    },
+    {
+      "id": "repayment",
+      "label": "还分期"
+    },
+    {
+      "id": "metro",
+      "label": "幸福地铁"
+    },
+    {
+      "id": "bike",
+      "label": "幸福骑行"
+    },
+    {
+      "id": "charging",
+      "label": "幸福充电"
+    },
+    {
+      "id": "dha",
+      "label": "DHA"
+    },
+    {
+      "id": "school-lunch",
+      "label": "学校午餐费"
+    },
+    {
+      "id": "reading",
+      "label": "微信读书"
+    },
+    {
+      "id": "bonus",
+      "label": "奖金绩效"
+    },
+    {
+      "id": "side-job",
+      "label": "兼职副业"
+    },
+    {
+      "id": "commission",
+      "label": "佣金提成"
+    },
+    {
+      "id": "interest",
+      "label": "存款利息"
+    },
+    {
+      "id": "dividend",
+      "label": "分红收益"
+    },
+    {
+      "id": "investment-gain",
+      "label": "投资收益"
+    },
+    {
+      "id": "rental-income",
+      "label": "租金收入"
+    },
+    {
+      "id": "refund",
+      "label": "退款退货"
+    },
+    {
+      "id": "secondhand-sale",
+      "label": "闲置出售"
+    },
+    {
+      "id": "royalty",
+      "label": "稿费版权"
+    },
+    {
+      "id": "allowance",
+      "label": "补贴津贴"
+    },
+    {
+      "id": "pension",
+      "label": "养老金"
+    },
+    {
+      "id": "scholarship",
+      "label": "奖学金"
+    },
+    {
+      "id": "business-income",
+      "label": "经营收入"
+    },
+    {
+      "id": "service-income",
+      "label": "服务收入"
+    },
+    {
+      "id": "cash-gift",
+      "label": "礼金收入"
+    },
+    {
+      "id": "insurance-payout",
+      "label": "保险理赔"
+    },
+    {
+      "id": "tax-refund",
+      "label": "退税返还"
+    },
+    {
+      "id": "lottery",
+      "label": "中奖奖励"
+    },
+    {
+      "id": "income-account",
+      "label": "收入入账"
+    },
+    {
+      "id": "clothing",
+      "label": "服饰鞋包"
+    },
+    {
+      "id": "beauty",
+      "label": "美容护肤"
+    },
+    {
+      "id": "fitness",
+      "label": "运动健身"
+    },
+    {
+      "id": "pet",
+      "label": "宠物用品"
+    },
+    {
+      "id": "coffee",
+      "label": "咖啡"
+    },
+    {
+      "id": "takeout",
+      "label": "外卖配送"
+    },
+    {
+      "id": "flight",
+      "label": "飞机机票"
+    },
+    {
+      "id": "rail",
+      "label": "火车高铁"
+    },
+    {
+      "id": "taxi",
+      "label": "打车出租"
+    },
+    {
+      "id": "hotel",
+      "label": "酒店住宿"
+    },
+    {
+      "id": "travel-luggage",
+      "label": "旅行行李"
+    },
+    {
+      "id": "water-bill",
+      "label": "水费"
+    },
+    {
+      "id": "internet",
+      "label": "宽带网络"
+    },
+    {
+      "id": "cleaning",
+      "label": "家政清洁"
+    },
+    {
+      "id": "appliance",
+      "label": "家用电器"
+    },
+    {
+      "id": "education",
+      "label": "教育培训"
+    },
+    {
+      "id": "stationery",
+      "label": "文具办公"
+    },
+    {
+      "id": "insurance",
+      "label": "保险费用"
+    },
+    {
+      "id": "loan",
+      "label": "贷款月供"
+    },
+    {
+      "id": "charity",
+      "label": "公益捐赠"
+    },
+    {
+      "id": "membership",
+      "label": "会员订阅"
+    },
+    {
+      "id": "merchant-taobao",
+      "label": "淘宝"
+    },
+    {
+      "id": "merchant-tmall",
+      "label": "天猫"
+    },
+    {
+      "id": "merchant-jd",
+      "label": "京东"
+    },
+    {
+      "id": "merchant-pinduoduo",
+      "label": "拼多多"
+    },
+    {
+      "id": "merchant-douyin-shop",
+      "label": "抖音商城"
+    },
+    {
+      "id": "merchant-kuaishou-shop",
+      "label": "快手商城"
+    },
+    {
+      "id": "merchant-vipshop",
+      "label": "唯品会"
+    },
+    {
+      "id": "merchant-suning",
+      "label": "苏宁易购"
+    },
+    {
+      "id": "merchant-mi-shop",
+      "label": "小米商城"
+    },
+    {
+      "id": "merchant-dewu",
+      "label": "得物"
+    },
+    {
+      "id": "merchant-xianyu",
+      "label": "闲鱼"
+    },
+    {
+      "id": "merchant-yanxuan",
+      "label": "网易严选"
+    },
+    {
+      "id": "merchant-sams",
+      "label": "山姆超市"
+    },
+    {
+      "id": "merchant-walmart",
+      "label": "沃尔玛"
+    },
+    {
+      "id": "merchant-hema",
+      "label": "盒马"
+    },
+    {
+      "id": "merchant-pupu",
+      "label": "朴朴"
+    },
+    {
+      "id": "merchant-yonghui",
+      "label": "永辉超市"
+    },
+    {
+      "id": "merchant-rtmart",
+      "label": "大润发"
+    },
+    {
+      "id": "merchant-vanguard",
+      "label": "华润万家"
+    },
+    {
+      "id": "merchant-rainbow",
+      "label": "天虹"
+    },
+    {
+      "id": "merchant-metro-store",
+      "label": "麦德龙"
+    },
+    {
+      "id": "merchant-costco",
+      "label": "Costco 开市客"
+    },
+    {
+      "id": "merchant-pangdonglai",
+      "label": "胖东来"
+    },
+    {
+      "id": "merchant-carrefour",
+      "label": "家乐福"
+    },
+    {
+      "id": "merchant-parknshop",
+      "label": "百佳超市"
+    },
+    {
+      "id": "merchant-jiarong",
+      "label": "嘉荣超市"
+    },
+    {
+      "id": "merchant-lawson",
+      "label": "罗森"
+    },
+    {
+      "id": "merchant-familymart",
+      "label": "全家"
+    },
+    {
+      "id": "merchant-seven-eleven",
+      "label": "7-Eleven"
+    },
+    {
+      "id": "merchant-meiyijia",
+      "label": "美宜佳"
+    }
+  ]
+}

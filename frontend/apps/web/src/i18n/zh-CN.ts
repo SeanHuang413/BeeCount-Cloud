@@ -1,5 +1,6 @@
 const zhCN = {
   'categories.presets.title': '扩展图标',
+  'categories.presets.styleHint': '柔彩主体保留原色，角标按系统收支配色显示＋/－。已有分类需重新选择并保存后更新图片。',
   'categories.presets.group.all': '全部',
   'categories.presets.group.ecommerce': '电商',
   'categories.presets.group.supermarket': '超市',

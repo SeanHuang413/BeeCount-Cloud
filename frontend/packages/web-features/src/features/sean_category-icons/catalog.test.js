@@ -1,6 +1,7 @@
 import { describe, expect, it, vi, afterEach } from 'vitest'
 import { CATEGORY_ICON_PRESETS, filterCategoryIconPresets } from './catalog'
 import { categoryPresetFile } from './presetFile'
+import { readFileSync } from 'node:fs'
 
 afterEach(() => { vi.unstubAllGlobals(); vi.restoreAllMocks() })
 
@@ -16,8 +17,27 @@ describe('category icon presets', () => {
     expect(filterCategoryIconPresets('不存在的分类')).toEqual([])
   })
   it('has distinct preset IDs and only packaged sources', () => {
-    expect(new Set(CATEGORY_ICON_PRESETS.map(p => p.id)).size).toBe(130)
+    expect(new Set(CATEGORY_ICON_PRESETS.map(p => p.id)).size).toBe(138)
     expect(CATEGORY_ICON_PRESETS.every(p => p.src && !p.src.startsWith('https://'))).toBe(true)
+  })
+  it('finds the additional expense and reimbursement subjects by their category names', () => {
+    const expected = { '飞哥结婚': 'feige-wedding', '喜酒': 'wedding-banquet', '平账': 'balance-adjustment', '鞋子': 'shoes', '衣服': 'everyday-clothes', '包包': 'handbag', '其他报销': 'other-reimbursement', '拼多多': 'merchant-pinduoduo' }
+    for (const [name, id] of Object.entries(expected)) {
+      expect(filterCategoryIconPresets(name).map(p => p.id)).toEqual([id])
+    }
+    expect(filterCategoryIconPresets('居家生活').map(p => p.id)).toEqual(['home-living', 'shoes', 'everyday-clothes', 'handbag'])
+    expect(filterCategoryIconPresets('人情来往').map(p => p.id)).toContain('wedding-banquet')
+    expect(filterCategoryIconPresets('幸福报销').map(p => p.id)).toContain('other-reimbursement')
+    expect(filterCategoryIconPresets('精品购物').map(p => p.id)).toContain('merchant-pinduoduo')
+  })
+  it('ships every multicolor illustration with an editable, self-contained source', () => {
+    for (const preset of CATEGORY_ICON_PRESETS) {
+      expect(preset.colorMode).toBe('multicolor')
+      expect(preset.sourceKind).toBe('svg')
+      const svg = readFileSync(new URL(`./assets/pastel-vector-v2/${preset.id}.svg`, import.meta.url), 'utf8')
+      expect(svg).toContain('viewBox="0 0 64 64"')
+      expect(svg).not.toMatch(/<script|<image|https?:\/\/(?!www.w3.org)/)
+    }
   })
   it('separates online stores, supermarkets and convenience stores', () => {
     expect(filterCategoryIconPresets('', 'ecommerce')).toHaveLength(12)
@@ -75,6 +95,25 @@ describe('category icon presets', () => {
     expect(result.name).toBe('colored-png-test.png')
     expect(fetchMock.mock.calls[0][0]).toBe(preset.colorSrc)
     expect(decodeURIComponent(fetchMock.mock.calls[1][0])).toContain('rgb(120,80,240)')
+    expect(drawImage).toHaveBeenCalledOnce()
+  })
+  it('exports the same marked multicolor source shown by the picker', async () => {
+    const preset = { id: 'marked-export-test', colorMode: 'multicolor', sourceKind: 'svg', src: '/marked-export-test.svg', colorSrc: '/marked-export-test.svg' }
+    const fetchMock = vi.fn(async url => url === preset.src
+      ? { ok: true, text: async () => '<svg viewBox="0 0 64 64"><path fill="#A9D3F5"/></svg>' }
+      : { ok: true, blob: async () => new Blob(['marked svg'], { type: 'image/svg+xml' }) })
+    vi.stubGlobal('fetch', fetchMock)
+    vi.stubGlobal('File', class extends Blob { constructor(parts, name, options) { super(parts, options); this.name = name } })
+    vi.stubGlobal('Image', class { async decode() {} })
+    const drawImage = vi.fn()
+    const canvas = { getContext: () => ({ drawImage }), toBlob: callback => callback(new Blob(['png'])) }
+    vi.stubGlobal('document', { createElement: () => canvas })
+    const file = await categoryPresetFile(preset, { outline: 'rgb(30,160,200)', fill: 'rgb(206,234,243)', badgeKind: 'expense' })
+    expect(file.name).toBe('marked-export-test.png')
+    const source = decodeURIComponent(fetchMock.mock.calls[1][0])
+    expect(source).toContain('data-preset-kind="expense"')
+    expect(source).toContain('fill="#A9D3F5"')
+    expect(canvas.width).toBe(512)
     expect(drawImage).toHaveBeenCalledOnce()
   })
 })

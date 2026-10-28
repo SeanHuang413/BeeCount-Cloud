@@ -6,7 +6,7 @@ import { categoryPresetPalette, presetPreviewSource, type PresetPalette } from '
 function PresetImage({ preset, palette }: { preset: CategoryIconPreset; palette?: PresetPalette }) {
   const [preview, setPreview] = useState<{ key: string; src: string } | null>(null)
   const [failed, setFailed] = useState<string | null>(null)
-  const key = `${preset.id}:${palette?.outline || 'original'}:${palette?.fill || ''}`
+  const key = `${preset.id}:${palette?.outline || 'original'}:${palette?.fill || ''}:${palette?.badgeKind || ''}`
   useEffect(() => {
     let active = true
     presetPreviewSource(preset, palette).then(src => {
@@ -32,7 +32,7 @@ export function SeanCategoryPresetGrid({ query, kind, disabled, onSelect }: {
   const palette = categoryPresetPalette(kind)
   const presets = filterCategoryIconPresets(query, group)
   return <div className="space-y-3">
-    {palette ? <p className={kind === 'income' ? 'text-income text-xs' : 'text-expense text-xs'}>{t(kind === 'income' ? 'categories.presets.income' : 'categories.presets.expense')}</p> : null}
+    {palette ? <p className={kind === 'income' ? 'text-income text-xs' : 'text-expense text-xs'}>{t(kind === 'income' ? 'categories.presets.income' : 'categories.presets.expense')} · {kind === 'income' ? '＋' : '－'}</p> : null}
     <div className="flex flex-wrap gap-2">
       {(['all', 'ecommerce', 'supermarket', 'convenience'] as const).map(item => <Button key={item} size="sm" type="button"
         variant={group === item ? 'default' : 'outline'} disabled={disabled || pendingId !== null}
@@ -41,7 +41,7 @@ export function SeanCategoryPresetGrid({ query, kind, disabled, onSelect }: {
       </Button>)}
     </div>
     <p className="text-xs text-muted-foreground">{t('categories.presets.hint')}</p>
-    {palette ? <p className="text-xs text-muted-foreground">{t('categories.presets.colorHint')}</p> : null}
+    <p className="text-xs text-muted-foreground">{t('categories.presets.styleHint')}</p>
     {error ? <p role="alert" className="text-sm text-destructive">{t('categories.presets.error')}</p> : null}
     {!presets.length ? <p className="py-8 text-center text-xs text-muted-foreground">{t('categories.iconPicker.empty')}</p> : null}
     <div className="grid grid-cols-3 gap-2 sm:grid-cols-5">

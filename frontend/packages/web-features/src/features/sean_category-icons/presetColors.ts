@@ -1,6 +1,7 @@
 import type { CategoryIconPreset } from './catalog'
+import { addPresetKindBadge } from './presetBadge'
 
-export type PresetPalette = { outline: string; fill: string }
+export type PresetPalette = { outline: string; fill: string; badgeKind?: 'income' | 'expense' }
 
 /** Theme RGB values are parsed strictly before inserting them into a packaged SVG. */
 export function presetPalette(rgb: string): PresetPalette | undefined {
@@ -16,7 +17,9 @@ export function presetPalette(rgb: string): PresetPalette | undefined {
 
 export function categoryPresetPalette(kind: string): PresetPalette | undefined {
   if (typeof document === 'undefined' || (kind !== 'income' && kind !== 'expense')) return undefined
-  return presetPalette(getComputedStyle(document.documentElement).getPropertyValue(`--${kind}-rgb`))
+  const palette = presetPalette(getComputedStyle(document.documentElement).getPropertyValue(`--${kind}-rgb`))
+    ?? presetPalette('64 86 111')!
+  return { ...palette, badgeKind: kind }
 }
 
 export function colorPresetSvg(svg: string, palette: PresetPalette): string {
@@ -26,16 +29,20 @@ export function colorPresetSvg(svg: string, palette: PresetPalette): string {
 const sources = new Map<string, Promise<string>>()
 
 export async function presetPreviewSource(preset: CategoryIconPreset, palette?: PresetPalette): Promise<string> {
-  if (!palette) return preset.src
-  let source = sources.get(preset.colorSrc)
+  if (!palette || (preset.colorMode === 'multicolor' && !palette.badgeKind)) return preset.src
+  const sourceUrl = preset.colorMode === 'multicolor' ? preset.src : preset.colorSrc
+  let source = sources.get(sourceUrl)
   if (!source) {
-    source = fetch(preset.colorSrc).then(async response => {
+    source = fetch(sourceUrl).then(async response => {
       if (!response.ok) throw new Error('Unable to load category icon preset')
       const svg = await response.text()
       if (!svg.trim()) throw new Error('Category icon preset is empty')
       return svg
-    }).catch(error => { sources.delete(preset.colorSrc); throw error })
-    sources.set(preset.colorSrc, source)
+    }).catch(error => { sources.delete(sourceUrl); throw error })
+    sources.set(sourceUrl, source)
   }
-  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(colorPresetSvg(await source, palette))}`
+  const svg = preset.colorMode === 'multicolor'
+    ? addPresetKindBadge(await source, palette)
+    : colorPresetSvg(await source, palette)
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
 }

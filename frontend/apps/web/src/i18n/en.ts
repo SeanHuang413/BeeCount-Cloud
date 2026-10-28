@@ -1,5 +1,6 @@
 const en = {
   'categories.presets.title': 'Extended icons',
+  'categories.presets.styleHint': 'Original pastel artwork with a theme-colored +/− badge for income/expense. Select and save again to update an existing category image.',
   'categories.presets.group.all': 'All',
   'categories.presets.group.ecommerce': 'Online stores',
   'categories.presets.group.supermarket': 'Supermarkets',

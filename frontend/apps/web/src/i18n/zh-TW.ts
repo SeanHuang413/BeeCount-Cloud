@@ -1,5 +1,6 @@
 const zhTW = {
   'categories.presets.title': '擴展圖示',
+  'categories.presets.styleHint': '柔彩主體保留原色，角標依系統收支配色顯示＋/－。既有分類需重新選擇並儲存後更新圖片。',
   'categories.presets.group.all': '全部',
   'categories.presets.group.ecommerce': '電商',
   'categories.presets.group.supermarket': '超市',
