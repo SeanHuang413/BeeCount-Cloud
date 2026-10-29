@@ -17,8 +17,21 @@ describe('category icon presets', () => {
     expect(filterCategoryIconPresets('不存在的分类')).toEqual([])
   })
   it('has distinct preset IDs and only packaged sources', () => {
-    expect(new Set(CATEGORY_ICON_PRESETS.map(p => p.id)).size).toBe(138)
+    expect(new Set(CATEGORY_ICON_PRESETS.map(p => p.id)).size).toBe(141)
     expect(CATEGORY_ICON_PRESETS.every(p => p.src && !p.src.startsWith('https://'))).toBe(true)
+  })
+  it('provides a dedicated account transfer preset alongside red-envelope transfers', () => {
+    expect(filterCategoryIconPresets('账户转账').map(p => p.id)).toEqual(['account-transfer'])
+    expect(filterCategoryIconPresets('资金调拨').map(p => p.id)).toEqual(['account-transfer'])
+    expect(filterCategoryIconPresets('红包转账').map(p => p.id)).toContain('transfer')
+  })
+  it('packages the same shopping subjects that are available for independent upload', () => {
+    expect(filterCategoryIconPresets('小象超市').map(p => p.id)).toEqual(['merchant-xiaoxiang'])
+    expect(filterCategoryIconPresets('叮咚买菜').map(p => p.id)).toEqual(['merchant-dingdong'])
+    expect(filterCategoryIconPresets('沙井老店').map(p => p.id)).toEqual(['payment'])
+    for (const id of ['merchant-xiaoxiang', 'merchant-dingdong']) {
+      expect(filterCategoryIconPresets('精品购物', 'supermarket').map(p => p.id)).toContain(id)
+    }
   })
   it('finds the additional expense and reimbursement subjects by their category names', () => {
     const expected = { '飞哥结婚': 'feige-wedding', '喜酒': 'wedding-banquet', '平账': 'balance-adjustment', '鞋子': 'shoes', '衣服': 'everyday-clothes', '包包': 'handbag', '其他报销': 'other-reimbursement', '拼多多': 'merchant-pinduoduo' }
@@ -41,7 +54,7 @@ describe('category icon presets', () => {
   })
   it('separates online stores, supermarkets and convenience stores', () => {
     expect(filterCategoryIconPresets('', 'ecommerce')).toHaveLength(12)
-    expect(filterCategoryIconPresets('', 'supermarket')).toHaveLength(14)
+    expect(filterCategoryIconPresets('', 'supermarket')).toHaveLength(16)
     expect(filterCategoryIconPresets('', 'convenience')).toHaveLength(4)
     expect(filterCategoryIconPresets('山姆', 'ecommerce')).toEqual([])
     expect(filterCategoryIconPresets('711', 'convenience').map(p => p.id)).toEqual(['merchant-seven-eleven'])
@@ -97,8 +110,8 @@ describe('category icon presets', () => {
     expect(decodeURIComponent(fetchMock.mock.calls[1][0])).toContain('rgb(120,80,240)')
     expect(drawImage).toHaveBeenCalledOnce()
   })
-  it('exports the same marked multicolor source shown by the picker', async () => {
-    const preset = { id: 'marked-export-test', colorMode: 'multicolor', sourceKind: 'svg', src: '/marked-export-test.svg', colorSrc: '/marked-export-test.svg' }
+  it.each(['expense', 'transfer'])('exports the same marked multicolor source shown for %s', async (kind) => {
+    const preset = { id: `marked-${kind}-test`, colorMode: 'multicolor', sourceKind: 'svg', src: `/marked-${kind}-test.svg`, colorSrc: `/marked-${kind}-test.svg` }
     const fetchMock = vi.fn(async url => url === preset.src
       ? { ok: true, text: async () => '<svg viewBox="0 0 64 64"><path fill="#A9D3F5"/></svg>' }
       : { ok: true, blob: async () => new Blob(['marked svg'], { type: 'image/svg+xml' }) })
@@ -108,10 +121,10 @@ describe('category icon presets', () => {
     const drawImage = vi.fn()
     const canvas = { getContext: () => ({ drawImage }), toBlob: callback => callback(new Blob(['png'])) }
     vi.stubGlobal('document', { createElement: () => canvas })
-    const file = await categoryPresetFile(preset, { outline: 'rgb(30,160,200)', fill: 'rgb(206,234,243)', badgeKind: 'expense' })
-    expect(file.name).toBe('marked-export-test.png')
+    const file = await categoryPresetFile(preset, { outline: 'rgb(30,160,200)', fill: 'rgb(206,234,243)', badgeKind: kind })
+    expect(file.name).toBe(`${preset.id}.png`)
     const source = decodeURIComponent(fetchMock.mock.calls[1][0])
-    expect(source).toContain('data-preset-kind="expense"')
+    expect(source).toContain(`data-preset-kind="${kind}"`)
     expect(source).toContain('fill="#A9D3F5"')
     expect(canvas.width).toBe(512)
     expect(drawImage).toHaveBeenCalledOnce()

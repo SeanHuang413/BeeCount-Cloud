@@ -41,6 +41,18 @@ async function main() {
     sampleLayers.push({ input: Buffer.from(`<svg width="220" height="210"><text x="110" y="181" text-anchor="middle" font-family="Microsoft YaHei,sans-serif" font-size="16" fill="#40566F">${escape(label)}</text></svg>`), left: x, top: y })
   }
   await sharp({ create: { width: columns * 220, height: Math.ceil(samples.length / columns) * 210, channels: 4, background: '#ffffff' } }).composite(sampleLayers).png().toFile(path.join(output, additions ? 'additions.png' : 'sample.png'))
+  if (process.argv.includes('--transfer')) {
+    // Use the same badge renderer as the picker/PNG export, rather than a copy.
+    const ts = require(path.join(root, 'frontend/apps/web/node_modules/typescript'))
+    const badgeSource = await fs.readFile(path.join(source, '../../presetBadge.ts'), 'utf8')
+    const compiled = ts.transpileModule(badgeSource, { compilerOptions: { module: ts.ModuleKind.CommonJS } }).outputText
+    const api = {}
+    new Function('exports', compiled)(api)
+    const svg = await fs.readFile(path.join(source, 'account-transfer.svg'), 'utf8')
+    const marked = api.addPresetKindBadge(svg, { outline: 'rgb(99,102,190)', fill: 'rgb(221,221,241)', badgeKind: 'transfer' })
+    await sharp(Buffer.from(marked)).png().toFile(path.join(output, 'transfer-icon.png'))
+  }
+  await require('./export_category_icon_uploads.cjs').exportCategoryIconUploads(root)
   console.log(`Verified and exported ${icons.length} transparent 512px PNGs; wrote overview.png`)
 }
 main().catch(error => { console.error(error); process.exitCode = 1 })

@@ -32,7 +32,7 @@ export function SeanCategoryPresetGrid({ query, kind, disabled, onSelect }: {
   const palette = categoryPresetPalette(kind)
   const presets = filterCategoryIconPresets(query, group)
   return <div className="space-y-3">
-    {palette ? <p className={kind === 'income' ? 'text-income text-xs' : 'text-expense text-xs'}>{t(kind === 'income' ? 'categories.presets.income' : 'categories.presets.expense')} · {kind === 'income' ? '＋' : '－'}</p> : null}
+    {palette ? <p className="text-xs" style={{ color: palette.outline }}>{t(`categories.presets.${kind}`)} · {kind === 'income' ? '＋' : kind === 'expense' ? '－' : '⇄'}</p> : null}
     <div className="flex flex-wrap gap-2">
       {(['all', 'ecommerce', 'supermarket', 'convenience'] as const).map(item => <Button key={item} size="sm" type="button"
         variant={group === item ? 'default' : 'outline'} disabled={disabled || pendingId !== null}

@@ -14,6 +14,18 @@
   },
   "icons": [
     {
+      "id": "merchant-xiaoxiang",
+      "label": "小象超市"
+    },
+    {
+      "id": "merchant-dingdong",
+      "label": "叮咚购物"
+    },
+    {
+      "id": "account-transfer",
+      "label": "账户转账"
+    },
+    {
       "id": "feige-wedding",
       "label": "飞哥结婚"
     },

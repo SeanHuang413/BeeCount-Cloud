@@ -1,0 +1,47 @@
+{
+  "source": "Bundled category SVGs with the shared presetBadge/presetColors renderers",
+  "palettes": {
+    "income": {
+      "outline": "rgb(239,68,68)",
+      "fill": "rgb(251,214,214)",
+      "badgeKind": "income"
+    },
+    "expense": {
+      "outline": "rgb(16,185,129)",
+      "fill": "rgb(202,240,227)",
+      "badgeKind": "expense"
+    }
+  },
+  "icons": [
+    {
+      "id": "merchant-xiaoxiang",
+      "name": "小象超市",
+      "file": "merchant-xiaoxiang",
+      "sourceSha256": "10d46d614d307b40f51bae02f94872ac0e2de1be816f2d0b4fbab9f8df205678",
+      "variants": {
+        "income": "merchant-xiaoxiang-income.png",
+        "expense": "merchant-xiaoxiang-expense.png"
+      }
+    },
+    {
+      "id": "merchant-dingdong",
+      "name": "叮咚购物",
+      "file": "merchant-dingdong",
+      "sourceSha256": "71a80f62d69355e837237db322515bee0077c62dd9c7942e3e1b481d88c1a813",
+      "variants": {
+        "income": "merchant-dingdong-income.png",
+        "expense": "merchant-dingdong-expense.png"
+      }
+    },
+    {
+      "id": "payment",
+      "name": "沙井老店",
+      "file": "merchant-shajing",
+      "sourceSha256": "ef497d5b2c703ffeb0097d33325e0aaef89efe5513b4fd9bfd43aece7df23122",
+      "variants": {
+        "income": "merchant-shajing-income.png",
+        "expense": "merchant-shajing-expense.png"
+      }
+    }
+  ]
+}

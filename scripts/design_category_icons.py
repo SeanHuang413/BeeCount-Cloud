@@ -176,6 +176,7 @@ def chart():
 
 
 ICONS = {
+    'account-transfer': rect(7, 12, 26, 19, 'mint', 5) + rect(23, 18, 13, 8, 'yellow', 2) + circle(28, 22, 1, 'ink') + rect(31, 36, 26, 19, 'purple', 5) + rect(47, 42, 13, 8, 'peach', 2) + circle(52, 46, 1, 'ink') + path('M39 14h15v14m-6-6 6 6 6-6M25 52H10V38m-6 6 6-6 6 6', stroke_width=2.6),
     'receipt': document() + small(check()),
     'devices': rect(8, 13, 37, 29, 'blue') + path('m8 42-4 9h45l-4-9Z', 'purple') + rect(41, 25, 16, 30, 'peach') + line('M47 49h4'),
     'wealth': coin(24, 45, 11) + coin(43, 46, 10) + group(plant(), 'translate(6 -6) scale(.85)'),
@@ -185,7 +186,7 @@ ICONS = {
     'food': food(), 'transfer': envelope() + small(arrow()),
     'bus': rect(13, 8, 38, 44, 'mint', 7) + rect(18, 19, 28, 18, 'blue') + path('M32 19v18M21 13h22M20 55v3M44 55v3') + circle(22, 45, 2, 'yellow') + circle(42, 45, 2, 'yellow'),
     'child': circle(18, 15, 7, 'peach') + circle(46, 15, 7, 'peach') + circle(32, 29, 20, 'yellow') + circle(25, 26, 1.5, 'ink') + circle(39, 26, 1.5, 'ink') + path('M28 34q4 5 8 0') + small(heart()),
-    'payment': rect(17, 7, 29, 49, 'mint') + rect(23, 15, 17, 14, 'blue', 1) + ''.join(circle(x,y,1,'ink') for x in (25,32,39) for y in (37,44)),
+    'payment': rect(10, 24, 44, 31, 'peach', 3) + rect(16, 34, 17, 13, 'blue', 2) + rect(39, 32, 10, 23, 'paper', 2) + circle(46, 44, 1, 'ink') + path('M10 12h44l5 13H5Z', 'mint') + path('M5 25v4q6 6 12 0 7 6 15 0 8 6 15 0 6 6 12 0v-4', 'mint') + path('M18 13 16 25M31 13v12M44 13l3 12M7 55h50', stroke_width=1.8) + rect(18, 5, 28, 7, 'yellow', 2),
     'book': book(), 'gift': rect(13, 27, 38, 28, 'peach') + rect(9, 21, 46, 10, 'purple') + rect(28, 21, 8, 34, 'purple', 0) + path('M32 21C6 22 17-1 32 21 47-1 58 22 32 21Z', 'yellow'),
     'phone': rect(19, 7, 27, 50, 'purple', 5) + rect(23, 14, 19, 31, 'blue', 2) + circle(32, 51, 1.5, 'ink'),
     'medical': rect(9, 26, 46, 29, 'mint') + rect(20, 15, 24, 40, 'mint') + path('M29 18v-7h6v7h7v6h-7v7h-6v-7h-7v-6Z', 'coral') + rect(26, 40, 13, 15, 'blue', 1) + line('M14 35h7M44 35h6'),
@@ -261,6 +262,13 @@ ICONS = {
     'handbag': path('M15 24h34l6 30H9Z', 'purple') + path('M23 24V17a9 9 0 0 1 18 0v7') + path('M14 29q18 14 36 0', 'peach') + rect(28, 34, 8, 7, 'yellow', 1),
     'other-reimbursement': document('mint') + small(wallet()),
 }
+
+
+# Original illustrated supermarket subjects, shared by bundled and upload PNGs.
+ICONS.update({
+    'merchant-xiaoxiang': '<path d="M13 23h38l4 33H9Z" fill="#AFE3D1"/><path d="M23 24v-8a9 9 0 0 1 18 0v8" fill="none"/><ellipse cx="22" cy="37" rx="7" ry="9" fill="#A9D3F5"/><ellipse cx="42" cy="37" rx="7" ry="9" fill="#A9D3F5"/><path d="M22 36q0-13 10-13t10 13v8q0 6-8 6h-4q-8 0-8-6Z" fill="#A9D3F5"/><path d="M30 40v6q0 6 7 4l3-3" fill="none"/><circle cx="27" cy="35" r="1" fill="#40566F" stroke="none"/><circle cx="37" cy="35" r="1" fill="#40566F" stroke="none"/><path d="m46 15 9 3-3 9-9-3Z" fill="#F8D889"/>',
+    'merchant-dingdong': '<path d="m17 35 7-23 8 3-5 22Z" fill="#F5C0A6"/><path d="m25 12-3-5m5 6 3-5" fill="none" stroke="#8CC8AC"/><circle cx="43" cy="24" r="12" fill="#AFE3D1"/><path d="M37 22q6-7 12 0M36 29q7-7 14 0" fill="none" stroke="#8CC8AC" stroke-width="1.6"/><path d="M8 32h48l-6 23H14Z" fill="#AFE3D1"/><path d="M17 32q15-26 30 0" fill="none"/><path d="M20 39v9m12-9v9m12-9v9" fill="none"/><circle cx="49" cy="46" r="10" fill="#F2F7FC"/><path d="M45 46v-3q0-5 4-5t4 5v3l2 3H43Z" fill="#F3A29C"/><path d="M47 52h4m-2-16v2" fill="none" stroke-width="1.5"/>',
+})
 
 # Independent merchant recognition marks, not official logos. Keep text to one
 # large glyph (matching the previous presets), with differentiated shop forms.

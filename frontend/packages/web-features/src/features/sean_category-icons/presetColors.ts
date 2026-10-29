@@ -1,7 +1,7 @@
 import type { CategoryIconPreset } from './catalog'
 import { addPresetKindBadge } from './presetBadge'
 
-export type PresetPalette = { outline: string; fill: string; badgeKind?: 'income' | 'expense' }
+export type PresetPalette = { outline: string; fill: string; badgeKind?: 'income' | 'expense' | 'transfer' }
 
 /** Theme RGB values are parsed strictly before inserting them into a packaged SVG. */
 export function presetPalette(rgb: string): PresetPalette | undefined {
@@ -16,7 +16,7 @@ export function presetPalette(rgb: string): PresetPalette | undefined {
 }
 
 export function categoryPresetPalette(kind: string): PresetPalette | undefined {
-  if (typeof document === 'undefined' || (kind !== 'income' && kind !== 'expense')) return undefined
+  if (typeof document === 'undefined' || (kind !== 'income' && kind !== 'expense' && kind !== 'transfer')) return undefined
   const palette = presetPalette(getComputedStyle(document.documentElement).getPropertyValue(`--${kind}-rgb`))
     ?? presetPalette('64 86 111')!
   return { ...palette, badgeKind: kind }

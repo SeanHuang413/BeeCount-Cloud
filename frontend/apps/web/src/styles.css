@@ -55,6 +55,9 @@
     --shadow: 215 70% 2%;
   }
 
+  /* 独立转账标记色，不参与收入/支出配色交换。 */
+  :root { --transfer-rgb: 99 102 190; }
+
   /* 收支颜色方案：跟随 mobile incomeExpenseColorSchemeProvider。默认 red =
      income (mobile 默认 true)。AppPage 在 loadProfile / WS profile_change
      收到字段后设置 <html data-income-color="red|green">。
